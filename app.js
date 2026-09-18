@@ -22,18 +22,19 @@ document.querySelector('#skills .section-head').insertAdjacentHTML('afterend', `
 // Temporary local-only palette review. Remove this block for the final version.
 if(['localhost','127.0.0.1'].includes(location.hostname)){
  const palettes=[
-  ['trio','블루 · 틸 · 앰버','linear-gradient(90deg,#2855eb 0 33%,#0b8177 33% 66%,#d98b20 66%)'],
-  ['ocean','네이비 · 시안 · 코랄','linear-gradient(90deg,#184e77 0 33%,#0096a6 33% 66%,#ef6a5b 66%)'],
-  ['graphite','차콜 · 에메랄드 · 옐로','linear-gradient(90deg,#32454f 0 33%,#138a72 33% 66%,#e5a50a 66%)'],
-  ['indigo','인디고 · 민트 · 코랄','linear-gradient(90deg,#5146b8 0 33%,#178a7a 33% 66%,#e66d4c 66%)'],
-  ['steel','스틸 · 아쿠아 · 코퍼','linear-gradient(90deg,#31566f 0 33%,#168f9a 33% 66%,#c56a36 66%)'],
-  ['blue','화이트 · 블루','#2855eb'],['teal','화이트 · 틸','#087d78'],['orange','아이보리 · 오렌지','#b94719'],['violet','화이트 · 바이올렛','#7040c1'],['navy','네이비 · 라임','#b9ef62']
+  ['cobalt','코발트 · 틸','linear-gradient(90deg,#2457e6 0 58%,#0b8b80 58%)'],
+  ['ocean2','딥네이비 · 시안','linear-gradient(90deg,#173b57 0 58%,#00a4b5 58%)'],
+  ['forest','차콜 · 에메랄드','linear-gradient(90deg,#29383e 0 58%,#118864 58%)'],
+  ['indigo2','인디고 · 코랄','linear-gradient(90deg,#5148c7 0 58%,#e16b55 58%)'],
+  ['steel2','스틸블루 · 코퍼','linear-gradient(90deg,#315b76 0 58%,#bb6839 58%)'],
+  ['nightlime','딥네이비 · 라임','linear-gradient(90deg,#111a2b 0 58%,#b7ed64 58%)'],
+  ['nightaqua','그래파이트 · 아쿠아','linear-gradient(90deg,#152126 0 58%,#42d7ca 58%)']
  ];
  const panel=document.createElement('details');panel.className='theme-panel';panel.open=true;
  panel.innerHTML='<summary>컬러 비교 <small>임시 도구</small><span>⌄</span></summary><div class="theme-options">'+palettes.map(([key,label,color])=>`<button type="button" data-theme-choice="${key}" aria-pressed="false"><i style="background:${color}"></i>${label}</button>`).join('')+'</div>';
  document.body.append(panel);
- function setTheme(key){if(!palettes.some(p=>p[0]===key))key='teal';document.documentElement.dataset.theme=key;try{localStorage.setItem('portfolio-theme',key);}catch{}panel.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeChoice===key)));}
- let chosen='teal';try{chosen=localStorage.getItem('portfolio-theme')||chosen;}catch{}setTheme(chosen);
+ function setTheme(key){if(!palettes.some(p=>p[0]===key))key='cobalt';document.documentElement.dataset.theme=key;try{localStorage.setItem('portfolio-theme-v2',key);}catch{}panel.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.themeChoice===key)));}
+ let chosen='cobalt';try{chosen=localStorage.getItem('portfolio-theme-v2')||chosen;}catch{}setTheme(chosen);
  panel.addEventListener('click',e=>{const button=e.target.closest('button[data-theme-choice]');if(button)setTheme(button.dataset.themeChoice);});
 }
 // Local preview only. Preserve scroll position and expanded panels on reload.
