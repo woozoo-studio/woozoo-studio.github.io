@@ -22,5 +22,5 @@ class Handler(SimpleHTTPRequestHandler):
             super().do_GET()
 
 if __name__ == '__main__':
-    print('Local preview: http://127.0.0.1:4173', flush=True)
-    ThreadingHTTPServer(('127.0.0.1', 4173), Handler).serve_forever()
+    print('Local preview: http://127.0.0.1:4174', flush=True)
+    ThreadingHTTPServer(('127.0.0.1', 4174), Handler).serve_forever()
