@@ -21,29 +21,3 @@ https://woozoo-studio.github.io/
 
 `ROS 2` `Nav2` `C++` `Python` `C` `STM32` `PLC` `Flutter` `YOLO` `Git/GitHub`
 
-## Local Preview
-
-```bash
-python3 preview.py
-```
-
-Open:
-
-```text
-http://127.0.0.1:4174/
-```
-
-## Branch Workflow
-
-```text
-dev
- ↓
-Pull Request
- ↓
-main
- ↓
-GitHub Pages
-```
-
-- `dev` — development
-- `main` — deployment
