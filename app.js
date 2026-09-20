@@ -1,5 +1,5 @@
 const links=[...document.querySelectorAll('nav a')];
-const themeStyle=document.createElement('link');themeStyle.rel='stylesheet';themeStyle.href='themes.css';document.head.append(themeStyle);
+const themeStyle=document.createElement('link');themeStyle.rel='stylesheet';themeStyle.href='themes.css?v=3';document.head.append(themeStyle);
 const sections=[...document.querySelectorAll('main>section')];
 const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){links.forEach(a=>{const current=a.hash==='#'+entry.target.id;a.classList.toggle('active',current);if(current)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}}},{rootMargin:'-15% 0px -55% 0px'});
 sections.forEach(s=>observer.observe(s));
@@ -15,9 +15,11 @@ addEventListener('afterprint',()=>{
 });
 // Supplementary background, kept separate from the three-item timeline.
 document.querySelector('#experience').insertAdjacentHTML('beforeend', `<div class="credentials"><article><p class="eyebrow">EDUCATION</p><h3>학력</h3><div class="education-list"><div><strong>한국해양대학교 · 해상보험전공</strong><span>2021.01 졸업 · 4.08 / 4.5</span></div><div><strong>광주중앙고등학교 · 문과</strong><span>2015.02 졸업</span></div></div></article><article><p class="eyebrow">CERTIFICATIONS & LANGUAGES</p><h3>자격·어학</h3><div class="credential-list"><div><strong>2급 항해사(상선)</strong><span>해양수산부 · 2025.07.22</span></div><div><strong>컴퓨터활용능력 2급</strong><span>대한상공회의소 · 2020.11.13</span></div><div><strong>OPIc IH</strong><span>2026.01.08</span></div><div><strong>TOEIC 875</strong><span>2026.04.12</span></div></div></article></div>`);
-const company=document.querySelector('.timeline article:last-child h3');
-company.insertAdjacentHTML('beforebegin', `<a class="company-ci" href="https://www.h-lineshipping.com/en/overview/vision/" target="_blank" rel="noreferrer" aria-label="에이치라인해운 공식 CI"><img src="https://www.h-lineshipping.com/wp-content/themes/hline/assets/images/ci_box41.svg" alt="H-LINE SHIPPING" width="150" height="48"><span>공식 회사 소개 ↗</span></a>`);
-document.querySelector('.company-ci img').addEventListener('error',function(){this.hidden=true;});
+const trainingContent=document.querySelector('.timeline article:first-child > div:last-child');
+trainingContent.insertAdjacentHTML('afterbegin', `<a class="company-ci" href="https://www.kccistc.net/" target="_blank" rel="noreferrer" aria-label="대한상공회의소 서울기술교육센터 공식 사이트"><img src="https://www.kccistc.net/logo/site_logo_b09.png" alt="대한상공회의소 서울기술교육센터" width="221" height="50"><span>공식 교육센터 사이트 ↗</span></a>`);
+const companyContent=document.querySelector('.timeline article:last-child > div:last-child');
+companyContent.insertAdjacentHTML('afterbegin', `<a class="company-ci" href="https://www.h-lineshipping.com/en/overview/vision/" target="_blank" rel="noreferrer" aria-label="에이치라인해운 공식 CI"><img src="https://www.h-lineshipping.com/wp-content/themes/hline/assets/images/ci_box41.svg" alt="H-LINE SHIPPING" width="150" height="48"><span>공식 회사 소개 ↗</span></a>`);
+document.querySelectorAll('.company-ci img').forEach(image=>image.addEventListener('error',function(){this.hidden=true;}));
 document.querySelector('#skills .section-head').insertAdjacentHTML('afterend', `<p class="skills-intro">경로와 위치를 다루는 소프트웨어부터, 실제 장치를 움직이는 제어까지.</p>`);
 // Temporary local-only palette review. Remove this block for the final version.
 if(['localhost','127.0.0.1'].includes(location.hostname)){
