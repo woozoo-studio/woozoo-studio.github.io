@@ -8,6 +8,10 @@
 /* PDF-only content stays out of the web layout. */
 .print-media-link{display:none}
 
+.hero-copy h1{width:fit-content;max-width:100%}.hero-copy h1 span{display:block}.identity{flex-wrap:wrap}.portrait-center{align-items:center;min-width:0}.portrait-center img{display:block;width:82%;max-width:240px;height:220px;margin:auto;object-fit:contain;filter:drop-shadow(0 14px 20px #07101d55)}
+@media(max-width:1000px){.portrait-center img{max-width:200px;height:190px}}
+@media(max-width:700px){.identity{display:grid;gap:5px}.portrait-center img{width:70%;max-width:180px;height:145px}}
+
 /* Precise A4 landscape composition. Web accordions stay interactive; print gets a static reading view. */
 @media print{
   html,body{width:auto;min-height:0}
@@ -22,12 +26,17 @@
   .featured .detail-grid h4{font-size:9.5pt;margin:0 0 1mm}
   .featured .detail-grid p{font-size:8.2pt;line-height:1.55;margin:0}
   .project-grid{min-height:182mm;margin-top:0;padding:0;align-content:center;align-items:stretch}
-  .card{align-self:stretch}
+  .card{display:flex;align-self:stretch;flex-direction:column}
+  .project-grid .card-body{display:flex;flex:1;flex-direction:column}
   .card details{display:none!important}
   .print-media-link{display:flex;align-items:center;gap:3mm;margin-top:3mm;padding-top:3mm;border-top:1px solid var(--line);color:var(--ink)}
   .print-media-link img{width:16mm;height:16mm}
   .print-media-link span{display:flex;flex-direction:column}
   .print-media-link strong{font-size:8.5pt}
   .print-media-link small{font-size:7.5pt;color:var(--muted)}
+  .project-grid .print-media-link{margin-top:auto}
+  .featured .feature-copy{position:relative}
+  .featured .print-media-link{position:absolute;right:7mm;bottom:5mm;margin:0;padding:0;border:0}
+  .featured .print-media-link img{width:14mm;height:14mm}
   #experience{min-height:182mm;display:flex;flex-direction:column;justify-content:center}
 }
