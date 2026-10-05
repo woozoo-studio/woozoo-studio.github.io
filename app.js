@@ -1,5 +1,5 @@
 const links=[...document.querySelectorAll('nav a')];
-const themeStyle=document.createElement('link');themeStyle.rel='stylesheet';themeStyle.href='themes.css?v=11';document.head.append(themeStyle);
+const themeStyle=document.createElement('link');themeStyle.rel='stylesheet';themeStyle.href='themes.css?v=15';document.head.append(themeStyle);
 const sections=[...document.querySelectorAll('main>section')];
 const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){links.forEach(a=>{const current=a.hash==='#'+entry.target.id;a.classList.toggle('active',current);if(current)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}}},{rootMargin:'-15% 0px -55% 0px'});
 sections.forEach(s=>observer.observe(s));
