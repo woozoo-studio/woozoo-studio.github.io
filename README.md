@@ -12,12 +12,11 @@ https://woozoo-studio.github.io/
 
 주요 프로젝트:
 
-- **Logistics AMR** — ROS 2 기반 AMR 자율주행 및 경로 관리
+- **Logistics AMR** — FMS용 경로 그래프, Nav2 주행 성능 개선, 위치추정 및 관제 연동
 - **Mobile Retrieval Robot** — 모바일 플랫폼과 6축 로봇팔 통합 제어
 - **PLC MPS Automation** — PLC 기반 공정 자동화 및 비상정지/복귀
 - **Vision Patrol Robot** — STM32 주행 제어 및 YOLO Pose 기반 비전
 
 ## Tech Stack
 
-`ROS 2` `Nav2` `C++` `Python` `C` `STM32` `PLC` `Flutter` `YOLO` `Git/GitHub`
-
+`ROS2` `Nav2` `C++` `Python` `C` `STM32` `PLC` `Flutter` `YOLO` `Git/GitHub`
