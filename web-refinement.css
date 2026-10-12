@@ -693,3 +693,35 @@
   #projects .system-axis small, #projects .system-process { font-size: 14px; }
   #projects .ownership-badge { margin-bottom: 9px; }
 }
+
+/* Readable descriptions and deliberate layouts on handheld screens. */
+@media screen {
+  #projects .problem-solving-case dl > div { display: block; min-width: 0; }
+  #projects .problem-solving-case dt { min-width: 0; }
+  #projects .problem-solving-case dd { word-break: keep-all; overflow-wrap: break-word; }
+}
+@media screen and (min-width: 701px) and (max-width: 1100px) {
+  #projects .problem-solving-case { grid-template-columns: 1fr; gap: 20px; }
+  #projects .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  #projects .project-grid .card { display: flex; flex-direction: column; padding: 24px 0; }
+  #projects .project-grid .card > img { width: 100%; height: auto; min-height: 0; max-height: none; aspect-ratio: 16 / 10; }
+  #projects .project-grid .card-body { padding: 18px 0 0; }
+  #projects .project-grid .card:last-child { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(210px, .65fr) minmax(0, 1fr); gap: 24px; }
+  #projects .project-grid .card:last-child .card-body { padding: 0; }
+  #projects .project-grid .card:last-child > img { height: auto; min-height: 0; aspect-ratio: 16 / 9; }
+}
+@media screen and (max-width: 700px) {
+  #skills .skill-row { display: grid; grid-template-columns: 26px minmax(0, 1fr); align-items: start; gap: 9px 12px; padding: 20px 0; }
+  #skills .skill-index { grid-column: 1; grid-row: 1 / span 3; margin: 0; padding-top: 4px; }
+  #skills .skill-row h3 { grid-column: 2; margin: 0; font-size: 20px; }
+  #skills .skill-tech { grid-column: 2; margin: 0; }
+  #skills .skill-row > span:last-child { grid-column: 2; margin: 0; padding: 0; border-top: 0; font-size: 14px; line-height: 1.6; }
+  #projects .system-axes { gap: 0; border-top: 1px solid var(--line); }
+  #projects .system-axis, #projects .system-axis + .system-axis { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; gap: 7px 12px; padding: 16px 14px; border: 0; border-bottom: 1px solid var(--line); text-align: left; }
+  #projects .system-axis-owned { border-left: 3px solid var(--accent); }
+  #projects .system-axis strong { grid-column: 1; grid-row: 1; text-align: left; font-size: 20px; }
+  #projects .system-axis small { grid-column: 2; grid-row: 1; margin: 0; text-align: left; }
+  #projects .ownership-badge { grid-column: 1; grid-row: 2; align-self: start; justify-self: start; margin: 0; padding: 4px 7px; font-size: 11px; }
+  #projects .ownership-scope { grid-column: 2; grid-row: 2; margin: 0; padding: 0; border: 0; font-size: 13px; text-align: left; }
+  #projects .problem-solving-case dl > div { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 10px; }
+}
