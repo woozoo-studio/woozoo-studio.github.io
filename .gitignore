@@ -21,3 +21,10 @@ venv/
 *.log
 *.tmp
 *~
+
+# Local portfolio snapshots
+backup/
+
+# Local writing reviews and generated exports
+_workspace/
+output/
