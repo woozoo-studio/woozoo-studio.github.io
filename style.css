@@ -856,7 +856,7 @@ footer>a {
 @media print {
 
   @page {
-    size: A4 landscape;
+    size: A4 portrait;
     margin: 14mm;
   }
 
@@ -1016,7 +1016,7 @@ footer>a {
 
 
 /*
-  Precise A4 landscape composition.
+  A4 print composition.
   Web accordions stay interactive;
   print gets a static reading view.
 */

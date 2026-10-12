@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>안재권 | 포트폴리오 인쇄</title>
+  <meta name="description" content="안재권 로봇 소프트웨어 포트폴리오 A4 인쇄 미리보기">
+  <link rel="stylesheet" href="print.css?v=28">
+  <script src="print.js?v=22" defer></script>
+</head>
+<body>
+  <header class="toolbar">
+    <a href="index.html">← 웹 포트폴리오</a>
+    <div>
+      <strong>안재권 / 포트폴리오 인쇄</strong>
+      <span id="print-status" role="status">웹 포트폴리오를 불러오는 중입니다.</span>
+    </div>
+    <button id="save-pdf" type="button" disabled>PDF로 저장</button>
+  </header>
+  <p class="print-help">인쇄 창에서 ‘PDF로 저장’을 선택하세요. A4 세로, 배율 100%, 머리글·바닥글 해제를 권장합니다.</p>
+  <main id="print-pages" aria-label="포트폴리오 A4 미리보기"></main>
+  <iframe id="portfolio-source" src="index.html" title="인쇄용 내용 불러오기" hidden aria-hidden="true"></iframe>
+  <noscript>인쇄 미리보기를 만들려면 JavaScript가 필요합니다.</noscript>
+</body>
+</html>
