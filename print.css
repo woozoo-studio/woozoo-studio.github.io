@@ -135,3 +135,63 @@ h1,h2,h3,h4,h5,p,figure,dl,ul{margin-top:0}
 .sheet-featured .ownership-scope{display:none}
 .sheet-featured .ownership-badge{font-size:8pt;margin-bottom:1mm}
 .sheet-featured .system-axis small{font-size:8pt;line-height:1.45}
+.sheet-profile .profile-contact .contact-github{grid-template-columns:max-content 18mm;justify-content:start;gap:3mm}
+.sheet-profile .print-skills-section{padding:4mm;background:#f1f5f8;border:1px solid #d3dde8}
+.sheet-profile .print-skills-section .print-heading{margin-bottom:3mm}
+.sheet-profile .print-skills-section .print-heading h2{font-size:17pt}
+.sheet-profile .print-skills-section .collaboration-strip{background:transparent;border-bottom:0;padding-bottom:0}
+.sheet-featured .project-heading-row{display:grid;grid-template-columns:minmax(0,1fr) 24mm;align-items:start;gap:5mm;margin-bottom:4mm}
+.sheet-featured .project-heading-row .print-heading{margin-bottom:0}
+.sheet-featured .project-heading-qr{display:flex;flex-direction:column;gap:1mm;justify-self:end;text-align:center;width:24mm}
+.sheet-featured .project-heading-qr img{width:20mm;height:20mm}
+.sheet-featured .project-heading-qr small{display:none}
+.sheet-featured .project-heading-qr strong{font-size:8pt}
+.sheet-featured .featured-overview{padding:4mm;gap:4mm;border:1px solid #cbd5e1;background:#f5f7fa}
+.sheet-featured .featured-facts{border-top:0;padding-top:0}
+.sheet-featured .featured-facts .meta{margin:3mm 0 0}
+.sheet-featured .featured-overview .system{padding:0 0 0 4mm;border-left:1px solid #cbd5e1;background:transparent}
+.sheet-featured .project-snapshot{display:flex;align-items:center;gap:3mm}
+.sheet-featured .project-snapshot .feature-photo{flex:none;width:20mm;margin:0}
+.sheet-featured .project-snapshot .feature-photo img{display:block;width:20mm;height:24mm;object-fit:contain;border:1px solid #cbd5e1}
+.sheet-featured .project-snapshot figcaption{margin-top:1mm;color:#526177;font-size:7pt;text-align:center}
+.sheet-featured .project-snapshot .meta{margin:0;line-height:1.5}
+.sheet-featured .project-heading-details{display:flex;align-items:baseline;flex-wrap:wrap;gap:1mm 3mm;margin-top:2mm}
+.sheet-featured .project-heading-details .heading-note{margin:0;line-height:1.5}
+.sheet-featured .project-heading-details .meta{margin:0;padding-left:3mm;border-left:1px solid #bcc7d4;color:#526177;font-size:8pt;line-height:1.5}
+.sheet-featured .featured-facts{display:grid;grid-template-columns:minmax(0,1fr) 32mm;align-items:center;gap:3mm}
+.sheet-featured .featured-facts .feature-lead{margin:0}
+.sheet-featured .project-snapshot .feature-photo{width:32mm}
+.sheet-featured .project-snapshot .feature-photo img{width:32mm;height:38.4mm}
+.print-work-item .work-number{display:inline-block;margin-right:1mm;color:#365d77;font-size:8pt;font-weight:800}
+.print-progress-grid .work-number{color:#7d4450}
+.sheet-profile .print-skills-section{background:#f7f3f4;border-color:#dbc8cc;border-left:3px solid #7d4450}
+.sheet-profile .print-skills-section .print-skills{gap:2mm}
+.sheet-profile .print-skills-section .skill-row{padding:3mm;background:#fff;border:1px solid #e2d9dd;border-top:1.5pt solid #1c2b3f}
+.sheet-profile .print-skills-section .skill-row:first-child{border-top-color:#7d4450}
+.sheet-profile .print-skills-section .collaboration-strip{margin-top:2mm;padding-top:2mm;border-top:1px solid #dbc8cc}
+.sheet-featured .featured-facts{display:block}
+.sheet-featured .featured-facts .feature-lead{margin-bottom:3mm}
+.sheet-featured .project-snapshot .feature-photo{width:42mm}
+.sheet-featured .project-snapshot .feature-photo img{width:42mm;height:auto;object-fit:contain}
+.sheet-profile .profile-contact{align-items:center;text-align:center}
+.sheet-profile .profile-contact .contact-card{justify-items:center}
+.sheet-profile .profile-contact .contact-github{justify-content:center}
+.sheet-profile .hero-background{align-items:center;text-align:center}
+.sheet-profile .hero-background .school-identity{justify-content:center}
+.sheet-profile .hero-background .gpa-mark{justify-content:center}
+.sheet-profile .hero-background .gpa-meter{margin-left:auto;margin-right:auto}
+.sheet-profile .profile-contact .contact-github{grid-template-columns:minmax(0,1fr) 18mm;justify-content:stretch}
+.sheet-profile .profile-contact .profile-github-qr{justify-self:end;padding:0}
+.sheet-profile .profile-intro{display:flex;flex-direction:column;min-height:61mm}
+.sheet-profile .profile-intro .target-roles{margin:auto 0 0;padding-top:3mm;gap:2mm}
+.sheet-profile .profile-intro .target-roles>strong{font-size:9pt}
+.sheet-profile .profile-intro .target-roles span{font-size:10.5pt}
+.sheet-profile .profile-intro .target-roles p{gap:1mm 1.5mm}
+.sheet-profile .profile-intro .target-roles span+span::before{margin-right:1.5mm}
+.sheet-profile .profile-hero{position:relative}
+.sheet-profile .profile-header-qr{position:absolute;top:0;right:0;display:flex;flex-direction:column;align-items:center;gap:1mm;text-decoration:none}
+.sheet-profile .profile-header-qr img{display:block;width:18mm;height:18mm;object-fit:contain}
+.sheet-profile .profile-header-qr strong{font-size:7pt;color:#526177}
+.sheet-profile .profile-intro>.kicker{padding-right:22mm}
+.sheet-profile .profile-contact .contact-github{grid-template-columns:1fr}
+.sheet-featured .project-snapshot{justify-content:center}
