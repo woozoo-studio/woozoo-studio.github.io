@@ -113,6 +113,19 @@ h1,h2,h3,h4,h5,p,figure,dl,ul{margin-top:0}
 .sheet-cases .problem-solving-case dt{color:#7d4450;font-size:10pt;font-weight:800}
 .sheet-cases .problem-solving-case dd{margin:0;color:#34465d;font-size:10pt;line-height:1.5}
 .sheet-cases .problem-solving-case code{font-size:8pt}
+.sheet-featured .project-evidence-card>a{height:44mm}
+.sheet-featured .project-evidence-card .scenario-print-link{display:flex;align-items:center;justify-content:center;gap:4mm;height:44mm;margin:0;padding:4mm;border:0;background:#f4f7fa}
+.sheet-featured .scenario-print-link img{flex:none;width:22mm;height:22mm;object-fit:contain}
+.sheet-featured .scenario-print-link strong{font-size:10pt}
+.sheet-featured .scenario-print-link small{display:block;margin-top:2mm;font-size:8pt;color:#526177}
+.sheet-cases .problem-solving-case{min-height:0;grid-template-columns:47mm minmax(0,1fr);gap:4mm;padding:5.5mm 0}
+.sheet-cases .case-title h4{font-size:12pt}
+.sheet-cases .problem-solving-case dl{gap:2.5mm}
+.sheet-cases .problem-solving-case dt,.sheet-cases .problem-solving-case dd{font-size:10pt;line-height:1.45}
+.print-complete-label{margin:2mm 0;padding:1.5mm 2mm;background:#365d77;color:#fff;font-size:8pt;font-weight:800}
+.sheet-featured .print-progress-label{margin:3mm 0 2mm;padding:1.5mm 2mm;border:0;background:#7d4450;color:#fff;font-size:8pt;font-weight:800}
+.print-complete-grid .print-work-item{background:#f1f6f9;border-left-color:#365d77}
+.sheet-featured .print-progress-grid .print-work-item,.sheet-featured .print-progress-label+.print-progress-grid .print-work-item{background:#faf3f5;border-left-color:#7d4450}
 .sheet-featured .system-axis{align-content:center;padding:2mm 1.5mm}
 .sheet-featured .system-axis-owned{border:1.5pt solid #7d4450;background:#f8f1f3}
 .sheet-featured .ownership-badge{display:block;padding:1mm;background:#7d4450;color:#fff;font-size:7pt;font-weight:800;line-height:1.3}

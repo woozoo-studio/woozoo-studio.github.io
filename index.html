@@ -47,8 +47,7 @@
         </div>
 
         <p class="intro">
-          <strong>바다에서는 선박의 항로를, 지금은 로봇의 경로를 다룹니다.</strong><br>
-          ROS2 AMR의 경로·관제 연동을 구현하고 Nav2·EKF를 조정합니다.
+          <strong>바다에서는 선박의 항로를, 지금은 로봇의 경로를 다룹니다.</strong>
         </p>
 
         <div class="hero-background" aria-label="학력과 경력 요약">
@@ -71,33 +70,31 @@
           </div>
         </div>
 
-        <div class="actions">
-          <a class="primary" href="#projects">
-            프로젝트 보기 <span>↓</span>
-          </a>
-        </div>
       </div>
 
       <div class="portrait-column">
-
-        <div class="identity">
-          <a class="contact-card contact-email" href="mailto:woozoo.dev@gmail.com">
-            <strong>이메일 보내기</strong>
-            <small>woozoo.dev@gmail.com</small>
-          </a>
-
-          <a class="contact-card contact-github" href="https://github.com/woozoo-studio" target="_blank" rel="noreferrer">
-            <strong>GitHub ↗</strong>
-            <small>github.com/woozoo-studio</small>
-          </a>
-        </div>
-
         <aside class="portrait">
           <div class="portrait-center">
             <img src="assets/profile-photo.jpg" alt="항해사 출신 로봇 SW 개발자 안재권 프로필 사진" width="971" height="1315">
           </div>
         </aside>
 
+      </div>
+
+      <div class="hero-actions">
+        <div class="identity">
+          <a class="contact-card contact-email" href="mailto:woozoo.dev@gmail.com">
+            <strong>이메일 보내기</strong>
+            <small>woozoo.dev@gmail.com</small>
+          </a>
+          <a class="contact-card contact-github" href="https://github.com/woozoo-studio" target="_blank" rel="noreferrer">
+            <strong>GitHub ↗</strong>
+            <small>github.com/woozoo-studio</small>
+          </a>
+        </div>
+        <div class="actions">
+          <a class="primary" href="#projects">프로젝트 보기 <span>↓</span></a>
+        </div>
       </div>
 
       <div class="hero-foot" aria-hidden="true"></div>
@@ -274,7 +271,6 @@
               <span class="ownership-badge">담당</span>
               <strong>AMR</strong>
               <small>자율주행·물품 이송·위치 공유</small>
-              <p class="ownership-scope">경로 그래프·관제 위치 토픽 구현<br>Nav2 주행·EKF 위치추정 조정</p>
             </div>
 
             <div class="system-axis">
@@ -283,6 +279,7 @@
             </div>
 
           </div>
+          <p class="ownership-scope"><strong>AMR 담당 범위</strong> 경로 그래프·관제 위치 토픽 구현 / Nav2 주행·EKF 위치 추정 조정</p>
           <p class="system-process">주문·배차 <span>→</span> 피킹 위치 주행 <span>→</span> 적재 <span>→</span> 패킹 위치 이송 <span>→</span> 하역</p>
 
         </div>
@@ -298,7 +295,7 @@
 
           <div class="work-details-body">
 
-            <div class="work-status-group">
+            <div class="work-status-group work-status-done">
 
               <div class="work-status-title">
                 <strong>구현 완료</strong>
@@ -342,7 +339,7 @@
             </div>
 
 
-            <div class="work-status-group">
+            <div class="work-status-group work-status-progress">
 
               <div class="work-status-title work-status-title-progress">
                 <strong>진행 중</strong>
@@ -354,9 +351,9 @@
                 <article class="work-item">
                   <h5>Nav2 주행 파라미터</h5>
                   <p>
-                    목표 도착 오차와 주행 안정성을 살피며
-                    실기체 주행 파라미터를 조정하고 있습니다.
-                    개선 효과는 추가 시험 후 정리할 예정입니다.
+                    여러 주행 파라미터를 순차적으로 변경하며 실제 정차 위치를 반복 측정했습니다.
+                    XY Goal Tolerance를 줄이는 것만으로 도착 정확도가 높아지지 않아,
+                    위치 추정과 기체·환경 조건을 함께 살피며 조정하고 있습니다.
                   </p>
                 </article>
 
@@ -383,7 +380,7 @@
         <div class="project-evidence-heading">
           <h3>시연 · 관제 화면</h3>
           <p>
-            공정 전체 영상은 준비 중이며, 현재는 웹 관제 화면을 확인할 수 있습니다.
+            전체 공정 시연 영상과 FMS 웹 관제 화면입니다.
           </p>
         </div>
 
@@ -392,16 +389,18 @@
 
           <figure class="project-evidence-card">
 
-            <div class="scenario-placeholder" role="img" aria-label="전체 시나리오 영상 자리. 영상 준비 중">
-              <span>PROJECT VIDEO</span>
-              <strong>전체 시나리오 영상</strong>
-              <div class="scenario-steps" aria-hidden="true"><span>FMS 작업 지시</span><span>AMR 이송</span><span>OMX 적재</span></div>
-              <small>영상 준비 중 · 16:9 영상 예정</small>
+            <div class="scenario-video">
+              <iframe src="https://www.youtube-nocookie.com/embed/onECw1r9kyc" title="E1I6 다중 로봇 물류 자동화 전체 공정 시연" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
+            <a class="print-media-link scenario-print-link" href="https://youtu.be/onECw1r9kyc" target="_blank" rel="noreferrer">
+              <img src="assets/qr-amr-scenario.svg" alt="전체 공정 시연 영상 YouTube QR 코드" width="96" height="96">
+              <span><strong>전체 공정 시연 영상</strong><small>youtu.be/onECw1r9kyc</small></span>
+            </a>
 
             <figcaption>
               <strong>다중 로봇 물류 공정</strong>
               <p>FMS 작업 지시부터 AMR 이송과 OMX 적재까지의 흐름</p>
+              <a class="scenario-watch-link" href="https://youtu.be/onECw1r9kyc" target="_blank" rel="noreferrer">YouTube에서 보기 ↗</a>
             </figcaption>
 
           </figure>
@@ -464,7 +463,7 @@
               <li>STM32 내부 Flash에 12개 시퀀스 · 시퀀스당 최대 30 Waypoint 티칭 데이터 저장</li>
             </ul>
 
-            <p class="meta">2026.07.31 — 08.07 · 팀 5명</p>
+            <p class="meta">2026.07.31 — 08.07 · 팀 5명 · 부팀장</p>
 
             <a class="card-link" href="https://github.com/sditr0414/mobile-retrieval-robot" target="_blank" rel="noreferrer">GitHub 저장소 ↗</a>
 
@@ -474,7 +473,8 @@
               <p>
                 Flutter 기반 앱에서 RC카 주행과 6개 서보의 로봇팔 동작을 통합 제어했습니다.
                 16바이트 가변 Bluetooth 통신 패킷을 설계하고,
-                티칭 UI에서 생성한 동작 데이터를 STM32 Flash Memory에 저장·갱신하도록 구현했습니다.
+                티칭 UI에서 생성한 동작 데이터를 프로그램 영역과 분리한 STM32 내부 Flash에 저장·갱신하고,
+                전원 재시작 시 다시 불러오도록 구현했습니다.
                 로봇팔 기구 설계는 다른 팀원이 담당했습니다.
               </p>
 
@@ -517,7 +517,7 @@
 
             <ul>
               <li>STM32 HAL 기반 모터·IMU 연동 · PID 직진 보정</li>
-              <li>학습용 데이터셋 확보 · 라벨링 · YOLO Pose 학습·추론</li>
+              <li>11포인트 인체 Pose·화재/무기 검출 라벨 통합 · YOLO Pose 학습·추론</li>
               <li>엣지 디바이스 추론 최적화를 위한 FP16 변환 · INT8 양자화</li>
             </ul>
 
@@ -531,6 +531,8 @@
               <p>
                 초기에는 STM32 HAL 기반 모터·센서 연동과 PID 제어를 담당하고,
                 이후 YOLO Pose 모델 개발에 참여했습니다.
+                키포인트가 없는 화재·무기 검출 데이터에는 객체 중심점을 키포인트 1개로 넣고,
+                나머지 10개를 더미 처리해 11포인트 Pose 학습 라벨 형식에 맞췄습니다.
               </p>
 
             </details>
@@ -614,25 +616,33 @@
           <article class="problem-solving-case">
             <div class="case-title"><span>01 / AMR · 관제 연동</span><h4>관제 위치 발행 분리</h4></div>
             <dl>
-              <div><dt>문제</dt><dd>기존 관제는 <code>amcl_pose</code> 메시지를 받을 때 위치를 갱신했습니다. 관제용 위치 발행을 AMCL 메시지 수신과 분리할 필요가 있었습니다.</dd></div>
+              <div><dt>문제</dt><dd>관제 화면의 위치 갱신을 <code>amcl_pose</code> 메시지 수신에 의존해야 하는지 검토했습니다. 기존 구조에서는 AMCL 메시지를 받을 때 위치를 갱신했습니다.</dd></div>
               <div><dt>해결</dt><dd>TF의 <code>map → base_footprint</code> 변환에서 로봇 위치를 읽어 관제용 토픽으로 발행하는 별도 ROS2 노드를 작성했습니다.</dd></div>
-              <div><dt>결과</dt><dd>AMCL·오도메트리 기반 TF를 활용하면서 관제용 위치 전달을 별도 토픽으로 구성하고, FMS의 지도 표시에 연동했습니다.</dd></div>
+              <div><dt>결과</dt><dd>AMCL·오도메트리 기반 TF를 활용해 관제용 위치 발행을 AMCL 메시지 수신과 분리하고, FMS의 지도 표시에 연동했습니다.</dd></div>
             </dl>
           </article>
           <article class="problem-solving-case">
             <div class="case-title"><span>02 / 모바일 회수 로봇</span><h4>내부 Flash에 티칭 저장</h4></div>
             <dl>
-              <div><dt>문제</dt><dd>전원이 꺼져도 티칭 데이터를 유지해야 했습니다. EEPROM을 추가하는 대신 STM32 보드 내부의 Flash를 활용할 수 있는지 검토했습니다.</dd></div>
-              <div><dt>해결</dt><dd>마지막 128KiB(Sector 7)를 데이터용으로 확보하고, 링커에서 펌웨어 영역을 384KiB로 제한해 두 영역이 겹치지 않도록 구성했습니다.</dd></div>
+              <div><dt>문제</dt><dd>전원이 꺼져도 티칭 데이터를 유지해야 했습니다. 별도 EEPROM을 추가하는 방법 외에 보드 내부 Flash를 활용할 수 있는지 검토했습니다.</dd></div>
+              <div><dt>해결</dt><dd>마지막 128KiB(Sector 7)를 데이터용으로 확보하고 프로그램 저장 영역을 384KiB로 제한했습니다. 프로그램과 티칭 데이터가 서로의 영역을 덮어쓰지 않도록 구성했습니다.</dd></div>
               <div><dt>결과</dt><dd>RAM에 모은 데이터를 Flash에 기록·검증하고 부팅 시 불러오도록 구현했습니다. 별도 EEPROM 없이 12개 시퀀스와 시퀀스당 최대 30 Waypoint를 저장합니다.</dd></div>
             </dl>
           </article>
           <article class="problem-solving-case">
-            <div class="case-title"><span>04 / PLC 자동화</span><h4>비상정지와 공정 복귀</h4></div>
+            <div class="case-title"><span>03 / 비전 · 학습 데이터</span><h4>검출·포즈 라벨 형식 통합</h4></div>
             <dl>
-              <div><dt>과제</dt><dd>가공·배출·적재 공정에 비상정지와 복귀 동작이 필요했습니다.</dd></div>
-              <div><dt>대응</dt><dd>PLC 시퀀스에 비상정지와 복귀 동작을 구현했습니다.</dd></div>
-              <div><dt>확인</dt><dd>포트폴리오의 시연 영상에서 비상정지 동작을 볼 수 있습니다.</dd></div>
+              <div><dt>문제</dt><dd>사람은 11개 키포인트로 자세를 학습하지만, 화재·무기 검출 데이터에는 바운딩 박스만 있어 동일한 Pose 학습 형식으로 사용할 수 없었습니다.</dd></div>
+              <div><dt>해결</dt><dd>화재·무기의 바운딩 박스 중심점을 키포인트 1개로 넣고 나머지 10개를 더미 처리해, 모델이 요구하는 11포인트 라벨 구조에 맞췄습니다.</dd></div>
+              <div><dt>결과</dt><dd>인체 Pose 라벨과 비인체 객체의 검출 라벨을 동일한 학습 형식으로 통합했습니다. 비인체 객체의 중심점은 라벨 호환을 위한 표현으로 사용했습니다.</dd></div>
+            </dl>
+          </article>
+          <article class="problem-solving-case">
+            <div class="case-title"><span>03 / 비전 · 주행 제어</span><h4>전진·후진 PID 보정</h4></div>
+            <dl>
+              <div><dt>문제</dt><dd>전진·후진에서 동일한 모터 보정 부호를 사용하면 방향 보정이 반대로 작용할 수 있어, 주행 방향별 처리가 필요했습니다.</dd></div>
+              <div><dt>해결</dt><dd>IMU의 Yaw를 이용해 PID 보정값을 계산하고, 후진 시에는 전진과 반대로 좌우 모터의 PWM 보정 부호를 적용했습니다.</dd></div>
+              <div><dt>구현</dt><dd>주행 방향에 맞게 보정 로직을 분리하고, 적분 누적과 모터 출력에 상하한을 적용해 제어값이 범위를 벗어나지 않도록 구성했습니다.</dd></div>
             </dl>
           </article>
         </div>
@@ -669,8 +679,9 @@
             <h3>AI융합 로봇SW 개발자 과정</h3>
             <p class="organization">대한상공회의소 서울기술교육센터</p>
             <p>
-              ROS2·AI 비전·PLC·IoT 통신 학습 및 자율주행·다관절 로봇 통합 프로젝트
+              ROS2·AI 비전·PLC 학습 및 자율주행·다관절 로봇 통합 프로젝트
             </p>
+            <p>교육 과정의 모든 팀 프로젝트 발표 담당 · 구현 내용과 시스템 흐름 설명</p>
           </div>
 
         </article>
@@ -691,7 +702,7 @@
 
             <ul class="experience-points">
               <li>온라인 마케팅 콘텐츠 기획·운영</li>
-              <li>웹사이트 콘텐츠 등록·수정 및 운영 관리</li>
+              <li>고객 설문·관련 부서 의견을 반영한 웹사이트 개편 · 개편 후 문의율 약 20% 증가</li>
             </ul>
           </div>
 
@@ -761,7 +772,7 @@
   </footer>
 
   <script src="app.js?v=33"></script>
-  <link rel="stylesheet" href="web-refinement.css?v=31">
+  <link rel="stylesheet" href="web-refinement.css?v=34">
 
 </body>
 

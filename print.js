@@ -94,18 +94,21 @@
     add(facts, copy(source, '.featured .feature-lead'), copy(source, '.featured .feature-copy .meta'), copy(source, '.featured .print-media-link'));
     const system = copy(source, '.featured .system');
     add(overview, facts, system);
-    add(featured, overview, copy(source, '.project-evidence'));
+    const evidence = copy(source, '.project-evidence');
+    evidence.querySelectorAll('.scenario-video, .scenario-watch-link').forEach(node => node.remove());
+    add(featured, overview, evidence);
     const work = make('div', 'print-contribution');
     add(work, make('p', 'kicker', 'AMR 담당 구현'));
-    const workGrid = make('div', 'print-contribution-grid');
+    add(work, make('p', 'print-complete-label', '✓ 구현 완료 · FMS 관제 연동'));
+    const workGrid = make('div', 'print-contribution-grid print-complete-grid');
     source.querySelectorAll('.work-details .work-status-group:first-child .work-item').forEach(item => {
       const entry = make('div', 'print-work-item');
       add(entry, copy(item, 'h5'), copy(item, 'p'));
       add(workGrid, entry);
     });
     add(work, workGrid);
-    add(work, make('p', 'print-progress-label', '진행 중 · 실기체 주행 조정'));
-    const progressGrid = make('div', 'print-contribution-grid');
+    add(work, make('p', 'print-progress-label', '○ 진행 중 · 실기체 주행 조정'));
+    const progressGrid = make('div', 'print-contribution-grid print-progress-grid');
     source.querySelectorAll('.work-details .work-status-group:nth-child(2) .work-item').forEach(item => {
       const entry = make('div', 'print-work-item');
       add(entry, copy(item, 'h5'), copy(item, 'p'));
