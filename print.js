@@ -59,8 +59,8 @@
       make('p', 'kicker', 'ROBOTICS SOFTWARE PORTFOLIO'),
       make('h1', '', value(source, '#about h1 span')),
       make('p', 'profile-subtitle', value(source, '#about h1 small')),
-      copy(source, '#about .target-roles'),
-      copy(source, '#about .intro'));
+      copy(source, '#about .intro'),
+      copy(source, '#about .target-roles'));
     const contact = make('div', 'profile-contact');
     const email = copy(source, '#about .contact-email');
     const github = copy(source, '#about .contact-github');
@@ -74,24 +74,46 @@
     githubQr.alt = '안재권 GitHub 프로필 QR 코드';
     githubQr.width = 72;
     githubQr.height = 72;
-    github.append(githubQr);
+    const profileQrLink = make('a', 'profile-header-qr');
+    profileQrLink.href = github.href;
+    profileQrLink.target = '_blank';
+    profileQrLink.rel = 'noreferrer';
+    add(profileQrLink, githubQr, make('strong', '', 'GitHub'));
     add(contact, email, github);
     const portrait = copy(source, '#about .portrait-center img');
     portrait.className = 'profile-photo';
     const photoColumn = make('div', 'profile-photo-column');
     add(photoColumn, portrait);
-    add(hero, photoColumn, intro);
-    add(profile, hero, contact, copy(source, '#about .hero-background'), heading('01 / SKILLS', value(source, '#skills h2')));
+    add(hero, photoColumn, intro, profileQrLink);
+    add(profile, hero, contact, copy(source, '#about .hero-background'));
+    const skillsSection = make('section', 'print-skills-section');
+    add(skillsSection, heading('01 / SKILLS', value(source, '#skills h2')));
     const skills = make('div', 'print-skills');
     source.querySelectorAll('#skills .skill-row').forEach(row => add(skills, row.cloneNode(true)));
-    add(profile, skills, copy(source, '#skills .collaboration-strip'));
+    add(skillsSection, skills, copy(source, '#skills .collaboration-strip'));
+    add(profile, skillsSection);
 
     // 2. Featured project overview and evidence.
     const featured = sheet('featured', 'PROJECTS / FEATURED');
-    add(featured, heading('02 / PROJECTS', value(source, '.featured h3'), value(source, '.featured .project-sub')));
-    const overview = make('div', 'featured-overview');
+    const projectHeading = make('div', 'project-heading-row');
+    const repositoryQr = copy(source, '.featured .print-media-link');
+    repositoryQr.classList.add('project-heading-qr');
+    const projectTitle = heading('02 / PROJECTS', value(source, '.featured h3'));
+    const projectDetails = make('div', 'project-heading-details');
+    const projectMeta = copy(source, '.featured .feature-copy .meta');
+    add(projectDetails, make('p', 'heading-note', value(source, '.featured .project-sub')), projectMeta);
+    add(projectTitle, projectDetails);
+    add(projectHeading, projectTitle, repositoryQr);
+    add(featured, projectHeading);
+    const overview = make('section', 'featured-overview');
+    overview.setAttribute('aria-label', '프로젝트 개요와 시스템 흐름');
     const facts = make('div', 'featured-facts');
-    add(facts, copy(source, '.featured .feature-lead'), copy(source, '.featured .feature-copy .meta'), copy(source, '.featured .print-media-link'));
+    add(facts, copy(source, '.featured .feature-lead'));
+    const projectSnapshot = make('div', 'project-snapshot');
+    const projectPhoto = copy(source, '.featured .feature-photo');
+    projectPhoto.querySelector('figcaption').remove();
+    add(projectSnapshot, projectPhoto);
+    add(facts, projectSnapshot);
     const system = copy(source, '.featured .system');
     add(overview, facts, system);
     const evidence = copy(source, '.project-evidence');

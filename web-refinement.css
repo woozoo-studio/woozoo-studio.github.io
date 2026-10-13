@@ -794,3 +794,5 @@
   #about.hero { padding-top: 36px; padding-bottom: 44px; row-gap: 0; }
   #about .hero-actions { grid-column: 1; grid-template-columns: 1fr; gap: 14px; margin-top: 18px; }
 }
+#projects .work-number { display: inline-block; margin-right: 7px; color: #365d77; font-size: .85em; font-weight: 800; }
+#projects .work-status-group:nth-child(2) .work-number { color: #7d4450; }
