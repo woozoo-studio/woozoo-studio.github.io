@@ -2,100 +2,72 @@
 
 **바다에서는 선박의 항로를, 지금은 로봇의 경로를 다룹니다.**
 
-ROS2 AMR의 경로·관제 연동을 구현하고 Nav2 주행과 EKF 위치추정을 조정하고 있습니다.
-로봇 소프트웨어, 자율주행, 시스템 통합 분야를 지향합니다.
+ROS2 기반 AMR 주행·관제 연동과 STM32 제어, 모바일 앱, 비전 모델을 다뤄왔습니다.
+로봇의 주행과 제어를 시스템에 연결하는 개발을 지향합니다.
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-프로젝트_보기-2457E6?style=for-the-badge)](https://woozoo-studio.github.io/) [![PDF](https://img.shields.io/badge/PDF-인쇄_미리보기-7D4450?style=for-the-badge)](https://woozoo-studio.github.io/print.html) [![Email](https://img.shields.io/badge/Email-문의하기-0B8B80?style=for-the-badge)](mailto:woozoo.dev@gmail.com)
+**관심 분야** · Robot Software / System Integration / AMR 자율주행
 
-## 기술과 구현 경험
+[![Portfolio](https://img.shields.io/badge/Portfolio-프로젝트_보기-1C2D40?style=for-the-badge)](https://woozoo-studio.github.io/) [![Print](https://img.shields.io/badge/Print-PDF_저장-7D4450?style=for-the-badge)](https://woozoo-studio.github.io/print.html) [![Email](https://img.shields.io/badge/Email-문의하기-365D77?style=for-the-badge)](mailto:woozoo.dev@gmail.com)
 
-**자율주행·위치추정**
+## 기술 역량과 개발 경험
 
-![ROS2](https://img.shields.io/badge/ROS2-2457E6?style=flat-square) ![Nav2](https://img.shields.io/badge/Nav2-2457E6?style=flat-square) ![Gazebo](https://img.shields.io/badge/Gazebo-2457E6?style=flat-square) ![EKF](https://img.shields.io/badge/EKF-2457E6?style=flat-square)
+| 분야 | 주요 기술 | 개발 경험 |
+| --- | --- | --- |
+| **로봇 소프트웨어** | ROS2 · Nav2 · Gazebo · TF · EKF | 노드·토픽·TF를 활용한 로봇·관제 연동, 주행·위치추정 설정 조정과 실기체 시험 |
+| **임베디드·통합 제어** | STM32 · C/C++ · HAL · Flutter | 모터·센서·서보 제어와 앱 연동, Bluetooth 통신과 Flash 데이터 저장 |
+| **비전 모델·엣지 추론** | Python · YOLO Pose · Raspberry Pi · FP16 · INT8 | 학습 라벨 형식 통합, Pose 모델 학습·추론, 모델 변환·양자화 |
+| **산업 자동화** | PLC · HMI · GX Works2 | 공정 순서·비상정지·복귀 로직 구현, HMI 공정 조작·상태 표시 |
 
-**임베디드·로봇 제어**
+**협업 도구** · Git / GitHub / Jira / Confluence
 
-![STM32](https://img.shields.io/badge/STM32-0B8B80?style=flat-square) ![C](https://img.shields.io/badge/C-0B8B80?style=flat-square) ![C++](https://img.shields.io/badge/C%2B%2B-0B8B80?style=flat-square) ![HAL](https://img.shields.io/badge/HAL-0B8B80?style=flat-square) ![Flutter](https://img.shields.io/badge/Flutter-0B8B80?style=flat-square) ![Bluetooth](https://img.shields.io/badge/Bluetooth-0B8B80?style=flat-square)
+## 진행 중인 프로젝트
 
-**비전·자동화**
+### AI 융합 다중 로봇 물류
 
-![Python](https://img.shields.io/badge/Python-7654A3?style=flat-square) ![YOLO Pose](https://img.shields.io/badge/YOLO_Pose-7654A3?style=flat-square) ![PLC](https://img.shields.io/badge/PLC-7654A3?style=flat-square)
+**2026.09–진행 중 · 팀 7명**
 
-**협업**
+주문에 따라 여러 대의 AMR이 물품을 이송하고, OMX 로봇팔이 적재·하역하는 물류 자동화 시스템입니다.
+FMS의 주문·배차·경로 관제와 로봇의 이동·작업을 연결합니다.
 
-![Git](https://img.shields.io/badge/Git-D87532?style=flat-square) ![GitHub](https://img.shields.io/badge/GitHub-D87532?style=flat-square) ![Jira](https://img.shields.io/badge/Jira-D87532?style=flat-square) ![Confluence](https://img.shields.io/badge/Confluence-D87532?style=flat-square)
+#### 1차 · AMR 주행·관제 연동
 
-## 대표 프로젝트
+- **Route Graph 제작** — 그리드 이송 경로의 이동 지점과 연결 관계를 노드·엣지로 구성해 FMS 팀에 전달했습니다.
+- **관제용 위치 토픽 발행** — TF의 `map → base_footprint` 변환으로 map 기준의 로봇 위치를 구하고, FMS 관제용 토픽으로 발행했습니다.
+- **정차 위치 측정·분석 도구 제작** — 위치·방향을 반복 측정해 평균·표준편차를 계산하고, CSV 저장과 RViz 시각화를 구현했습니다.
 
-### 다중 로봇 물류 자동화 · AMR 소프트웨어
+현재는 주행 성능 개선을 위한 **Nav2 튜닝**과 위치추정 안정화를 위한 **EKF 설정 조정**을 진행하고 있습니다.
 
-**진행 중 · 팀 7명**
+#### 2차 · AI 기반 MAPF 구현·비교 검토
 
-FMS가 배차·관제하고, AMR이 물품을 이송하며, OMX 로봇팔이 적재·하역하는 시스템입니다. 저는 AMR 소프트웨어를 맡았습니다.
+의사결정 모델 **Kev-0.8B 적용을 준비 중**입니다.
+다중 로봇 경로 계획(MAPF)을 구현하고, 기존 MAPF 방식과 같은 조건에서 비교해 물류 시스템에 대체·적용할 수 있는지 검토할 계획입니다.
 
-- **구현 완료:** FMS용 노드·엣지 경로 그래프 작성·전달
-- **구현 완료:** TF의 `map → base_footprint` 위치를 관제용 토픽으로 발행하는 ROS2 노드 작성·FMS 연동
-- **조정 중:** 실기체 Nav2 주행 파라미터 및 EKF 위치추정 설정
-
-[AMR 저장소](https://github.com/E1I6-Logistics/Logistics_AMR) · [시스템 구성과 담당 내용](https://woozoo-studio.github.io/#project-featured)
+[AMR 저장소](https://github.com/E1I6-Logistics/Logistics_AMR) · [시스템 구성과 담당 업무](https://woozoo-studio.github.io/#project-featured)
 
 ## 이전 프로젝트
 
-### 모바일 회수 로봇
+### 앱 제어 이동형 로봇팔
 
-Flutter 제어 앱과 Bluetooth 명령 전달, STM32 서보 제어를 구현했습니다.
-티칭 데이터는 펌웨어와 분리한 내부 Flash 영역에 저장하며, 12개 시퀀스와 시퀀스당 최대 30 Waypoint를 다룹니다.
+**RC카 주행부터 로봇팔 티칭까지, 하나로 연결한 모바일 앱 기반 제어 시스템.**
 
-[저장소](https://github.com/sditr0414/mobile-retrieval-robot) · [구현 내용](https://woozoo-studio.github.io/#project-embedded)
+Flutter 제어 앱, Bluetooth 통신 패킷, STM32 서보 제어와 PID 직진 보정을 구현했습니다.
+티칭 데이터는 펌웨어와 분리한 내부 Flash에 저장하며, **12개 시퀀스 · 시퀀스당 최대 30 Waypoint**를 지원합니다.
 
-### 비전 기반 순찰 로봇
+[저장소](https://github.com/sditr0414/mobile-retrieval-robot) · [시연 영상](https://woozoo-studio.github.io/#project-embedded-demo)
 
-STM32 모터·IMU 연동과 PID 직진 보정을 담당했습니다.
-이후 YOLO Pose 데이터 준비·학습과 FP16·INT8 추론 최적화에 참여했습니다.
+### 비전 AI 트래킹 로봇
 
-[저장소](https://github.com/Ugie01/Tracking_Patrol_Robot) · [구현 내용](https://woozoo-studio.github.io/#project-vision)
+**STM32 제어와 Raspberry Pi 비전 AI를 연결해 주행과 인식을 함께 구현한 로봇.**
+
+STM32 HAL 기반 모터·IMU 연동과 PID 직진 보정을 담당했습니다.
+이후 인체 Pose와 화재·무기 검출 라벨을 11포인트 학습 형식으로 통합하고, YOLO Pose 학습·추론 및 FP16 변환·INT8 양자화에 참여했습니다.
+
+[저장소](https://github.com/Ugie01/Tracking_Patrol_Robot) · [시연 영상](https://www.youtube.com/watch?v=0Xhue5Aivyg)
 
 ### PLC 기반 MPS 자동화
 
-가공·배출·적재 공정 시퀀스와 비상정지·복귀 동작을 구현했습니다.
+**가공·배출·적재 공정과 비상정지·복귀 시퀀스를 구현한 자동화 프로젝트.**
 
-[시연 자료](https://woozoo-studio.github.io/#project-plc)
+GX Works2로 공정 순서와 비상정지·복귀 로직을 구성하고, HMI로 공정을 조작하고 상태를 확인하도록 구현했습니다.
 
-## 주요 이력
-
-- **AI융합 로봇SW 개발자 과정** · 대한상공회의소 서울기술교육센터 · 2026.04–2026.11 · 수강 중
-- **에이치라인해운 · 2등 항해사** · 2021.06–2024.02
-- **한국해양대학교 · 해상보험전공** · 2021.01 졸업 · 학점 4.08 / 4.5
-
-프로젝트의 구현 범위와 문제 해결 과정은 [웹 포트폴리오](https://woozoo-studio.github.io/)에서 자세히 볼 수 있습니다.
-
-## 포트폴리오 저장소 안내
-
-이 저장소는 웹 포트폴리오와 A4 인쇄 미리보기의 소스입니다.
-인쇄판은 웹의 내용을 읽어 구성하며, 저장소 링크에는 QR 코드를 함께 표시합니다.
-
-### 로컬 실행
-
-별도 패키지 설치 없이 Python 3로 실행할 수 있습니다.
-
-```bash
-python3 preview.py
-```
-
-- 웹: <http://127.0.0.1:4174/>
-- 인쇄: <http://127.0.0.1:4174/print.html>
-
-### 주요 파일
-
-| 파일 | 용도 |
-| --- | --- |
-| `index.html` | 포트폴리오 내용과 웹 화면 |
-| `style.css`, `themes.css`, `web-refinement.css` | 화면 스타일과 반응형 레이아웃 |
-| `app.js` | 내비게이션 활성 표시와 화면 동작 |
-| `print.html`, `print.css`, `print.js` | 인쇄 미리보기와 PDF 저장 |
-| `assets/` | 이미지, 시연 영상, 기관 로고, QR 코드 |
-| `preview.py` | 로컬 미리보기 서버 |
-
-백업(`backup/`), 문구 검토 기록(`_workspace/`), 생성 PDF(`output/`)는 Git 관리 대상에서 제외합니다.
-
-© 2026 안재권. 직접 제작한 콘텐츠의 무단 전재·재배포를 금합니다. 기관 로고와 팀 프로젝트 자료의 권리는 해당 권리자에게 있습니다.
+[공정 소개·시연 영상](https://woozoo-studio.github.io/#project-plc)
