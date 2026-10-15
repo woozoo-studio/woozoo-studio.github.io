@@ -17,3 +17,81 @@ if (location.hostname === '127.0.0.1' || location.hostname === 'localhost') {
     if (state) { document.querySelectorAll('details:not(.theme-panel)').forEach((d, i) => d.open = state.open.includes(i)); requestAnimationFrame(() => window.scrollTo(0, state.y)); sessionStorage.removeItem('portfolio-preview'); }
     let version = null; setInterval(async () => { try { const r = await fetch('/__version', { cache: 'no-store' }); if (!r.ok) return; const next = await r.text(); if (version && version !== next) { if ([...document.querySelectorAll('video')].some(v => !v.paused)) return; sessionStorage.setItem('portfolio-preview', JSON.stringify({ y: scrollY, open: [...document.querySelectorAll('details:not(.theme-panel)')].flatMap((d, i) => d.open ? [i] : []) })); location.reload(); } version = next; } catch { } }, 1500);
 }
+
+// Video QR links open the matching project panel before scrolling to its player.
+const revealLinkedDemo = () => {
+    const player = document.getElementById(location.hash.slice(1));
+    if (!player?.matches('.project-demo-player video')) return;
+    const panel = player.closest('details');
+    if (!panel) return;
+    panel.open = true;
+    requestAnimationFrame(() => player.scrollIntoView({ block: 'center' }));
+};
+window.addEventListener('hashchange', revealLinkedDemo);
+revealLinkedDemo();
+
+// Palette comparisons stay in the top-level local preview, outside the print source.
+if (['127.0.0.1', 'localhost', '[::1]'].includes(location.hostname) && window.self === window.top) {
+    const palettes = [
+        { id: 'navy-burgundy', label: '네이비 · 버건디', colors: ['#1c2b3f', '#365d77', '#7d4450'] },
+        { id: 'navy-teal', label: '네이비 · 틸', colors: ['#183346', '#345c72', '#126d69'] },
+        { id: 'charcoal-olive', label: '차콜 · 올리브', colors: ['#28322f', '#485d61', '#746337'] },
+        { id: 'burgundy-ivory', label: '버건디 · 아이보리', colors: ['#482a37', '#6a596a', '#8e4b60'] }
+    ];
+    const root = document.documentElement;
+    const controls = document.createElement('div');
+    controls.className = 'local-palette-controls';
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.textContent = '색상 비교';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-controls', 'local-palette-panel');
+    const panel = document.createElement('div');
+    panel.id = 'local-palette-panel';
+    panel.className = 'local-palette-panel';
+    panel.hidden = true;
+    panel.setAttribute('role', 'group');
+    panel.setAttribute('aria-label', '로컬 색상 조합');
+    const note = document.createElement('p');
+    note.textContent = '로컬 미리보기 · 공개 사이트에는 표시되지 않습니다.';
+    panel.append(note);
+    const options = palettes.map(palette => {
+        const option = document.createElement('button');
+        option.type = 'button';
+        option.className = 'local-palette-option';
+        option.dataset.palette = palette.id;
+        const swatches = document.createElement('span');
+        swatches.className = 'local-palette-swatches';
+        swatches.setAttribute('aria-hidden', 'true');
+        palette.colors.forEach(color => {
+            const swatch = document.createElement('i');
+            swatch.style.backgroundColor = color;
+            swatches.append(swatch);
+        });
+        option.append(swatches, document.createTextNode(palette.label));
+        panel.append(option);
+        return option;
+    });
+    const select = id => {
+        root.dataset.localPalette = palettes.some(palette => palette.id === id) ? id : palettes[0].id;
+        options.forEach(option => option.setAttribute('aria-pressed', String(option.dataset.palette === root.dataset.localPalette)));
+        try { localStorage.setItem('portfolio-local-palette', root.dataset.localPalette); } catch { /* Storage can be disabled. */ }
+    };
+    let initial = palettes[0].id;
+    try { initial = localStorage.getItem('portfolio-local-palette') || initial; } catch { /* Use the default palette. */ }
+    select(initial);
+    options.forEach(option => option.addEventListener('click', () => select(option.dataset.palette)));
+    toggle.addEventListener('click', () => {
+        panel.hidden = !panel.hidden;
+        toggle.setAttribute('aria-expanded', String(!panel.hidden));
+    });
+    controls.addEventListener('keydown', event => {
+        if (event.key === 'Escape') {
+            panel.hidden = true;
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.focus();
+        }
+    });
+    controls.append(toggle, panel);
+    document.body.append(controls);
+}

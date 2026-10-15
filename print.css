@@ -36,6 +36,7 @@ h1,h2,h3,h4,h5,p,figure,dl,ul{margin-top:0}
 .demo-poster{display:block;width:100%;height:39mm;object-fit:contain;background:#eef2f7}
 .project-archive{display:grid;gap:2mm}.project-archive .card{display:grid;grid-template-columns:45mm 1fr;min-height:59mm;border-top:1px solid #aebbd0;padding-top:2mm}.project-archive .card>img{width:45mm;height:47mm;object-fit:cover}.project-archive .card-body{padding-left:4mm}.project-number{font-size:7pt;color:#365d77;font-weight:700;letter-spacing:.12em;margin:0 0 1mm}.project-archive h3{font-size:15pt;margin:0 0 2mm}.project-archive .card-body>p:not(.project-number){font-size:8pt;line-height:1.4;margin:0 0 2mm}.project-archive .tags{display:flex;gap:2mm;margin-bottom:2mm}.project-archive .tags span{background:#e9eef2;padding:1mm 2mm;font-size:7pt}.project-archive ul{padding-left:4mm;margin:0 0 2mm;font-size:8pt;line-height:1.4}.project-archive .meta{font-size:7pt;color:#526177}.project-archive .card-link{display:none}.project-archive details{font-size:7.5pt;line-height:1.35}.project-archive details p{margin:0 0 1mm}.project-archive details a{color:#365d77;text-decoration:none}.project-archive .demo-poster{display:none}
 .project-archive .print-media-link{grid-template-columns:12mm minmax(0,1fr);gap:2mm;margin-top:2mm}.project-archive .print-media-link img{width:12mm;height:12mm}.project-archive .print-media-link strong{font-size:7.5pt}.project-archive .print-media-link small{font-size:6.5pt}
+.project-archive .project-print-links{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
 .sheet-profile .hero-background{margin-top:6mm}.featured-facts .print-media-link{grid-template-columns:18mm minmax(0,1fr)}.featured-facts .print-media-link img{width:18mm;height:18mm}.print-contribution{margin-top:5mm;padding-top:3mm;border-top:1px solid #cbd5e1}.print-contribution .kicker{margin-bottom:2mm}.print-contribution-grid{display:grid;grid-template-columns:1fr 1fr;gap:4mm}.print-work-item{padding:3mm 4mm;background:#f4f7fa;border-left:2px solid #365d77}.print-work-item h5{margin:0 0 2mm;font-size:9pt}.print-work-item p{margin:0;color:#45546a;font-size:8pt;line-height:1.5}.print-progress{margin:3mm 0 0;color:#526177;font-size:8pt}.sheet-previous .project-archive .card{min-height:0;padding:2mm 0 3mm}.project-archive .tags{display:none}.project-archive .print-media-link{grid-template-columns:18mm minmax(0,1fr);margin-top:1mm}.project-archive .print-media-link img{width:18mm;height:18mm}
 .sheet-profile .hero-background .gpa-mark{display:flex;align-items:baseline;gap:1mm;margin-top:1mm;color:#7d4450;font-size:7pt;font-weight:700}.sheet-profile .hero-background .gpa-mark b{color:#1c2b3f;font-size:12pt;line-height:1}.sheet-profile .hero-background .gpa-mark small{color:#526177;font-size:7pt;font-weight:400}.sheet-profile .hero-background .gpa-meter{display:block;width:35mm;height:.7mm;margin-top:1mm;background:#e3e9ef}.sheet-profile .hero-background .gpa-meter i{display:block;width:90.67%;height:100%;background:#7d4450}
 .sheet-profile .profile-hero{margin-bottom:7mm}.sheet-profile .print-heading{margin-bottom:4mm}.sheet-profile .skill-row{padding:2.5mm 0}.sheet-profile .collaboration-strip{margin-top:3mm}.sheet-profile .hero-background{margin-top:4mm}
@@ -130,7 +131,7 @@ h1,h2,h3,h4,h5,p,figure,dl,ul{margin-top:0}
 .sheet-featured .system-axis-owned{border:1.5pt solid #7d4450;background:#f8f1f3}
 .sheet-featured .ownership-badge{display:block;padding:1mm;background:#7d4450;color:#fff;font-size:7pt;font-weight:800;line-height:1.3}
 .sheet-featured .ownership-scope{margin:1.5mm 0 0;padding-top:1.5mm;border-top:1px solid #d9bac2;font-size:7pt;line-height:1.4}
-.sheet-featured .system-process{margin:2mm 0 0;color:#526177;font-size:7.5pt;line-height:1.5}
+.sheet-featured .system-process{margin:2mm 0 0;color:#526177;font-size:9pt;font-weight:600;line-height:1.6;word-break:keep-all}
 .sheet-featured .system-process span{color:#7d4450}
 .sheet-featured .ownership-scope{display:none}
 .sheet-featured .ownership-badge{font-size:8pt;margin-bottom:1mm}
@@ -195,3 +196,230 @@ h1,h2,h3,h4,h5,p,figure,dl,ul{margin-top:0}
 .sheet-profile .profile-intro>.kicker{padding-right:22mm}
 .sheet-profile .profile-contact .contact-github{grid-template-columns:1fr}
 .sheet-featured .project-snapshot{justify-content:center}
+.sheet-profile .print-profile-card{border:1px solid #c9d3dc}
+.sheet-profile .print-profile-overview{padding:5mm;margin:0;background:#f4f7fa;color:#1c2b3f}
+.sheet-profile .print-profile-overview .profile-hero{grid-template-columns:39mm minmax(0,1fr);gap:5mm;margin:0 0 4mm;padding:0;color:#1c2b3f}
+.sheet-profile .print-profile-overview .profile-photo{width:38mm;height:49.5mm;margin:0 auto;border:0;border-radius:0}
+.sheet-profile .print-profile-overview .profile-intro{min-height:43mm}
+.sheet-profile .print-profile-overview .profile-intro>.kicker{color:#7d4450}
+.sheet-profile .print-profile-overview .profile-intro h1{color:#1c2b3f}
+.sheet-profile .print-profile-overview .profile-subtitle{color:#365d77}
+.sheet-profile .print-profile-overview .profile-intro .intro,.sheet-profile .print-profile-overview .profile-intro .intro strong{color:#37475c}
+.sheet-profile .print-profile-overview .target-roles>strong{color:#7d4450}
+.sheet-profile .print-profile-overview .target-roles span{color:#37475c}
+.sheet-profile .print-profile-overview .target-roles span+span::before{color:#8798ad}
+.sheet-profile .print-profile-overview .profile-header-qr{top:0;right:0}
+.sheet-profile .print-profile-overview .profile-header-qr strong{color:#526177}
+.sheet-profile .print-profile-overview .profile-github-qr{background:white;border:1mm solid white}
+.sheet-profile .print-profile-overview .hero-background{gap:5mm;margin:0;padding-top:4mm;border-color:#c9d3dc;align-items:start}
+.sheet-profile .print-profile-overview .hero-background h2{margin-bottom:2.5mm;color:#7d4450;font-size:10.5pt}
+.sheet-profile .print-profile-overview .hero-background-group+ .hero-background-group{border-left:1px solid #c9d3dc;padding-left:5mm}
+.sheet-profile .print-profile-overview .hero-background .gpa-mark{color:#7d4450}
+.sheet-profile .print-profile-overview .hero-background strong,.sheet-profile .print-profile-overview .hero-background .gpa-mark b{color:#1c2b3f}
+.sheet-profile .print-profile-overview .hero-background span,.sheet-profile .print-profile-overview .hero-background .gpa-mark small{color:#526177}
+.sheet-profile .print-profile-overview .hero-background p:last-child{margin-bottom:0}
+.sheet-profile .print-profile-overview .school-identity img{padding:1mm;border-radius:50%;background:white}
+.sheet-profile .print-profile-overview .gpa-meter{background:#c9d3dc}
+.sheet-profile .print-profile-overview .gpa-meter i{background:#7d4450}
+.sheet-profile .print-profile-overview .profile-photo-column{align-self:end}
+.sheet-profile .print-profile-card .print-skills-section{margin:0;padding:5mm;border:0;background:white;color:#1c2b3f}
+.sheet-profile .print-profile-card .print-skills-section .print-heading{margin-bottom:4mm}
+.sheet-profile .print-profile-card .print-skills-section .print-heading .kicker{margin-bottom:2mm;color:#7d4450}
+.sheet-profile .print-profile-card .print-skills-section .print-heading h2{color:#1c2b3f}
+.sheet-profile .print-profile-card .print-skills{gap:3mm}
+.sheet-profile .print-profile-card .skill-row{padding:3mm;min-height:46mm;border:0;border-top:1pt solid #365d77;background:white}
+.sheet-profile .print-profile-card .skill-row:first-child{border-top-color:#7d4450}
+.sheet-profile .print-profile-card .skill-index{margin-bottom:3mm;color:#7d4450}
+.sheet-profile .print-profile-card .skill-row h3{margin-bottom:3mm;color:#1c2b3f}
+.sheet-profile .print-profile-card .skill-tech{margin-bottom:3mm}
+.sheet-profile .print-profile-card .skill-tech span,.sheet-profile .print-profile-card .collaboration-tools span{color:#365d77}
+.sheet-profile .print-profile-card .skill-row>span:last-child{color:#526177;border-color:#c9d3dc}
+.sheet-profile .print-skill-summary{display:block;margin-bottom:2mm;color:#1c2b3f;font-size:9pt;line-height:1.45}
+.sheet-profile .print-skill-detail{display:block}
+.sheet-profile .print-profile-card .collaboration-strip{margin-top:3mm;padding-top:3mm;border-top:1px solid #c9d3dc;background:transparent}
+.sheet-profile .print-profile-card .collaboration-strip h3{color:#1c2b3f}
+.sheet-featured .scenario-print-media{position:relative;height:44mm;background:#eaf0f3}
+.sheet-featured .scenario-print-media .scenario-print-photo{display:block;width:100%;height:100%;object-fit:contain}
+.sheet-featured .scenario-print-media .scenario-print-link{position:absolute;top:2mm;right:2mm;display:flex;flex-direction:column;justify-content:center;gap:1mm;width:22mm;height:auto;margin:0;padding:1.5mm;background:white;border:1px solid #d3dde8;text-align:center}
+.sheet-featured .scenario-print-media .scenario-print-link img{width:19mm;height:19mm;object-fit:contain}
+.sheet-featured .scenario-print-media .scenario-print-link strong{font-size:7pt;line-height:1.3}
+:root{--print-rule-ink:#1c2b3f;--print-rule-accent:#7d4450;--print-rule-blue:#365d77}
+.running-head{border-bottom:1pt solid var(--print-rule-ink)}
+.running-foot{border-top:.75pt solid var(--print-rule-accent)}
+.sheet-profile .print-profile-overview .hero-background{border-top:1pt solid #c9d3dc}
+.print-strengths{margin-top:5mm;padding-top:3mm;border-top:1pt solid var(--print-rule-accent)}
+.print-strengths h3{margin:0 0 3mm;font-size:12pt;line-height:1.3}
+.print-strengths-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4mm}
+.print-strength-item{padding:0 3mm 0 0}
+.print-strength-item+ .print-strength-item{padding-left:3mm;border-left:1pt solid #c9d3dc}
+.print-strength-item h4{margin:0 0 2mm;color:#365d77;font-size:9.5pt;line-height:1.35}
+.print-strength-item p{margin:0;color:#526177;font-size:9pt;line-height:1.5}
+.sheet-featured .featured-overview{border-top:1pt solid var(--print-rule-accent)}
+.sheet-featured .print-overview-label{margin:0 0 1.5mm;color:#7d4450;font-size:8pt;font-weight:800}
+.sheet-featured .featured-facts .feature-lead{margin:0 0 3mm;font-size:9pt;line-height:1.5}
+.sheet-featured .print-overview-role{margin:0;color:#1c2b3f;font-size:9pt;line-height:1.5}
+.sheet-featured .print-ai-plan{margin:2.5mm 0 0;color:#526177;font-size:8pt;line-height:1.4}
+.print-contribution{border-top:1pt solid var(--print-rule-ink)}
+.print-contribution>.kicker{font-size:11pt;line-height:1.3;letter-spacing:.04em}
+.sheet-previous .project-archive .card{border-top:1pt solid var(--print-rule-accent)}
+.sheet-previous .project-archive .card:nth-child(2){border-top-color:var(--print-rule-blue)}
+.sheet-previous .project-archive .card:nth-child(3){border-top-color:var(--print-rule-ink)}
+.sheet-cases .problem-solving-list{border-top:1pt solid var(--print-rule-ink)}
+.sheet-cases .problem-solving-case{border-bottom:1pt solid var(--print-rule-accent)}
+.sheet-experience .timeline article{border-top:1pt solid var(--print-rule-blue)}
+.sheet-experience .timeline article:first-child{border-top-color:var(--print-rule-accent)}
+.sheet-experience .credentials article{border-top:1pt solid var(--print-rule-ink)}
+.print-tf-transform{white-space:nowrap}
+.sheet-experience .timeline .print-training-summary{display:grid;gap:1.5mm;margin-top:2mm}
+.sheet-profile .print-profile-overview .profile-hero{margin-bottom:0}
+.print-profile-columns{display:grid;grid-template-columns:54mm minmax(0,1fr);align-items:stretch}
+.print-profile-sidebar{padding:5mm;background:#f4f7fa;border-right:1px solid #c9d3dc}
+.sheet-profile .print-profile-sidebar .hero-background{display:block;margin:0;padding:0;border:0;text-align:left}
+.sheet-profile .print-profile-sidebar .hero-background-group+.hero-background-group{margin-top:4mm;padding-top:3mm;border-top:1px solid #c9d3dc}
+.sheet-profile .print-profile-sidebar .hero-background h2{margin:0 0 3mm;color:#7d4450;font-size:10.5pt}
+.sheet-profile .print-profile-sidebar .hero-background p{margin:0 0 2mm}
+.sheet-profile .print-profile-sidebar .hero-background strong{font-size:8.5pt;line-height:1.5}
+.sheet-profile .print-profile-sidebar .hero-background span{font-size:8pt;line-height:1.5}
+.sheet-profile .print-profile-sidebar .school-identity{justify-content:flex-start;align-items:center}
+.sheet-profile .print-profile-sidebar .school-identity strong{word-break:keep-all}
+.sheet-profile .print-profile-sidebar .school-identity strong span{display:block;color:inherit;font-size:inherit;font-weight:inherit;white-space:nowrap}
+.sheet-profile .print-profile-sidebar .print-degree-meta{display:flex;align-items:baseline;gap:1mm;white-space:nowrap;margin-top:1mm}
+.sheet-profile .print-profile-sidebar .gpa-mark{justify-content:flex-start;color:#7d4450}
+.sheet-profile .print-profile-sidebar .gpa-meter{margin-left:0;margin-right:0;max-width:36mm}
+.print-profile-sidebar .print-strengths{margin-top:4mm;padding-top:3mm}
+.print-profile-sidebar .print-strengths h3{font-size:10.5pt;color:#7d4450}
+.print-profile-sidebar .print-strengths-grid{display:grid;grid-template-columns:1fr;gap:2.5mm}
+.print-profile-sidebar .print-strength-item,.print-profile-sidebar .print-strength-item+.print-strength-item{padding:0;border:0}
+.print-profile-sidebar .print-strength-item h4{font-size:9pt;margin-bottom:1mm}
+.print-profile-sidebar .print-strength-item p{font-size:8pt;line-height:1.5}
+.sheet-profile .print-profile-columns .print-skills-section{border-top:1px solid #c9d3dc}
+.sheet-profile .print-profile-columns .print-heading h2{font-size:17pt;line-height:1.3}
+.sheet-profile .print-profile-columns .print-heading .kicker{font-size:7.5pt;letter-spacing:.1em}
+.sheet-profile .print-profile-columns .print-skills{grid-template-columns:1fr;gap:4mm}
+.sheet-profile .print-profile-columns .skill-row{display:grid;grid-template-columns:8mm minmax(0,1fr);gap:0 2mm;padding:3mm 0;min-height:0}
+.sheet-profile .print-profile-columns .skill-index{grid-column:1;grid-row:1/span 3;margin:0;font-size:10pt}
+.sheet-profile .print-profile-columns .skill-row h3{grid-column:2;margin:0 0 2mm;font-size:11pt}
+.sheet-profile .print-profile-columns .skill-tech{grid-column:2;margin:0 0 3mm}
+.sheet-profile .print-profile-columns .skill-row>span:last-child{grid-column:2;margin:0;padding-top:2mm}
+.sheet-profile .print-profile-columns .print-skill-summary{font-size:9pt;margin-bottom:1.5mm}
+.sheet-profile .print-profile-columns .collaboration-strip{display:block;margin-top:3mm}
+.sheet-profile .print-profile-columns .collaboration-strip h3{margin-bottom:2mm}
+.sheet-profile .print-profile-overview{padding:0;background:white}
+.sheet-profile .print-profile-overview .profile-hero{grid-template-columns:54mm minmax(0,1fr);gap:0;align-items:stretch}
+.sheet-profile .print-profile-overview .profile-photo-column{display:flex;justify-content:center;align-items:flex-end;align-self:stretch;padding:5mm;background:white;border-right:1px solid #c9d3dc}
+.sheet-profile .print-profile-overview .profile-intro{padding:5mm;border-left:0;background:white}
+.sheet-profile .print-profile-overview .profile-header-qr{top:5mm;right:5mm}
+.sheet-profile .print-profile-sidebar{background:white}
+.sheet-profile .sheet-body{display:flex;flex-direction:column}
+.sheet-profile .print-profile-card{display:flex;flex-direction:column;flex:1;min-height:0}
+.sheet-profile .print-profile-overview{flex:none}
+.sheet-profile .print-profile-columns{flex:1}
+.sheet-profile .print-profile-columns .print-skills-section{display:flex;flex-direction:column}
+.sheet-profile .print-profile-columns .print-skills{flex:1;grid-template-rows:repeat(3,1fr)}
+.sheet-profile .print-profile-columns .skill-row{align-content:start}
+.print-sidebar-contact{margin:0 0 3mm;padding:0 0 3mm;border-bottom:1px solid #c9d3dc}
+.print-sidebar-contact h3{margin:0 0 2mm;color:#7d4450;font-size:10.5pt;line-height:1.3}
+.print-sidebar-contact a{display:block;font-size:8pt;line-height:1.5;text-decoration:none;overflow-wrap:anywhere}
+.print-profile-sidebar .hero-background h2,.print-profile-sidebar .print-strengths h3,.print-sidebar-contact h3{letter-spacing:.08em}
+.print-contact-list{display:grid;gap:2mm;margin:0}
+.print-contact-list dt{margin:0 0 .5mm;color:#365d77;font-size:7pt;font-weight:700;letter-spacing:.08em}
+.print-contact-list dd{margin:0}
+.print-contact-list dd a{color:#1c2b3f;font-size:8.5pt;line-height:1.4}
+.sheet-profile .print-profile-sidebar .hero-background-group+.hero-background-group{border:0;padding-top:3mm}
+.print-profile-sidebar .print-strengths{border:0;padding-top:3mm}
+.print-sidebar-contact{border:0;padding-bottom:2mm}
+.print-profile-sidebar .hero-background h2,.print-profile-sidebar .print-strengths h3,.print-sidebar-contact h3{display:flex;align-items:center;gap:2mm;font-weight:800}
+.print-profile-sidebar .hero-background h2::before,.print-profile-sidebar .print-strengths h3::before,.print-sidebar-contact h3::before{content:'';display:block;flex:none;width:1.5mm;height:1.5mm;background:#7d4450}
+.sheet-profile .print-profile-sidebar .hero-background strong{font-weight:800}
+.sheet-profile .print-profile-sidebar .hero-background span{font-weight:500}
+.print-profile-sidebar .print-strength-item h4{font-weight:800}
+.print-profile-sidebar .print-strength-item p{font-weight:500}
+.print-contact-list dd a{font-weight:600}
+.sheet-profile .print-profile-columns .print-skills{grid-template-rows:none;grid-auto-rows:auto;align-content:start;gap:4mm}
+.sheet-profile .print-profile-columns .print-skill-card{display:flex;flex-direction:column;min-height:41mm;padding:0;border:1px solid #c9d3dc;background:white}
+.sheet-profile .print-profile-columns .print-skill-card:first-child{border-top-color:#c9d3dc}
+.print-skill-card-heading{display:grid;grid-template-columns:8mm minmax(0,1fr);gap:1mm 2mm;padding:3mm;background:#f4f7fa}
+.sheet-profile .print-profile-columns .print-skill-card .skill-index{grid-row:1/span 2;font-size:12pt;line-height:1.2}
+.sheet-profile .print-profile-columns .print-skill-card h3{margin:0;font-size:10.5pt;line-height:1.3}
+.sheet-profile .print-profile-columns .print-skill-card .print-skill-summary{grid-column:2;margin:0;font-size:8.5pt;font-weight:600;line-height:1.4;color:#526177}
+.print-skill-card-body{padding:3mm}
+.sheet-profile .print-profile-columns .print-skill-card .skill-tech{gap:1mm;margin:0 0 3mm}
+.sheet-profile .print-profile-columns .print-skill-card .skill-tech span{padding:.6mm 1.4mm;border:1px solid #d5dfe7;background:#f4f7fa;font-size:7.5pt;line-height:1.3}
+.sheet-profile .print-profile-columns .print-skill-card .skill-tech span+span::before{content:none}
+.print-skill-evidence{display:grid;gap:2mm;margin:0}
+.print-skill-evidence>div{display:grid;grid-template-columns:12mm minmax(0,1fr);gap:2mm;align-items:baseline}
+.print-skill-evidence dt{color:#365d77;font-size:7.5pt;font-weight:700;line-height:1.4}
+.print-skill-evidence dd{margin:0;color:#1c2b3f;font-size:8.5pt;line-height:1.4}
+.print-skill-evidence .is-progress dt{color:#7d4450}
+.sheet-profile .print-profile-sidebar .gpa-mark{width:100%;justify-content:space-between}
+.sheet-profile .print-profile-sidebar .gpa-mark .print-gpa-label{color:#7d4450;font-size:7.5pt;font-weight:700}
+.sheet-profile .print-profile-sidebar .gpa-mark .print-gpa-score{display:inline-flex;align-items:baseline;gap:1mm}
+.sheet-profile .print-profile-sidebar .gpa-meter{width:100%;max-width:none}
+.print-ai-review{grid-column:1/-1;margin-top:1mm;padding-top:2mm;border-top:1px solid #c9d3dc}
+.print-ai-review h4{display:flex;align-items:center;gap:3mm;margin:0 0 2mm;color:#1c2b3f;font-size:10.5pt;line-height:1.3}
+.print-ai-review h4 span{padding:.5mm 1.5mm;border:1px solid #c9d3dc;color:#7d4450;font-size:7.5pt;white-space:nowrap}
+.print-ai-review p{margin:0;color:#37475c;font-size:9pt;line-height:1.4}
+.sheet-featured .featured-overview{padding:3mm;gap:3mm;margin-bottom:3mm}
+.sheet-featured .scenario-print-media,.sheet-featured .project-evidence-card>a{height:38mm}
+.sheet-featured .project-evidence-heading{margin-bottom:2mm}
+.sheet-featured .project-evidence-card figcaption{padding:1.5mm 3mm}
+.sheet-featured .print-contribution{margin-top:3mm;padding-top:2mm}
+.sheet-featured .print-work-item{padding:2mm 3mm}
+.sheet-featured .print-progress-label{margin-top:2mm}
+.sheet-profile .print-profile-card{border:.75pt solid #8d9eae}
+.sheet-profile .print-profile-overview .profile-photo-column,.sheet-profile .print-profile-sidebar{position:relative;background:white;color:#1c2b3f;border-right:.85pt solid #365d77}
+.sheet-profile .print-profile-sidebar .hero-background h2,.print-profile-sidebar .print-strengths h3,.print-sidebar-contact h3{margin-bottom:2.5mm;padding:1.5mm 0;border:0;border-bottom:.5pt solid #c9d3dc;background:transparent;color:#365d77;letter-spacing:.02em;font-weight:800;line-height:1.35}
+.print-profile-sidebar .hero-background h2::before,.print-profile-sidebar .print-strengths h3::before,.print-sidebar-contact h3::before{display:none;content:none}
+.sheet-profile .print-profile-sidebar .hero-background strong,.sheet-profile .print-profile-sidebar .hero-background .gpa-mark b,.print-profile-sidebar .print-contact-list dd a{color:#1c2b3f}
+.sheet-profile .print-profile-sidebar .hero-background span,.sheet-profile .print-profile-sidebar .hero-background .gpa-mark small{color:#526177;font-weight:700}
+.print-profile-sidebar .print-contact-list dt,.print-profile-sidebar .print-strength-item h4{color:#365d77}
+.sheet-profile .print-profile-sidebar .gpa-mark .print-gpa-label{color:#526177}
+.sheet-profile .print-profile-sidebar .gpa-meter{background:#e1e7ee}
+.sheet-profile .print-profile-sidebar .gpa-meter i{background:#7d4450}
+.sheet-profile .print-profile-sidebar .school-identity img{padding:1mm;border-radius:50%;background:white}
+.print-profile-sidebar .print-strengths-grid{gap:3mm}
+.print-profile-sidebar .print-strength-item h4{word-break:keep-all;font-size:9.5pt;line-height:1.5;font-weight:700}
+.sheet-profile .print-profile-sidebar .hero-background strong{font-weight:700}
+.print-profile-sidebar .print-contact-list dd a{font-weight:700}
+.print-credential-summary{display:grid;gap:2mm;margin:0;padding:0;list-style:none;color:#1c2b3f;font-size:8.5pt;font-weight:700;line-height:1.5}
+.print-credential-summary li{padding-bottom:2mm;border-bottom:.5pt solid #e1e7ee}
+.print-credential-summary li:last-child{padding-bottom:0;border-bottom:0}
+.print-credential-heading{display:flex;align-items:baseline;justify-content:space-between;gap:2mm}
+.print-credential-score{color:#7d4450;font-size:10pt;line-height:1.3}
+.print-credential-date{display:block;margin-top:.5mm;color:#526177;font-size:7.5pt;font-weight:600}
+.print-experience-overview{margin:0 0 3mm;color:#365d77;font-size:8.5pt;font-weight:700;line-height:1.5}
+.print-experience-summary{flex:1}
+.print-experience-record{padding:3.5mm 0;border-top:1px solid #c9d3dc}
+.print-experience-record:first-child{border-top:1pt solid #7d4450}
+.print-experience-record-heading{display:grid;grid-template-columns:7mm minmax(0,1fr);gap:2mm}
+.print-experience-number{color:#7d4450;font-size:11pt;font-weight:800;line-height:1.3}
+.print-experience-record h3{margin:0;color:#1c2b3f;font-size:11pt;line-height:1.35}
+.print-experience-tech{margin:1mm 0 0;color:#365d77;font-size:8.5pt;font-weight:700;line-height:1.4}
+.print-experience-points{display:grid;gap:1mm;margin:2mm 0 0;padding-left:13mm;color:#37475c;font-size:9.5pt;line-height:1.5}
+.print-experience-points li::marker{color:#365d77}
+.print-experience-points .is-progress{color:#7d4450}
+.print-closing{margin:5mm 0 0;color:#526177;text-align:center;font-size:9pt;line-height:1.5}
+.sheet-featured .feature-role-stages{display:grid;gap:2mm;margin:0}
+.sheet-featured .feature-role-stages>div{display:grid;grid-template-columns:18mm minmax(0,1fr);gap:2mm;align-items:baseline}
+.sheet-featured .feature-role-stages dt{font-size:8pt;font-weight:700;color:#365d77}
+.sheet-featured .feature-role-stages dd{margin:0;color:#1c2b3f;font-size:9pt;line-height:1.4}
+.sheet-featured .print-contribution-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:3mm}
+.sheet-featured .print-work-item{padding:2mm}
+.sheet-featured .print-work-item h5{font-size:8.5pt;line-height:1.4}
+.sheet-featured .print-work-item p{font-size:8.5pt;line-height:1.45}
+.sheet-featured .print-work-item-empty{border:1px dashed #c9d3dc;background:transparent}
+.sheet-featured .featured-overview{grid-template-columns:1fr 1fr;gap:4mm;padding:3mm 0;border:0;border-top:1pt solid #7d4450;border-bottom:1px solid #c9d3dc;background:white}
+.sheet-featured .featured-overview .featured-facts{grid-column:1/-1;padding:0}
+.sheet-featured .featured-overview .feature-lead{margin:0;font-size:10pt;line-height:1.45;font-weight:500}
+.sheet-featured .featured-overview .system{padding:0;border:0}
+.sheet-featured .featured-overview .system-heading h4,.print-project-roles>h4{margin:0 0 3mm;font-size:11pt;line-height:1.3;color:#1c2b3f}
+.print-project-roles{padding-left:4mm;border-left:1px solid #c9d3dc}
+.print-role-phase{padding:2.5mm 3mm;border-left:2px solid #365d77;background:#f1f6f9}
+.print-role-phase+.print-role-phase{margin-top:2mm}
+.print-role-ai{border-left-color:#7d4450;background:#faf3f5}
+.print-role-label{margin:0 0 1mm;color:#365d77;font-size:8pt;font-weight:700}
+.print-role-ai .print-role-label{color:#7d4450}
+.print-role-phase h5{margin:0;color:#1c2b3f;font-size:10pt;line-height:1.35}
+.print-role-phase-label{display:flex;align-items:baseline;justify-content:space-between;gap:2mm}
+.print-role-phase-label>span{color:#7d4450;font-size:7pt;white-space:nowrap}
+.print-role-description{margin:1.5mm 0 0;color:#45546a;font-size:8.5pt;line-height:1.4}
