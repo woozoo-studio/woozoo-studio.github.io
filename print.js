@@ -3,7 +3,16 @@
   const pages = document.querySelector('#print-pages');
   const status = document.querySelector('#print-status');
   const button = document.querySelector('#save-pdf');
-  button.addEventListener('click', () => window.print());
+  button.addEventListener('click', () => {
+    const download = document.createElement('a');
+    const pdf = new URL('assets/portfolio-ahnjaegwon.pdf', document.baseURI);
+    pdf.searchParams.set('v', button.dataset.pdfVersion);
+    download.href = pdf.href;
+    download.download = '[포트폴리오] 로봇SW개발자_안재권.pdf';
+    document.body.append(download);
+    download.click();
+    download.remove();
+  });
   if (window.location.protocol === 'file:') {
     const previewLink = document.createElement('a');
     previewLink.href = 'http://127.0.0.1:4177/print.html';
@@ -14,7 +23,7 @@
   }
   const updatePreviewScale = () => {
     const scale = Math.min(1, (window.innerWidth - 32) / 794);
-    pages.style.setProperty('--sheet-zoom', String(scale));
+    pages.style.setProperty('--sheet-scale', String(scale));
   };
   window.addEventListener('resize', updatePreviewScale);
   updatePreviewScale();
@@ -41,7 +50,9 @@
     const footer = make('footer', 'running-foot');
     add(footer, make('span', '', '© 2026 안재권'), make('span', 'page-number'));
     add(page, running, body, footer);
-    pages.append(page);
+    const preview = make('div', 'sheet-preview');
+    add(preview, page);
+    pages.append(preview);
     return body;
   };
   const heading = (eyebrow, title, note = '') => {
