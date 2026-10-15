@@ -1,4 +1,4 @@
-:root{font-family:Arial,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#1c2b3f;background:#e9edf1;font-synthesis:none}
+:root{font-family:Arial,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#1c2b3f;background:#e9edf1;font-synthesis:none;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 *{box-sizing:border-box}
 body{margin:0}
 a{color:inherit}
@@ -43,8 +43,24 @@ h1,h2,h3,h4,h5,p,figure,dl,ul{margin-top:0}
 .sheet-profile .profile-hero{grid-template-columns:47mm minmax(0,1fr);align-items:start;gap:7mm}.sheet-profile .profile-photo-column{min-width:0}.sheet-profile .profile-photo{display:block;width:47mm;height:61mm}.sheet-profile .profile-contact{display:block;margin-top:3mm;padding-top:2mm;font-size:7pt}.sheet-profile .profile-contact .contact-card + .contact-card{margin-top:2mm}.sheet-profile .profile-contact small{display:block;font-size:6.5pt;overflow-wrap:anywhere}
 .running-foot{justify-content:space-between}.featured-facts .feature-lead{margin:0 0 3mm;color:#1c2b3f;font-size:9pt;line-height:1.5}.sheet-featured .system-heading{margin-bottom:3mm}.sheet-featured .system-heading .eyebrow{margin-bottom:1mm}.sheet-featured .system-heading h4{margin:0;font-size:11pt}.sheet-featured .system-axis em{display:block;color:#7d4450;font-size:6pt;font-style:normal;font-weight:800}
 .timeline article{display:grid;grid-template-columns:38mm 1fr;gap:4mm;padding:5mm 0;border-top:1px solid #cbd5e1}.timeline .time{font-size:8pt;font-weight:700;color:#365d77}.timeline .time span{display:block;color:#526177;font-weight:400}.timeline h3{font-size:12pt;margin:0 0 1mm}.timeline p,.timeline ul{font-size:9pt;line-height:1.45;margin:0}.timeline ul{padding-left:4mm}.company-ci{display:none}.job-title{font-size:9pt;font-weight:400;color:#526177;margin-left:2mm}.credentials{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-top:8mm}.credentials article{padding:4mm;border-top:2px solid #1c2b3f;background:#f4f7fa}.credentials h3{font-size:12pt;margin:0 0 4mm}.credentials .eyebrow{font-size:7pt;color:#365d77;font-weight:700;letter-spacing:.12em}.education-list>div,.credential-list>div{display:grid;gap:1mm;padding:2mm 0;border-top:1px solid #d1dce7;font-size:8pt}.education-list span,.credential-list span{color:#526177}
-@media(max-width:800px){.toolbar{grid-template-columns:1fr auto;padding:12px 16px}.toolbar>div{grid-column:1/-1;grid-row:2;text-align:left}.toolbar button{grid-column:2;grid-row:1}.print-help{text-align:left}#print-pages{display:flex;flex-direction:column;align-items:center;overflow:visible}.sheet{flex:none;zoom:var(--sheet-zoom)}}
-@media print{@page{size:A4 portrait;margin:0}html,body{width:210mm;background:#fff}.toolbar,.print-help,#portfolio-source{display:none!important}#print-pages{display:block;padding:0;overflow:visible}.sheet{box-shadow:none;margin:0;zoom:1!important;break-after:page;page-break-after:always}.sheet:last-child{break-after:auto;page-break-after:auto}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+/* Scale the rendered A4 sheet as a whole. CSS zoom can inflate text separately on iOS. */
+@media screen{
+  .sheet-preview{width:calc(210mm * var(--sheet-scale,1));height:calc(297mm * var(--sheet-scale,1))}
+  .sheet-preview>.sheet{transform:scale(var(--sheet-scale,1));transform-origin:top left}
+}
+@media screen and (max-width:800px){.toolbar{grid-template-columns:1fr auto;padding:12px 16px}.toolbar>div{grid-column:1/-1;grid-row:2;text-align:left}.toolbar button{grid-column:2;grid-row:1}.print-help{text-align:left}#print-pages{display:flex;flex-direction:column;align-items:center;overflow:visible}.sheet-preview{flex:none}}
+@media print{
+  @page{size:A4 portrait;margin:0}
+  html,body{width:210mm;margin:0;padding:0;background:#fff}
+  .toolbar,.print-help,#portfolio-source{display:none!important}
+  #print-pages{display:block;margin:0;padding:0;gap:0;overflow:visible}
+  .sheet-preview{display:block;width:auto;height:auto;margin:0;padding:0;break-inside:avoid;page-break-inside:avoid}
+  /* Leave a small rounding allowance and start each following sheet explicitly.
+     A full-height sheet followed by a forced break can leave a blank page in Safari. */
+  .sheet{height:296mm;box-shadow:none;margin:0;transform:none!important;zoom:1!important;break-inside:avoid;page-break-inside:avoid;break-after:auto;page-break-after:auto}
+  .sheet-preview+.sheet-preview{break-before:page;page-break-before:always}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
 .sheet-profile .profile-hero{margin-bottom:5mm}
 .sheet-profile .hero-background{margin:0 0 6mm}
 .sheet-experience .company-ci{display:inline-flex;align-items:center;margin:0 0 2mm;text-decoration:none}
