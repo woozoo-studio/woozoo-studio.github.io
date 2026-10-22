@@ -296,14 +296,22 @@
     button.disabled = false;
   }
 
-  frame.addEventListener('load', async () => {
+  let renderStarted = false;
+  const renderSource = async () => {
+    if (renderStarted) return;
     try {
       const source = frame.contentDocument;
       if (!source?.querySelector('#about')) throw new Error('원본 페이지를 읽을 수 없습니다.');
+      renderStarted = true;
       await render(source);
     } catch (error) {
       status.textContent = '미리보기를 만들지 못했습니다. 새로고침 후 다시 시도해 주세요.';
       console.error(error);
     }
-  });
+  };
+  frame.addEventListener('load', renderSource);
+  // A cached source can finish before this deferred script registers its listener.
+  if (frame.contentDocument?.readyState === 'complete' && frame.contentDocument.querySelector('#about')) {
+    renderSource();
+  }
 })();
