@@ -938,6 +938,12 @@
   #projects .work-status-progress .work-item-ai{background:transparent}
 }
 @media screen{
+  #projects .project-grid .card details>summary{justify-content:flex-start;gap:10px}
+  #projects .project-grid .card details>summary>span{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:0 0 28px;width:28px;height:28px;border:1px solid var(--line);border-radius:50%;background:var(--pale);color:var(--blue);font-size:0;line-height:0}
+  #projects .project-grid .card details>summary>span::before,#projects .project-grid .card details>summary>span::after{content:"";position:absolute;top:50%;left:50%;border-radius:1px;background:currentColor;transform:translate(-50%,-50%)}
+  #projects .project-grid .card details>summary>span::before{width:12px;height:2px}
+  #projects .project-grid .card details>summary>span::after{width:2px;height:12px}
+  #projects .project-grid .card details>summary:hover>span,#projects .project-grid .card details>summary:focus-visible>span{border-color:var(--blue)}
   #projects .project-demo-player{position:relative;aspect-ratio:16/9;margin-top:20px;background:#1c2b3f}
   #projects .project-demo-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   #projects .project-demo-player video{display:block;width:100%;height:100%;object-fit:contain;border-radius:0}
