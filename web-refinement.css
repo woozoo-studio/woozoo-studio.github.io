@@ -187,7 +187,7 @@
   .project-evidence { margin: 40px 0 50px; }
   .project-evidence-heading { align-items: baseline; margin-bottom: 18px; }
   .project-evidence-heading h3 { font-size: 23px; }
-  .project-evidence-grid { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 18px; align-items: start; }
+  .project-evidence-grid { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 18px; align-items: stretch; }
   .project-evidence-card { display: block; border-radius: 2px; }
   .project-evidence-card > a { aspect-ratio: 16 / 9; background: #edf1f4; }
   .scenario-placeholder { display: flex; aspect-ratio: 16 / 9; min-height: 0; padding: 22px; border: 0; background: var(--ink); color: #fff; }
