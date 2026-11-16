@@ -2,72 +2,96 @@
 
 **바다에서는 선박의 항로를, 지금은 로봇의 경로를 다룹니다.**
 
-ROS2 기반 AMR 주행·관제 연동과 STM32 제어, 모바일 앱, 비전 모델을 다뤄왔습니다.
-로봇의 주행과 제어를 시스템에 연결하는 개발을 지향합니다.
+ROS2 기반 AMR 자율주행과 다중 로봇 교통조정, STM32 제어와 모바일 앱 연동을 경험했습니다.
+실제 하드웨어의 동작을 확인하고, 인식·제어·관제를 연결하는 로봇 SW 개발을 지향합니다.
 
-**관심 분야** · Robot Software / System Integration / AMR 자율주행
+**관심 분야** · 로봇 SW / AMR 자율주행 / 시스템 통합
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-프로젝트_보기-1C2D40?style=for-the-badge)](https://woozoo-studio.github.io/) [![Print](https://img.shields.io/badge/Print-PDF_저장-7D4450?style=for-the-badge)](https://woozoo-studio.github.io/print.html) [![Email](https://img.shields.io/badge/Email-문의하기-365D77?style=for-the-badge)](mailto:woozoo.dev@gmail.com)
 
-## 기술 역량과 개발 경험
+## 기술역량
 
-| 분야 | 주요 기술 | 개발 경험 |
-| --- | --- | --- |
-| **로봇 소프트웨어** | ROS2 · Nav2 · Gazebo · TF · EKF | 노드·토픽·TF를 활용한 로봇·관제 연동, 주행·위치추정 설정 조정과 실기체 시험 |
-| **임베디드·통합 제어** | STM32 · C/C++ · HAL · Flutter | 모터·센서·서보 제어와 앱 연동, Bluetooth 통신과 Flash 데이터 저장 |
-| **비전 모델·엣지 추론** | Python · YOLO Pose · Raspberry Pi · FP16 · INT8 | 학습 라벨 형식 통합, Pose 모델 학습·추론, 모델 변환·양자화 |
-| **산업 자동화** | PLC · HMI · GX Works2 | 공정 순서·비상정지·복귀 로직 구현, HMI 공정 조작·상태 표시 |
+| 분야 | 사용 기술 |
+| --- | --- |
+| **프로그래밍 언어** | C · C++ · Python |
+| **로봇 SW·자율주행** | ROS2 · Nav2 · TF · EKF · Gazebo · Isaac Sim |
+| **임베디드·로봇 제어** | STM32 · ESP32 · Raspberry Pi · HAL |
+| **비전 AI** | YOLO · OpenCV · Quantization |
+| **PLC·자동화 제어** | PLC · HMI · GX Works2 |
+| **버전 관리·협업 도구** | Git · GitHub · Jira · Confluence |
 
-**협업 도구** · Git / GitHub / Jira / Confluence
-
-## 진행 중인 프로젝트
+## 대표 프로젝트
 
 ### AI 융합 다중 로봇 물류
 
-**2026.09–진행 중 · 팀 7명**
+**2026.10.03 — 11.05 · Logiflow · 팀 7명**
 
-주문에 따라 여러 대의 AMR이 물품을 이송하고, OMX 로봇팔이 적재·하역하는 물류 자동화 시스템입니다.
-FMS의 주문·배차·경로 관제와 로봇의 이동·작업을 연결합니다.
+여러 대의 AMR과 로봇팔을 연동해 주문·피킹·이송·패킹 공정을 수행하는 물류 자동화 시스템입니다.
+AMR 주행·위치추정 검증, KEV-MAPF 교통조정 로직과 FMS 연동을 담당했습니다.
 
-#### 1차 · AMR 주행·관제 연동
+#### AMR 자율주행·검증
 
-- **Route Graph 제작** — 그리드 이송 경로의 이동 지점과 연결 관계를 노드·엣지로 구성해 FMS 팀에 전달했습니다.
-- **관제용 위치 토픽 발행** — TF의 `map → base_footprint` 변환으로 map 기준의 로봇 위치를 구하고, FMS 관제용 토픽으로 발행했습니다.
-- **정차 위치 측정·분석 도구 제작** — 위치·방향을 반복 측정해 평균·표준편차를 계산하고, CSV 저장과 RViz 시각화를 구현했습니다.
+- Nav2 기반 주행 기능 구현과 TF·EKF·Behavior Tree 설정 조정
+- FMS 경로 관리를 위한 Route Graph 구성
+- 정차 위치·방향 반복 측정, 평균·표준편차 계산과 CSV 저장·RViz 표시 도구 구현
+- TF의 `map → base_footprint`에서 위치·방향을 읽어 `PoseStamped` 형식의 `logitle_pose` 발행
+- Zenoh 브리지 전달 토픽과 FMS 구독 설정을 맞춰 관제 지도에 로봇 위치 연동
 
-현재는 주행 성능 개선을 위한 **Nav2 튜닝**과 위치추정 안정화를 위한 **EKF 설정 조정**을 진행하고 있습니다.
+#### 다중 로봇 교통조정·시스템 통합
 
-#### 2차 · AI 기반 MAPF 구현·비교 검토
+- PBS의 우선순위 개념을 참고한 KEV-MAPF 응용 로직 구현
+- KEV의 통과 우선순위·양보·우회 판단을 경로·점유 검사와 연결
+- 마주 오는 로봇 중 한 대가 대기하고 다른 한 대가 먼저 통과하는 동작을 실기체에서 확인
+- 개별 기능 코드 통합과 FMS 주행·상태 연동
+- ESP32에 연결된 리미트 스위치의 MQTT 접촉 메시지를 수신하도록 `mqtt_manager.py`의 구독·JSON 처리 코드 작성
+- 도킹 Action 결과와 접촉 신호를 확인해 스테이션별 도킹 완료 상태 반영
 
-의사결정 모델 **Kev-0.8B 적용을 준비 중**입니다.
-다중 로봇 경로 계획(MAPF)을 구현하고, 기존 MAPF 방식과 같은 조건에서 비교해 물류 시스템에 대체·적용할 수 있는지 검토할 계획입니다.
+**프로젝트 경진대회 대상 · 2026.11.05 수상**<br>
+대한상공회의소 서울기술교육센터 · Logiflow 팀
 
-[AMR 저장소](https://github.com/E1I6-Logistics/Logistics_AMR) · [시스템 구성과 담당 업무](https://woozoo-studio.github.io/#project-featured)
+[AMR 저장소](https://github.com/E1I6-Logistics/Logistics_AMR) · [KEV-MAPF 코드](https://github.com/E1I6-Logistics/Logistics_AI/tree/mapf) · [시연 영상](https://youtu.be/zMlgDwmd75g)
 
-## 이전 프로젝트
+## 프로젝트
 
 ### 앱 제어 이동형 로봇팔
 
-**RC카 주행부터 로봇팔 티칭까지, 하나로 연결한 모바일 앱 기반 제어 시스템.**
+**2026.07.31 — 08.07 · 팀 5명 · 부팀장**
 
-Flutter 제어 앱, Bluetooth 통신 패킷, STM32 서보 제어와 PID 직진 보정을 구현했습니다.
-티칭 데이터는 펌웨어와 분리한 내부 Flash에 저장하며, **12개 시퀀스 · 시퀀스당 최대 30 Waypoint**를 지원합니다.
+4륜 이동 플랫폼에 5자유도 로봇팔을 탑재하고, Flutter 앱에서 주행·관절 조작·티칭을 통합 제어하는 모바일 매니퓰레이터입니다.
 
-[저장소](https://github.com/sditr0414/mobile-retrieval-robot) · [시연 영상](https://woozoo-studio.github.io/#project-embedded-demo)
+- Flutter 제어 앱과 모드별 16바이트 Bluetooth 명령 패킷 설계·구현
+- PCA9685 기반 6채널 서보 제어와 IMU Yaw 기반 PID 방향 보정
+- 프로그램 영역과 분리한 내부 Flash Sector 7에 티칭 시퀀스·설정값 저장 및 복원
+- 12개 시퀀스 · 시퀀스당 최대 30 Waypoint 지원
+
+[저장소](https://github.com/sditr0414/mobile-retrieval-robot) · [로봇팔 제어 시연](https://youtu.be/isyhQvfVqWs)
 
 ### 비전 AI 트래킹 로봇
 
-**STM32 제어와 Raspberry Pi 비전 AI를 연결해 주행과 인식을 함께 구현한 로봇.**
+**2026.04.29 — 05.07 · 팀 4명**
 
-STM32 HAL 기반 모터·IMU 연동과 PID 직진 보정을 담당했습니다.
-이후 인체 Pose와 화재·무기 검출 라벨을 11포인트 학습 형식으로 통합하고, YOLO Pose 학습·추론 및 FP16 변환·INT8 양자화에 참여했습니다.
+Raspberry Pi에서 YOLO Pose로 자세를 분석하고, 위험 행동·낙상 의심 상황의 대상을 추적하는 온디바이스 AI 순찰 로봇입니다.
 
-[저장소](https://github.com/Ugie01/Tracking_Patrol_Robot) · [시연 영상](https://www.youtube.com/watch?v=0Xhue5Aivyg)
+- STM32 HAL 기반 모터·IMU 연동과 PID 방향 제어
+- 전진·후진에 따른 좌우 PWM 보정 부호 분리
+- 11포인트 인체 Pose와 화재·무기 검출 데이터의 학습 라벨 형식 통합
+- YOLO Pose 모델 학습·추론 및 모델 양자화
 
-### PLC 기반 MPS 자동화
+[저장소](https://github.com/Ugie01/Tracking_Patrol_Robot) · [시연 영상](https://youtu.be/0Xhue5Aivyg)
 
-**가공·배출·적재 공정과 비상정지·복귀 시퀀스를 구현한 자동화 프로젝트.**
+### PLC 기반 MPS 공정 제어
 
-GX Works2로 공정 순서와 비상정지·복귀 로직을 구성하고, HMI로 공정을 조작하고 상태를 확인하도록 구현했습니다.
+**2026.05.31 — 06.05 · 팀 2명**
+
+유도형 근접센서로 금속·비금속을 구분해 창고에 적재 및 배출하는 PLC 자동화 시스템입니다.
+
+- 재료 투입·가공·분류·적재·배출 시퀀스 구현
+- 비상정지·인터록·자가유지 로직 구현
+- 공정 조작·적재 현황·작업 수량을 표시하는 HMI 작화 및 PLC 연동
 
 [공정 소개·시연 영상](https://woozoo-studio.github.io/#project-plc)
+
+## 주요 이력
+
+- **대한상공회의소 서울기술교육센터** · AI융합 로봇SW 개발자 과정 수료 · 2026.04 — 2026.11
+- **에이치라인해운** · 2등항해사 · 2021.06 — 2024.02
