@@ -22,8 +22,6 @@ ROS2 기반 AMR 자율주행과 다중 로봇 교통조정, STM32 제어와 모�
 
 ### AI 융합 다중 로봇 물류
 
-**2026.10.03 — 11.05 · Logiflow · 팀 7명**
-
 여러 대의 AMR과 로봇팔을 연동해 주문·피킹·이송·패킹 공정을 수행하는 물류 자동화 시스템입니다.
 AMR 주행·위치추정 검증, KEV-MAPF 교통조정 로직과 FMS 연동을 담당했습니다.
 
@@ -44,16 +42,13 @@ AMR 주행·위치추정 검증, KEV-MAPF 교통조정 로직과 FMS 연동을 �
 - ESP32에 연결된 리미트 스위치의 MQTT 접촉 메시지를 수신하도록 `mqtt_manager.py`의 구독·JSON 처리 코드 작성
 - 도킹 Action 결과와 접촉 신호를 확인해 스테이션별 도킹 완료 상태 반영
 
-**프로젝트 경진대회 대상 · 2026.11.05 수상**<br>
-대한상공회의소 서울기술교육센터 · Logiflow 팀
-
 [AMR 저장소](https://github.com/E1I6-Logistics/Logistics_AMR) · [KEV-MAPF 코드](https://github.com/E1I6-Logistics/Logistics_AI/tree/mapf) · [시연 영상](https://youtu.be/zMlgDwmd75g)
 
 ## 프로젝트
 
 ### 앱 제어 이동형 로봇팔
 
-**2026.07.31 — 08.07 · 팀 5명 · 부팀장**
+**부팀장**
 
 4륜 이동 플랫폼에 5자유도 로봇팔을 탑재하고, Flutter 앱에서 주행·관절 조작·티칭을 통합 제어하는 모바일 매니퓰레이터입니다.
 
@@ -66,8 +61,6 @@ AMR 주행·위치추정 검증, KEV-MAPF 교통조정 로직과 FMS 연동을 �
 
 ### 비전 AI 트래킹 로봇
 
-**2026.04.29 — 05.07 · 팀 4명**
-
 Raspberry Pi에서 YOLO Pose로 자세를 분석하고, 위험 행동·낙상 의심 상황의 대상을 추적하는 온디바이스 AI 순찰 로봇입니다.
 
 - STM32 HAL 기반 모터·IMU 연동과 PID 방향 제어
@@ -78,8 +71,6 @@ Raspberry Pi에서 YOLO Pose로 자세를 분석하고, 위험 행동·낙상 �
 [저장소](https://github.com/Ugie01/Tracking_Patrol_Robot) · [시연 영상](https://youtu.be/0Xhue5Aivyg)
 
 ### PLC 기반 MPS 공정 제어
-
-**2026.05.31 — 06.05 · 팀 2명**
 
 유도형 근접센서로 금속·비금속을 구분해 창고에 적재 및 배출하는 PLC 자동화 시스템입니다.
 
