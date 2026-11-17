@@ -33,7 +33,7 @@ window.renderPortfolioProjects = ({sheet, heading, make, add}) => {
         {title:'KEV 교통조정', image:'assets/print-traffic-start.png', note:'마주 오는 로봇의 이동 조정'},
         {title:'MQTT 도킹 연동', image:'assets/print-docking-frame-clean.png', note:'스테이션별 도킹 시연 · 접촉 신호 수신·상태 반영'}
       ],
-      problem:{title:'AMCL 수신에 묶인 관제 위치 갱신', rows:[['문제','관제 위치 갱신이 amcl_pose 메시지 수신 흐름에 묶여 있었습니다.'],['판단·구현','TF의 map → base_footprint에서 위치·방향을 읽어 logitle_pose를 발행하는 ROS2 노드를 작성했습니다.'],['확인 결과','Zenoh 브리지와 FMS 구독 설정을 맞춰 로봇별 위치를 관제 지도에 연동했습니다.']]}
+      problem:{title:'관제 지도에서 로봇 위치가 끊겨 보이는 현상', rows:[['문제','관제 지도에서 주행 중인 로봇의 위치가 실시간으로 갱신되지 않고 끊겨 보였습니다.'],['판단·구현','AMCL 수신과 분리해 TF의 map → base_footprint에서 위치·방향을 읽고, logitle_pose를 발행하는 ROS2 노드를 작성했습니다.'],['확인 결과','Zenoh 브리지와 FMS 구독 설정을 맞춰 로봇별 위치를 관제 지도에 연동했습니다.']]}
     },
     'mobile-manipulator': {
       intro: 'Flutter 앱으로 4륜 이동체와 5자유도 로봇팔을 제어합니다. 티칭 동작과 설정을 내부 Flash에 저장하고 다시 불러오도록 구현했습니다.',
@@ -74,7 +74,7 @@ window.renderPortfolioProjects = ({sheet, heading, make, add}) => {
     rows:[['문제','주행·로봇팔·티칭·설정은 필요한 데이터가 달라 공통 통신 형식이 필요했습니다.'],['판단·구현','시작·Mode·12바이트 데이터·Checksum·종료로 이루어진 고정 16바이트 패킷을 설계하고, 모드별로 데이터를 해석했습니다.'],['구현 결과','앱과 STM32가 하나의 프레임 형식으로 명령을 구분해 전달·처리하도록 구현했습니다.']]
   };
   compact['vision-tracking'].secondaryProblem = compact['vision-tracking'].problem;
-  compact['vision-tracking'].secondaryProblem.rows[0][1] = '전진에서는 정상적으로 보정됐지만, 같은 좌우 모터 보정 부호를 후진에도 적용하자 오히려 한쪽으로 더 치우쳤습니다.';
+  compact['vision-tracking'].secondaryProblem.rows[0][1] = '전진 시에는 방향 보정이 정상적으로 작동했지만, 후진 시에는 오히려 한쪽으로 더 치우쳤습니다.';
   compact['vision-tracking'].problem = {
     title:'인체·객체 데이터의 학습 라벨 형식 불일치',
     rows:[['문제','인체 데이터는 11개 키포인트를 사용하지만 화재·무기 데이터는 바운딩 박스만 있어 같은 Pose 학습 형식에 넣을 수 없었습니다.'],['판단·구현','비인체 바운딩 박스의 중심점을 키포인트 하나로 표현하고 나머지 10개를 더미 처리해 11포인트 형식으로 맞췄습니다.'],['구현 결과','인체 Pose와 비인체 검출 라벨을 같은 학습 형식으로 통합했습니다. 비인체 중심점은 형식 호환용입니다.']]
