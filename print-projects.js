@@ -90,15 +90,27 @@ window.renderPortfolioProjects = ({sheet, heading, make, add}) => {
     add(card,make('h4','',item.title));
     if(item.kind==='quantization') {
       const comparison=make('table','print-quant-comparison');
+      comparison.setAttribute('aria-label','원본 모델과 INT8 모델의 용량·추론 성능');
       const head=make('thead'), header=make('tr');
-      ['', '원본 모델', 'INT8'].forEach(text=>add(header,make('th','',text)));add(head,header);
+      ['항목','원본 모델','INT8 모델'].forEach(text=>{
+        const cell=make('th','',text);cell.scope='col';add(header,cell);
+      });add(head,header);
       const data=make('tbody');
-      [['모델 용량','6.5 MB','1.7 MB'],['추론 성능','8.5 FPS','12.4 FPS']].forEach(([label,before,after])=>{
-        const row=make('tr');add(row,make('th','',label),make('td','',before),make('td','is-optimized',after));add(data,row);
-      });add(comparison,head,data);
-      const results=make('div','print-quant-results');
-      add(results,make('span','','용량 약 74% 감소'),make('span','','FPS 약 46% 증가'));
-      add(card,comparison,results);
+      const value=(number,unit)=>{
+        const node=make('span','print-quant-value',number);
+        add(node,make('small','',unit));return node;
+      };
+      [['모델 용량','6.5','1.7','MB','약 74% 감소','↓'],['추론 성능','8.5','12.4','FPS','약 46% 증가','↑']].forEach(([label,before,after,unit,change,arrow])=>{
+        const row=make('tr'),metric=make('th','',label);metric.scope='row';
+        const original=make('td'),optimized=make('td','is-optimized');
+        const badge=make('span','print-quant-change'),direction=make('span','',arrow);
+        direction.setAttribute('aria-hidden','true');
+        add(badge,direction,make('span','',change));
+        add(original,value(before,unit));add(optimized,value(after,unit),badge);
+        add(row,metric,original,optimized);add(data,row);
+      });
+      add(comparison,head,data);
+      const frame=make('div','print-quant-wrap');add(frame,comparison);add(card,frame);
     } else if(item.screens) {
       const gallery=make('div','print-implementation-screens');
       item.screens.forEach(screen=>add(gallery,photo(screen.src,screen.title,screen.title)));

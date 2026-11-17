@@ -444,3 +444,60 @@
 .folio-flow li{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
 .folio-flow-step{display:flex;align-items:center;justify-content:center;flex:0 0 auto;min-width:28px;height:26px;padding:0 5px;background:var(--folio-ink);color:#fff;font-size:11px;line-height:1;font-weight:700}
 .folio-flow-text{display:block;min-width:0}
+
+/* Detail chapters: implemented functions first, design decisions and issues after. */
+.folio-toc a.is-subsection{margin-left:12px;padding:6px 8px;font-size:11px;border-left-width:1px}
+.folio-toc a.is-subsection span{font-size:9px}
+.folio-implementation,.folio-problem-case{margin-top:32px;padding-top:26px;border-top:1px solid var(--folio-line);scroll-margin-top:120px;min-width:0}
+.folio-entry-heading{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px 14px;margin-bottom:14px}
+.folio-entry-number{font-size:12px;font-weight:800;color:var(--folio-blue);font-variant-numeric:tabular-nums}
+.folio-implementation h3,.folio-problem-case h3{font-size:22px;line-height:1.55;letter-spacing:-.02em;margin:0}
+.folio-implementation .folio-entry-heading h3{flex:1;min-width:180px}
+.folio-implementation-summary{font-size:15px;line-height:1.9;margin:0 0 24px;color:var(--folio-ink);word-break:keep-all;overflow-wrap:anywhere}
+.folio-feature-images{display:grid;gap:24px;margin-top:24px}
+.folio-feature-images figure{margin:0;min-width:0}
+.folio-feature-images img{display:block;width:100%;height:auto;border:1px solid var(--folio-line);background:#fff}
+.folio-feature-images figcaption{font-size:12px;line-height:1.7;color:var(--folio-muted);margin-top:10px}
+.folio-implementation .folio-hmi,.folio-implementation .folio-app-demos{margin-top:24px}
+.folio-problem-case h3{margin:0 0 24px}
+.folio-problem-case .folio-case-story{gap:20px}
+.folio-flash-proof-grid .folio-flash-manual{grid-column:auto}
+.folio-flash-proof-grid .folio-flash-build{grid-column:1/-1}
+.folio-flash-evidence>h4{font-size:17px;margin:0 0 18px}
+@media(max-width:700px){
+ .folio-implementation,.folio-problem-case{margin-top:26px;padding-top:22px;scroll-margin-top:100px}
+ .folio-implementation h3,.folio-problem-case h3{font-size:19px}
+ .folio-entry-heading{gap:8px 10px}
+ .folio-entry-number{font-size:11px}
+ .folio-implementation-summary{font-size:14px;line-height:1.85}
+ .folio-flash-proof-grid figure:nth-child(2),.folio-flash-proof-grid .folio-flash-manual,.folio-flash-proof-grid .folio-flash-build{grid-column:auto;grid-row:auto}
+}
+
+.folio-handling-grid[data-video-count="1"]{grid-template-columns:minmax(0,1fr)}
+
+/* Keep the baseline quiet and the INT8 result easy to compare, row by row. */
+.folio-quantization{margin-top:26px;border:1px solid var(--folio-line);background:#fff;overflow:hidden}
+.folio-quantization table{width:100%;table-layout:fixed;border-collapse:collapse;text-align:center;font-variant-numeric:tabular-nums}
+.folio-quant-metric{width:34%}.folio-quant-original{width:29%}.folio-quant-int8{width:37%}
+.folio-quantization thead th{padding:15px 22px;background:#f5f7f9;font-size:12px;font-weight:600;line-height:1.5;color:var(--folio-muted)}
+.folio-quantization thead th:first-child{text-align:left}
+.folio-quantization thead th:last-child{background:var(--folio-ink);color:#fff;font-weight:700}
+.folio-quantization tbody th,.folio-quantization tbody td{padding:25px 22px;border-top:1px solid var(--folio-line);vertical-align:middle}
+.folio-quantization tbody th{text-align:left;font-size:16px;line-height:1.6;font-weight:700;color:var(--folio-ink)}
+.folio-quantization tbody td{color:var(--folio-muted)}
+.folio-quantization .folio-quant-optimized{background:#edf3f7;color:var(--folio-ink);border-left:1px solid #dbe5ec}
+.folio-quant-value{display:flex;align-items:baseline;justify-content:center;gap:6px;font-size:27px;line-height:1.25;font-weight:500;white-space:nowrap;letter-spacing:-.03em}
+.folio-quant-value small{font-size:12px;line-height:1.5;letter-spacing:0;font-weight:500}
+.folio-quant-optimized .folio-quant-value{font-size:34px;font-weight:800}
+.folio-quant-change{display:inline-flex;align-items:center;justify-content:center;gap:5px;margin-top:10px;padding:4px 9px;background:#fff;color:var(--folio-blue);border-radius:3px;font-size:11px;line-height:1.5;font-weight:700;white-space:nowrap}
+.folio-quant-change>span{font-size:14px;line-height:1}
+@media(max-width:700px){
+ .folio-quant-metric{width:32%}.folio-quant-original{width:28%}.folio-quant-int8{width:40%}
+ .folio-quantization thead th{padding:12px 8px;font-size:11px}
+ .folio-quantization tbody th,.folio-quantization tbody td{padding:20px 8px}
+ .folio-quantization tbody th{font-size:13px;word-break:keep-all}
+ .folio-quant-value{font-size:21px;gap:4px}
+ .folio-quant-value small{font-size:10px}
+ .folio-quant-optimized .folio-quant-value{font-size:27px}
+ .folio-quant-change{font-size:10px;padding:3px 5px;gap:3px;margin-top:8px}
+}

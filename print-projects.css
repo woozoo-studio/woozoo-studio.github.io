@@ -127,11 +127,19 @@
 .print-problem-grid[data-count="2"] .folio-print-row dt{font-size:7.5pt;line-height:1.6}
 .print-problem-grid[data-count="2"] .folio-print-row dd{font-size:8pt;line-height:1.65}
 
-.print-quant-comparison{width:100%;border-collapse:collapse;table-layout:fixed;font-size:8pt;margin:2mm 0 3mm}
-.print-quant-comparison th,.print-quant-comparison td{padding:2.5mm 1mm;border-bottom:1px solid #d5dde6;text-align:center;line-height:1.5}
-.print-quant-comparison thead th{font-size:7pt;color:#526177;font-weight:600}
-.print-quant-comparison thead th:first-child{width:24%}
-.print-quant-comparison tbody th{font-size:7pt;text-align:left;font-weight:600;color:#526177}
-.print-quant-comparison .is-optimized{font-size:11pt;font-weight:800;color:#365d77;background:#edf3f7}
-.print-quant-results{display:flex;flex-wrap:wrap;gap:1mm 2mm}
-.print-quant-results span{font-size:7.5pt;color:#7d4450;font-weight:700;line-height:1.6}
+
+/* Same comparison hierarchy as the web table, sized for an A4 column. */
+.print-quant-wrap{margin-top:2mm;border:1px solid #cdd6df;background:#fff;overflow:hidden}
+.print-quant-comparison{width:100%;border-collapse:collapse;table-layout:fixed;text-align:center;font-variant-numeric:tabular-nums}
+.print-quant-comparison thead th{padding:2mm 1.5mm;background:#f5f7f9;font-size:6.5pt;font-weight:600;line-height:1.4;color:#526177}
+.print-quant-comparison thead th:first-child{width:28%;text-align:left}
+.print-quant-comparison thead th:nth-child(2){width:30%}
+.print-quant-comparison thead th:last-child{width:42%;background:#1c2b3f;color:#fff;font-weight:700}
+.print-quant-comparison tbody th,.print-quant-comparison tbody td{padding:2.5mm 1.5mm;border-top:1px solid #d5dde6;vertical-align:middle}
+.print-quant-comparison tbody th{font-size:7.5pt;text-align:left;font-weight:700;line-height:1.5;color:#1c2b3f;word-break:keep-all}
+.print-quant-comparison tbody td{color:#526177}
+.print-quant-comparison .is-optimized{background:#edf3f7;color:#1c2b3f;border-left:1px solid #dbe5ec}
+.print-quant-value{display:flex;align-items:baseline;justify-content:center;gap:1mm;font-size:10.5pt;line-height:1.25;font-weight:500;letter-spacing:-.03em;white-space:nowrap}
+.print-quant-value small{font-size:6pt;font-weight:500;letter-spacing:0}
+.is-optimized .print-quant-value{font-size:14pt;font-weight:800}
+.print-quant-change{display:inline-flex;align-items:center;justify-content:center;gap:1mm;padding:.6mm 1.2mm;margin-top:1.2mm;background:#fff;color:#365d77;border-radius:.6mm;font-size:6.5pt;line-height:1.4;font-weight:700;white-space:nowrap}
