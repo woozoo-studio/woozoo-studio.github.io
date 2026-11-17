@@ -50,9 +50,9 @@ window.renderPortfolioProjects = ({sheet, heading, make, add}) => {
       role:'STM32 주행 제어, 학습 라벨 통합과 모델 학습·추론·경량화를 담당했습니다.',
       implementations:[
         {title:'YOLO Pose 학습 및 모델 양자화',kind:'quantization',note:''},
-        {title:'IMU 기반 PID 방향 제어',image:'assets/vision-imu-pid-loop.svg',note:'목표·현재 Yaw 오차로 좌우 PWM 보정 · 전진·후진 보정 부호 분리'}
+        {title:'IMU Yaw 기반 PID 직진 보정',image:'assets/vision-imu-pid-loop.svg',note:'목표·현재 Yaw 오차로 좌우 PWM 보정 · 전진·후진 보정 부호 분리'}
       ],
-      problem:{title:'후진 시 오히려 더 치우치는 방향 보정',rows:[['문제','같은 좌우 모터 보정 부호를 쓰면 진행 방향에 따라 보정이 반대로 작용할 수 있었습니다.'],['판단·구현','IMU Yaw로 PID 보정값을 계산하고 후진 시 좌우 보정 부호를 반대로 적용했습니다.'],['구현 결과','방향별 보정과 적분 누적·모터 출력 제한을 적용한 제어 로직을 구현했습니다.']]}
+      problem:{title:'후진 시 직진 보정 오차가 커지는 문제',rows:[['문제','같은 좌우 모터 보정 부호를 쓰면 진행 방향에 따라 보정이 반대로 작용할 수 있었습니다.'],['판단·구현','목표 Yaw와 IMU Yaw의 오차로 PID 보정값을 계산하고, 후진 시 좌우 모터 PWM 보정 부호를 반대로 적용했습니다.'],['구현 결과','전진·후진별 직진 보정과 적분 누적·모터 출력 제한을 적용한 제어 로직을 구현했습니다.']]}
     },
     'plc-automation': {
       intro:'유도형 근접센서로 금속·비금속을 구분하고, 재료 투입·가공·창고 적재·배출을 제어하는 MPS 자동화 시스템입니다.',
@@ -74,7 +74,7 @@ window.renderPortfolioProjects = ({sheet, heading, make, add}) => {
     rows:[['문제','주행·로봇팔·티칭·설정은 필요한 데이터가 달라 공통 통신 형식이 필요했습니다.'],['판단·구현','시작·Mode·12바이트 데이터·Checksum·종료로 이루어진 고정 16바이트 패킷을 설계하고, 모드별로 데이터를 해석했습니다.'],['구현 결과','앱과 STM32가 하나의 프레임 형식으로 명령을 구분해 전달·처리하도록 구현했습니다.']]
   };
   compact['vision-tracking'].secondaryProblem = compact['vision-tracking'].problem;
-  compact['vision-tracking'].secondaryProblem.rows[0][1] = '전진 시에는 방향 보정이 정상적으로 작동했지만, 후진 시에는 오히려 한쪽으로 더 치우쳤습니다.';
+  compact['vision-tracking'].secondaryProblem.rows[0][1] = '전진에서는 직진 보정이 정상적으로 작동했지만, 후진에서는 오히려 한쪽으로 치우치며 주행 방향 오차가 커졌습니다.';
   compact['vision-tracking'].problem = {
     title:'인체·객체 데이터의 학습 라벨 형식 불일치',
     rows:[['문제','인체 데이터는 11개 키포인트를 사용하지만 화재·무기 데이터는 바운딩 박스만 있어 같은 Pose 학습 형식에 넣을 수 없었습니다.'],['판단·구현','비인체 바운딩 박스의 중심점을 키포인트 하나로 표현하고 나머지 10개를 더미 처리해 11포인트 형식으로 맞췄습니다.'],['구현 결과','인체 Pose와 비인체 검출 라벨을 같은 학습 형식으로 통합했습니다. 비인체 중심점은 형식 호환용입니다.']]
@@ -82,7 +82,7 @@ window.renderPortfolioProjects = ({sheet, heading, make, add}) => {
   const roleRows = {
     'logiflow': [['AMR 주행','Nav2 주행·위치추정 설정과 검증'],['교통조정','KEV 기반 대기·통과 로직 구현'],['관제 연동','위치 토픽 발행·MQTT 도킹 상태 처리']],
     'mobile-manipulator': [['앱·통신','Flutter 제어 앱·Bluetooth 패킷 설계'],['로봇팔 제어','PCA9685 기반 서보 제어'],['주행 보정','IMU 기반 PID 방향 보정'],['데이터 저장','Flash 티칭·설정 저장 및 복원']],
-    'vision-tracking': [['주행 제어','STM32 모터·IMU 연동과 PID 보정'],['데이터 통합','검출·Pose 학습 라벨 형식 통합'],['모델 학습·추론','YOLO Pose 학습·추론 및 경량화']],
+    'vision-tracking': [['직진 보정','IMU Yaw 기반 PID 직진 보정'],['데이터 통합','검출·Pose 학습 라벨 형식 통합'],['모델 학습·추론','YOLO Pose 학습·추론 및 경량화']],
     'plc-automation': [['공정 시퀀스','재료 투입·가공·분류·적재·배출'],['안전 제어','비상정지·인터록·자가유지 구현'],['HMI 작화·연동','공정 조작·적재 현황·작업 수량 표시']]
   };
   const implementationCard = item => {
