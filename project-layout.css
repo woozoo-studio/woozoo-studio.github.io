@@ -395,10 +395,9 @@
 
 /* Numbered vertical sequences on small screens; packet fields remain horizontal. */
 @media(max-width:700px){
- .folio-flow{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;border:0;background:transparent;counter-reset:flow-step}
- .folio-flow li{counter-increment:flow-step;display:flex;align-items:center;gap:12px;padding:11px 14px;font-size:12px;border:1px solid var(--folio-line);background:var(--folio-paper)}
+ .folio-flow{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;border:0;background:transparent}
+ .folio-flow li{display:flex;align-items:center;gap:12px;padding:11px 14px;font-size:12px;border:1px solid var(--folio-line);background:var(--folio-paper)}
  .folio-flow li+li,.folio-flow li:nth-child(3),.folio-flow li:nth-child(4){border:1px solid var(--folio-line)}
- .folio-flow li::after{content:counter(flow-step,decimal-leading-zero);order:-1;flex:0 0 26px;color:var(--folio-blue);font-size:11px;font-weight:800}
  .folio-flow li+li::before{display:block;content:'↓';left:calc(50% - 10px);top:-24px;width:20px;height:22px;background:#fff;text-align:center;font-size:16px;line-height:22px;color:var(--folio-blue)}
 }
 
@@ -430,10 +429,9 @@
 }
 /* Compact numbered cards for mobile process flows. */
 @media(max-width:700px){
- .folio-flow{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px;counter-reset:flow-step}
+ .folio-flow{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px}
  .folio-flow li{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:10px;min-height:92px;padding:13px 10px;border:0;border-top:2px solid var(--folio-blue);background:var(--folio-paper);font-size:12px;line-height:1.7;overflow-wrap:anywhere}
  .folio-flow li+li,.folio-flow li:nth-child(3),.folio-flow li:nth-child(4){border:0;border-top:2px solid var(--folio-blue)}
- .folio-flow li::after{display:flex;align-items:center;justify-content:center;flex:0 0 23px;width:26px;height:23px;background:var(--folio-ink);color:white;font-size:10px;line-height:1;font-weight:700}
  .folio-flow li+li::before{display:none}
 }
 /* Keep project navigation available while reading long detail pages. */
@@ -441,3 +439,8 @@
 .folio-detail-page .folio-toc{top:110px;max-height:calc(100vh - 130px);overflow-y:auto}
 .folio-detail-page .folio-article>section{scroll-margin-top:110px}
 @media(max-width:700px){.folio-detail-page .folio-article>section{scroll-margin-top:90px}}
+
+/* Use explicit step numbers at every screen size. */
+.folio-flow li{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.folio-flow-step{display:flex;align-items:center;justify-content:center;flex:0 0 auto;min-width:28px;height:26px;padding:0 5px;background:var(--folio-ink);color:#fff;font-size:11px;line-height:1;font-weight:700}
+.folio-flow-text{display:block;min-width:0}

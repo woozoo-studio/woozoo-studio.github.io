@@ -5,7 +5,7 @@ const projects = require('../project-content.js');
 const root = path.resolve(__dirname, '..');
 const esc = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const tags = values => `<ul class="folio-tags">${values.map(v => `<li>${esc(v)}</li>`).join('')}</ul>`;
-const flow = values => `<ol class="folio-flow" aria-label="동작 흐름">${values.map(v => `<li>${esc(v)}</li>`).join('')}</ol>`;
+const flow = values => `<ol class="folio-flow" aria-label="동작 흐름">${values.map((v,i) => `<li><span class="folio-flow-step" aria-hidden="true">${String(i+1).padStart(2,'0')}</span><span class="folio-flow-text">${esc(v)}</span></li>`).join('')}</ol>`;
 const image = (p, prefix = '') => `<img src="${prefix}${p.image}" alt="${esc(p.imageAlt)}" loading="lazy">`;
 const external = links => links.map(([label,url]) => `<a href="${esc(url)}" target="_blank" rel="noreferrer">${esc(label)} ↗</a>`).join('');
 const request = item => `<aside class="folio-request" aria-label="추가할 시각 자료"><span class="folio-request-id">자료 ${item.id}</span><h4>${esc(item.title)}</h4><p>${esc(item.description)}</p><small>${esc(item.format)}</small></aside>`;
@@ -45,9 +45,9 @@ function caseMedia(c) {
   return '';
 }
 
-function demo(p, prefix, id = 'demo') {
+function demo(p, prefix, id = 'demo', sectionNumber = '') {
   const d = p.demo;
-  return `<section id="${id}" class="folio-demo"><div class="folio-section-label"><span>DEMONSTRATION</span><h2>프로젝트 시연</h2></div><div class="folio-player">${d.type === 'youtube'
+  return `<section id="${id}" class="folio-demo"><div class="folio-section-label"><span>${sectionNumber ? `${sectionNumber} / ` : ''}DEMONSTRATION</span><h2>프로젝트 시연</h2></div><div class="folio-player">${d.type === 'youtube'
     ? `<iframe src="${d.src}" title="${esc(d.title)}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
     : `<video ${d.legacyId ? `id="${d.legacyId}"` : ''} controls preload="none" playsinline poster="${prefix}${d.poster}" aria-label="${esc(d.title)}"><source src="${prefix}${d.src}" type="video/mp4"></video>`}</div><p class="folio-caption">${esc(d.title)}</p></section>`;
 }
@@ -68,14 +68,14 @@ function summary(p, featured) {
 function detail(p, index) {
   const next = projects[(index+1)%projects.length];
   const cases = p.cases.filter(c => !c.hidden);
-  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="${esc(p.role)}"><title>${esc(p.title)} | 안재권</title><link rel="icon" type="image/svg+xml" href="../assets/favicon-w.svg?v=2"><link rel="stylesheet" href="../project-layout.css?v=10"></head><body class="folio-detail-page">
+  return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="${esc(p.role)}"><title>${esc(p.title)} | 안재권</title><link rel="icon" type="image/svg+xml" href="../assets/favicon-w.svg?v=2"><link rel="stylesheet" href="../project-layout.css?v=11"></head><body class="folio-detail-page">
   <a class="folio-skip" href="#overview">본문으로 이동</a><header class="folio-header"><a class="folio-back-button" href="../index.html#${p.anchor}"><span aria-hidden="true">←</span> 프로젝트 목록</a><a href="../index.html">안재권 <span>/ ROBOTICS SW</span></a><a class="folio-print-button" href="../print.html?v=20261114">PDF 저장</a></header>
   <main class="folio-detail-main"><div class="folio-detail-hero"><p class="folio-index">PROJECT ${p.number} / ${esc(p.fields.join(' · '))}</p><h1>${esc(p.title)}</h1><p class="folio-subtitle">${esc(p.subtitle)}</p><p class="folio-meta">${esc(p.meta)}</p>${p.award ? `<div class="folio-award-text"><p><strong>프로젝트 경진대회 대상</strong><span>Logiflow 팀 · 2026.11.05</span></p><p class="folio-award-organizer">대한상공회의소 서울기술교육센터</p></div>` : ''}${tags(p.tags)}<div class="folio-hero-actions"><a class="folio-button folio-button-primary" href="#demo">시연 영상 보기 ▷</a>${external(p.links)}</div></div>
-  <div class="folio-detail-grid"><aside class="folio-toc"><p>IN THIS PROJECT</p><nav aria-label="프로젝트 상세 목차"><a href="#overview">프로젝트 요약</a><a href="#demo">프로젝트 시연</a><a href="#system">시스템 구성·동작 흐름</a>${cases.map((c,i)=>`<a href="#${c.id}"><span>${String(i+1).padStart(2,'0')}</span>${esc(c.title)}</a>`).join('')}</nav></aside>
-  <div class="folio-article"><section id="overview"><p class="folio-index">OVERVIEW</p><h2>프로젝트 요약</h2><p class="folio-lead">${esc(p.summary)}</p><h3 class="folio-work-heading">담당 역할</h3><dl class="folio-contributions folio-work-rows">${(p.summaryWork || p.contributions).map(([title,text])=>`<div><dt>${esc(title)}</dt><dd>${esc(text)}</dd></div>`).join('')}</dl></section>
-  ${demo(p,'../')}
-  <section id="system"><p class="folio-index">SYSTEM</p><h2>시스템 구성 및 동작 흐름</h2>${p.situationScreens ? `<div class="folio-situation-section"><h3>정상·위험·낙상 인식</h3>${situationGallery(p,'../')}</div>` : `<figure class="folio-detail-cover"><a href="../${p.image}" target="_blank" rel="noreferrer">${image(p,'../')}</a><figcaption>${esc(p.imageAlt)}</figcaption></figure>`}${handlingDemos(p)}${systemProcess(p)}${hmiGallery(p)}${p.scope && !['mobile-manipulator','logiflow'].includes(p.id) ? `<p class="folio-scope">${esc(p.scope)}</p>` : ''}</section>
-  ${cases.map((c,i)=>`<section id="${c.id}" class="folio-case"><p class="folio-index">${String(i+1).padStart(2,'0')} / ${esc(c.label)}</p><h2>${esc(c.title)}</h2><dl class="folio-case-story"><div><dt>문제·요구사항</dt><dd>${esc(c.problem)}</dd></div><div><dt>판단·구현</dt><dd>${esc(c.decision)}</dd></div><div><dt>확인한 결과</dt><dd>${esc(c.result)}</dd></div></dl>${c.flow ? flow(c.flow) : ''}${caseMedia(c)}${implementationMedia(c)}${caseVideos(c)}${c.note ? `<p class="folio-note">${esc(c.note)}</p>` : ''}${c.request ? request(c.request) : ''}</section>`).join('')}
+  <div class="folio-detail-grid"><aside class="folio-toc"><p>목차</p><nav aria-label="프로젝트 상세 목차"><a href="#overview"><span>01</span>프로젝트 요약</a><a href="#demo"><span>02</span>프로젝트 시연</a><a href="#system"><span>03</span>시스템 구성·동작 흐름</a>${cases.map((c,i)=>`<a href="#${c.id}"><span>${String(i+4).padStart(2,'0')}</span>${esc(c.title)}</a>`).join('')}</nav></aside>
+  <div class="folio-article"><section id="overview"><p class="folio-index">01 / OVERVIEW</p><h2>프로젝트 요약</h2><p class="folio-lead">${esc(p.summary)}</p><h3 class="folio-work-heading">담당 역할</h3><dl class="folio-contributions folio-work-rows">${(p.summaryWork || p.contributions).map(([title,text])=>`<div><dt>${esc(title)}</dt><dd>${esc(text)}</dd></div>`).join('')}</dl></section>
+  ${demo(p,'../','demo','02')}
+  <section id="system"><p class="folio-index">03 / SYSTEM</p><h2>시스템 구성 및 동작 흐름</h2>${p.situationScreens ? `<div class="folio-situation-section"><h3>정상·위험·낙상 인식</h3>${situationGallery(p,'../')}</div>` : `<figure class="folio-detail-cover"><a href="../${p.image}" target="_blank" rel="noreferrer">${image(p,'../')}</a><figcaption>${esc(p.imageAlt)}</figcaption></figure>`}${handlingDemos(p)}${systemProcess(p)}${hmiGallery(p)}${p.scope && !['mobile-manipulator','logiflow'].includes(p.id) ? `<p class="folio-scope">${esc(p.scope)}</p>` : ''}</section>
+  ${cases.map((c,i)=>`<section id="${c.id}" class="folio-case"><p class="folio-index">${String(i+4).padStart(2,'0')} / ${esc(c.label)}</p><h2>${esc(c.title)}</h2><dl class="folio-case-story"><div><dt>${esc(c.backgroundLabel)}</dt><dd>${esc(c.problem)}</dd></div><div><dt>판단·구현</dt><dd>${esc(c.decision)}</dd></div><div><dt>${c.backgroundLabel === '요구사항' ? '구현 결과' : '확인한 결과'}</dt><dd>${esc(c.result)}</dd></div></dl>${c.flow ? flow(c.flow) : ''}${caseMedia(c)}${implementationMedia(c)}${caseVideos(c)}${c.note ? `<p class="folio-note">${esc(c.note)}</p>` : ''}${c.request ? request(c.request) : ''}</section>`).join('')}
 
   <footer class="folio-next"><a class="folio-back-button" href="../index.html#${p.anchor}"><span aria-hidden="true">←</span> 프로젝트 목록</a><a class="folio-back-button folio-next-simple" href="${next.id}.html?v=20261114-projects">다음 프로젝트 <span aria-hidden="true">→</span></a></footer></div></div></main><script src="../project-detail.js" defer></script></body></html>`;
 }
