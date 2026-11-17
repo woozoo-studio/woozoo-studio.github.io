@@ -33,7 +33,7 @@ window.renderPortfolioProjects = ({sheet, heading, make, add}) => {
         {title:'KEV 교통조정', image:'assets/print-traffic-start.png', note:'마주 오는 로봇의 이동 조정'},
         {title:'MQTT 도킹 연동', image:'assets/print-docking-frame-clean.png', note:'스테이션별 도킹 시연 · 접촉 신호 수신·상태 반영'}
       ],
-      problem:{title:'관제 위치 발행을 AMCL 수신과 분리', rows:[['문제','관제 위치 갱신이 amcl_pose 메시지 수신 흐름에 묶여 있었습니다.'],['판단·구현','TF의 map → base_footprint에서 위치·방향을 읽어 logitle_pose를 발행하는 ROS2 노드를 작성했습니다.'],['확인 결과','Zenoh 브리지와 FMS 구독 설정을 맞춰 로봇별 위치를 관제 지도에 연동했습니다.']]}
+      problem:{title:'AMCL 수신에 묶인 관제 위치 갱신', rows:[['문제','관제 위치 갱신이 amcl_pose 메시지 수신 흐름에 묶여 있었습니다.'],['판단·구현','TF의 map → base_footprint에서 위치·방향을 읽어 logitle_pose를 발행하는 ROS2 노드를 작성했습니다.'],['확인 결과','Zenoh 브리지와 FMS 구독 설정을 맞춰 로봇별 위치를 관제 지도에 연동했습니다.']]}
     },
     'mobile-manipulator': {
       intro: 'Flutter 앱으로 4륜 이동체와 5자유도 로봇팔을 제어합니다. 티칭 동작과 설정을 내부 Flash에 저장하고 다시 불러오도록 구현했습니다.',
@@ -43,7 +43,7 @@ window.renderPortfolioProjects = ({sheet, heading, make, add}) => {
         {title:'로봇팔 서보 제어',kind:'servo',note:'목표 각도를 I2C 명령과 PWM 출력으로 연결'},
         {title:'티칭 데이터 Flash 저장',image:'assets/mobile-flash-build.png',note:'프로그램 영역을 384KiB로 제한해 데이터 저장 영역과 분리'}
       ],
-      problem:{title:'전원을 꺼도 티칭 데이터를 유지하려면',rows:[['요구사항','추가 저장장치 없이 티칭 동작과 설정을 보존해야 했습니다.'],['판단·구현','마지막 Sector 7을 데이터용으로 확보하고, 프로그램 영역은 384KiB로 제한했습니다. 기록 후 읽기 검증과 부팅 시 복원을 구현했습니다.'],['구현 결과','프로그램과 저장 데이터를 분리하고 티칭·설정의 저장·불러오기 구조를 마련했습니다.']]}
+      problem:{title:'전원 종료 후 티칭 데이터 보존 필요',rows:[['요구사항','추가 저장장치 없이 티칭 동작과 설정을 보존해야 했습니다.'],['판단·구현','마지막 Sector 7을 데이터용으로 확보하고, 프로그램 영역은 384KiB로 제한했습니다. 기록 후 읽기 검증과 부팅 시 복원을 구현했습니다.'],['구현 결과','프로그램과 저장 데이터를 분리하고 티칭·설정의 저장·불러오기 구조를 마련했습니다.']]}
     },
     'vision-tracking': {
       intro:'Raspberry Pi의 YOLO Pose 인식과 STM32 주행 제어를 연동한 온디바이스 AI 추적 로봇입니다.',
@@ -52,7 +52,7 @@ window.renderPortfolioProjects = ({sheet, heading, make, add}) => {
         {title:'YOLO Pose 학습 및 모델 양자화',kind:'quantization',note:''},
         {title:'IMU 기반 PID 방향 제어',image:'assets/vision-imu-pid-loop.svg',note:'목표·현재 Yaw 오차로 좌우 PWM 보정 · 전진·후진 보정 부호 분리'}
       ],
-      problem:{title:'전진·후진에 따라 달라지는 방향 보정',rows:[['문제','같은 좌우 모터 보정 부호를 쓰면 진행 방향에 따라 보정이 반대로 작용할 수 있었습니다.'],['판단·구현','IMU Yaw로 PID 보정값을 계산하고 후진 시 좌우 보정 부호를 반대로 적용했습니다.'],['구현 결과','방향별 보정과 적분 누적·모터 출력 제한을 적용한 제어 로직을 구현했습니다.']]}
+      problem:{title:'후진 시 오히려 더 치우치는 방향 보정',rows:[['문제','같은 좌우 모터 보정 부호를 쓰면 진행 방향에 따라 보정이 반대로 작용할 수 있었습니다.'],['판단·구현','IMU Yaw로 PID 보정값을 계산하고 후진 시 좌우 보정 부호를 반대로 적용했습니다.'],['구현 결과','방향별 보정과 적분 누적·모터 출력 제한을 적용한 제어 로직을 구현했습니다.']]}
     },
     'plc-automation': {
       intro:'유도형 근접센서로 금속·비금속을 구분하고, 재료 투입·가공·창고 적재·배출을 제어하는 MPS 자동화 시스템입니다.',
@@ -65,18 +65,18 @@ window.renderPortfolioProjects = ({sheet, heading, make, add}) => {
     }
   };
   compact.logiflow.secondaryProblem = {
-    title:'지나간 경유점으로 되돌아가던 왕복 현상',
+    title:'통과한 경유점으로 되돌아가는 문제',
     rows:[['문제','NavigateThroughPoses 전환 후 실기체가 이미 통과한 중간 경유점으로 되돌아갔습니다.'],['판단·구현','RViz와 BT 흐름을 분석하고, 당시 시험에서 RemovePassedGoals 반경을 0.03→0.06m로 조정했습니다. 경유점 확인 3Hz와 경로 재계산 1Hz를 분리했습니다.'],['확인 결과','수정된 BT를 적용한 뒤 실기체에서 왕복 현상이 해소된 것을 확인했습니다.']]
   };
   compact['mobile-manipulator'].secondaryProblem = compact['mobile-manipulator'].problem;
   compact['mobile-manipulator'].problem = {
-    title:'서로 다른 제어 명령을 하나의 패킷으로',
+    title:'제어 명령마다 다른 데이터 구조',
     rows:[['문제','주행·로봇팔·티칭·설정은 필요한 데이터가 달라 공통 통신 형식이 필요했습니다.'],['판단·구현','시작·Mode·12바이트 데이터·Checksum·종료로 이루어진 고정 16바이트 패킷을 설계하고, 모드별로 데이터를 해석했습니다.'],['구현 결과','앱과 STM32가 하나의 프레임 형식으로 명령을 구분해 전달·처리하도록 구현했습니다.']]
   };
   compact['vision-tracking'].secondaryProblem = compact['vision-tracking'].problem;
   compact['vision-tracking'].secondaryProblem.rows[0][1] = '전진에서는 정상적으로 보정됐지만, 같은 좌우 모터 보정 부호를 후진에도 적용하자 오히려 한쪽으로 더 치우쳤습니다.';
   compact['vision-tracking'].problem = {
-    title:'검출·Pose 학습 라벨 형식 통합',
+    title:'인체·객체 데이터의 학습 라벨 형식 불일치',
     rows:[['문제','인체 데이터는 11개 키포인트를 사용하지만 화재·무기 데이터는 바운딩 박스만 있어 같은 Pose 학습 형식에 넣을 수 없었습니다.'],['판단·구현','비인체 바운딩 박스의 중심점을 키포인트 하나로 표현하고 나머지 10개를 더미 처리해 11포인트 형식으로 맞췄습니다.'],['구현 결과','인체 Pose와 비인체 검출 라벨을 같은 학습 형식으로 통합했습니다. 비인체 중심점은 형식 호환용입니다.']]
   };
   const roleRows = {
