@@ -33,7 +33,7 @@ window.renderPortfolioProjects = ({sheet, heading, make, add}) => {
         {title:'KEV 교통조정', image:'assets/print-traffic-start.png', note:'마주 오는 로봇의 이동 조정'},
         {title:'MQTT 도킹 연동', image:'assets/print-docking-frame-clean.png', note:'스테이션별 도킹 시연 · 접촉 신호 수신·상태 반영'}
       ],
-      problem:{title:'관제 지도에서 로봇 위치가 끊겨 보이는 현상', rows:[['문제','관제 지도에서 주행 중인 로봇의 위치가 실시간으로 갱신되지 않고 끊겨 보였습니다.'],['판단·구현','AMCL 수신과 분리해 TF의 map → base_footprint에서 위치·방향을 읽고, logitle_pose를 발행하는 ROS2 노드를 작성했습니다.'],['확인 결과','Zenoh 브리지와 FMS 구독 설정을 맞춰 로봇별 위치를 관제 지도에 연동했습니다.']]}
+      problem:{title:'관제 화면에서 로봇 위치가 점프하듯 표시되는 문제', rows:[['문제','로봇은 연속적으로 이동했지만, 관제 위치 갱신이 amcl_pose 수신에 묶여 한 지점에서 다음 지점으로 점프하듯 표시됐습니다.'],['판단·구현','TF의 map → base_footprint에서 위치·방향을 읽어 logitle_pose를 발행하는 ROS2 노드를 작성했습니다.'],['확인 결과','관제용 위치 발행을 AMCL 수신과 분리하고, Zenoh·FMS를 통해 로봇별 위치를 지도에 반영했습니다.']]}
     },
     'mobile-manipulator': {
       intro: 'Flutter 앱으로 4륜 이동체와 5자유도 로봇팔을 제어합니다. 티칭 동작과 설정을 내부 Flash에 저장하고 다시 불러오도록 구현했습니다.',

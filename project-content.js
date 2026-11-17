@@ -57,10 +57,10 @@ const portfolioProjects = [
         result: '도착 위치를 반복 기록하고 비교할 수 있는 도구를 마련했습니다. XY Goal Tolerance를 줄이는 것만으로 실제 도착 정확도가 일관되게 높아지지는 않았습니다.',
         request: { id: 'A1', title: '정차 오차 측정 자료', description: '목표점과 실제 정차 위치가 함께 보이는 RViz 화면 또는 현장 사진. 최종 CSV가 있으면 조건별 결과 그래프로 구성할 수 있습니다.', format: '화면 1장 + 측정 조건·횟수 / CSV가 있으면 함께' }
       },
-      { id: 'tf', label: 'ROS2 / 관제 연동', title: '관제 지도에서 로봇 위치가 끊겨 보이는 현상',
-        problem: '관제 지도에서 주행 중인 로봇의 위치가 실시간으로 갱신되지 않고 끊겨 보였습니다. 관제용 위치 갱신은 amcl_pose 메시지를 받는 흐름에 묶여 있었습니다.',
-        decision: 'TF의 map → base_footprint 변환에서 위치·방향을 읽어 PoseStamped 형식의 logitle_pose 토픽으로 발행하는 ROS2 노드를 작성했습니다. Zenoh 브리지의 전달 토픽과 관제 측 구독 설정을 맞췄습니다.',
-        result: '로봇의 위치 토픽을 Zenoh 브리지로 중계하고, FMS가 로봇별 /{robot_id}/logitle_pose를 구독해 지도 위치를 갱신하도록 연동했습니다.',
+      { id: 'tf', label: 'ROS2 / 관제 연동', title: '관제 화면에서 로봇 위치가 점프하듯 표시되는 문제',
+        problem: '실제 로봇은 연속적으로 이동했지만, 관제 화면에서는 위치가 한 지점에서 다음 지점으로 점프하듯 표시됐습니다. 관제용 위치 갱신이 amcl_pose 메시지 수신에 종속되어 있어, 이동 중 위치 변화가 화면에 제때 반영되지 않았습니다.',
+        decision: '관제용 위치 발행을 amcl_pose 수신 흐름과 분리했습니다. TF의 map → base_footprint 변환에서 위치·방향을 읽어 PoseStamped 형식의 logitle_pose 토픽으로 발행하는 ROS2 노드를 작성하고, Zenoh 브리지와 FMS의 전달·구독 설정을 맞췄습니다.',
+        result: 'AMCL 메시지 수신과 별도로 관제용 위치를 발행하도록 구성했습니다. FMS가 Zenoh 브리지로 중계된 로봇별 /{robot_id}/logitle_pose를 구독해 지도 위치를 갱신하도록 연동했습니다.',
         flow: ['TF 위치·방향 조회', 'logitle_pose 발행', 'Zenoh 브리지 중계', 'FMS 구독·지도 표시']
       },
       { id: 'traffic', label: 'KEV-MAPF / 경로 계획', title: '모델의 판단과 실행 전 검증을 나눠 교통조정',
