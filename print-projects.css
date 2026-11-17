@@ -1,0 +1,133 @@
+/* Project pages are typeset for A4, independently of the web layout. */
+.sheet-project .sheet-body,.sheet-project-depth .sheet-body{display:flex;flex-direction:column;gap:0}
+.sheet-project .print-heading,.sheet-project-depth .print-heading{margin-bottom:3mm}
+.sheet-project .print-heading h2,.sheet-project-depth .print-heading h2{font-size:22pt;line-height:1.3}
+.sheet-project .heading-note,.sheet-project-depth .heading-note{font-size:9pt}
+.folio-print-meta{margin:0 0 3mm;font-size:8pt;color:#526177}
+.folio-print-award{font-size:9pt;font-weight:700;color:#7d4450;margin:0 0 1mm}
+.folio-print-award-detail{font-size:7pt;color:#526177;margin:0 0 3mm}
+.folio-print-summary{font-size:10pt;line-height:1.65;margin:0 0 4mm}
+.folio-print-photo{margin:0 0 4mm;padding:0;border:1px solid #d0d9e1;background:#f4f7f9}
+.folio-print-photo img{display:block;width:100%;height:55mm;object-fit:contain}
+[data-project="logiflow"] .folio-print-photo img{height:62mm}
+[data-project="vision-tracking"] .folio-print-photo img{height:43mm}
+.folio-print-photo figcaption{padding:1.5mm 3mm;font-size:7pt;line-height:1.4;color:#526177;background:white;border-top:1px solid #d0d9e1}
+.folio-print-role{display:grid;grid-template-columns:20mm minmax(0,1fr);gap:3mm;border-left:2pt solid #7d4450;padding:2mm 3mm;margin:0 0 4mm;background:#f7f3f5}
+.folio-print-role strong{font-size:8pt;color:#7d4450}
+.folio-print-role p{font-size:9pt;line-height:1.6;margin:0}
+.folio-print-work{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4mm;padding:0;margin:0 0 4mm}
+.folio-print-row dt{font-size:8pt;font-weight:700;color:#365d77}
+.folio-print-row dd{font-size:8.5pt;line-height:1.6;margin:1mm 0 0}
+.folio-print-work>.folio-print-row{padding-top:2mm;border-top:1pt solid #cdd6df}
+.folio-print-scope{font-size:7.5pt;line-height:1.55;color:#526177;margin:0 0 4mm;padding:2.5mm 3mm;background:#f2f5f7}
+.folio-print-case{padding:4mm 0;border-top:1pt solid #aabac8;break-inside:avoid}
+.folio-print-case .kicker{font-size:7pt;margin:0 0 1.5mm;letter-spacing:.04em}
+.folio-print-case h3{font-size:13pt;line-height:1.4;margin:0 0 3mm;letter-spacing:-.02em}
+.folio-print-case dl{display:grid;gap:2mm;margin:0}
+.folio-print-case dl>.folio-print-row{display:grid;grid-template-columns:20mm minmax(0,1fr);gap:3mm}
+.folio-print-case dl>.folio-print-row dd{margin:0;font-size:9pt;line-height:1.65}
+.folio-print-case.is-compact{padding:3mm 0}
+.folio-print-case.is-compact h3{font-size:12pt;margin-bottom:2mm}
+.folio-print-case.is-compact dl{gap:1.5mm}
+.folio-print-case.is-compact dl>.folio-print-row dd{font-size:8.5pt;line-height:1.6}
+.folio-print-links{display:flex;justify-content:space-between;align-items:center;gap:4mm;margin-top:auto;padding-top:3mm;border-top:1px solid #cdd6df}
+.folio-print-links a{font-size:8pt;color:#365d77;text-decoration:none;font-weight:700}
+.folio-print-video{display:flex;align-items:center;gap:2mm}.folio-print-video img{width:12mm;height:12mm}
+.sheet-project-depth .folio-print-case{padding:5mm 0}
+.sheet-project-depth .folio-print-scope{margin-top:4mm}
+
+.folio-print-process{margin:0 0 4mm}
+.folio-print-process h3,.folio-print-hmi h3{font-size:10pt;margin:0 0 2mm}
+.folio-print-process ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));list-style:none;margin:0;padding:0;border:1px solid #d0d9e1;background:#f4f7f9}
+.folio-print-process li{position:relative;padding:2.5mm 2mm;font-size:7.5pt;line-height:1.4}
+.folio-print-process li+li{border-left:1px solid #d0d9e1}
+.folio-print-process li+li:before{content:'→';position:absolute;left:-1.5mm;background:#f4f7f9;color:#365d77}
+.folio-print-hmi .folio-print-photo img{height:53mm}
+
+.folio-print-tags{display:flex;flex-wrap:wrap;gap:1.5mm;margin:0 0 3mm}
+.folio-print-tags span{display:inline-block;padding:1mm 2mm;border:1px solid #c9d3dc;color:#1c2b3f;background:#f4f7fa;font-size:7.5pt;line-height:1.4}
+
+.folio-print-web-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:6mm;align-items:start}
+.sheet-project .folio-print-web-copy .print-heading h2{font-size:21pt;line-height:1.35;word-break:keep-all}
+.sheet-project .folio-print-web-copy .heading-note{font-size:10pt;line-height:1.6;margin-top:3mm}
+.folio-print-web-copy .folio-print-tags{margin:4mm 0}
+.folio-print-web-copy .folio-print-meta{font-size:8pt;line-height:1.7;margin-bottom:5mm}
+.folio-print-web-copy .folio-print-summary{font-size:10pt;line-height:1.9;margin-bottom:7mm;word-break:keep-all}
+.folio-print-web-role-heading{font-size:12pt;margin:0 0 3mm}
+.folio-print-web-work{margin:0}
+.folio-print-web-work>.folio-print-row{display:block;border-top:1px solid #cdd6df;padding:3mm 0}
+.folio-print-web-work dt{font-size:9pt;margin:0 0 1.5mm}
+.folio-print-web-work dd{font-size:9pt;line-height:1.8;margin:0;word-break:keep-all}
+.folio-print-web-media{display:grid;gap:6mm;padding-top:10mm}
+[data-project="logiflow"] .folio-print-web-media .folio-print-photo img{height:auto;max-height:none}
+.folio-print-web-media .folio-print-photo{margin:0;background:#fff}
+.folio-print-web-media .folio-print-photo figcaption{font-size:7pt;line-height:1.7;padding:2mm}
+
+.sheet-project .folio-print-web-media .folio-print-photo img{height:auto;max-height:68mm;object-fit:contain}
+.folio-print-state-images{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1mm}
+.folio-print-state-images .folio-print-photo figcaption{font-size:6pt;padding:1mm;line-height:1.5}
+.sheet-project .folio-print-state-images .folio-print-photo img{aspect-ratio:4/3;object-fit:contain}
+/* One A4 project: concise overview, implementation figures, one problem. */
+.print-project-onepage .folio-print-web-layout{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:5mm;margin-bottom:5mm}
+.sheet-project .print-project-onepage .print-heading{margin-bottom:2mm}
+.sheet-project .print-project-onepage .print-heading h2{font-size:18pt;line-height:1.3}
+.sheet-project .print-project-onepage .heading-note{font-size:9pt;line-height:1.5;margin-top:2mm}
+.print-project-onepage .folio-print-tags{margin:2.5mm 0}
+.print-project-onepage .folio-print-tags span{font-size:7pt;padding:.8mm 1.6mm}
+.print-project-onepage .folio-print-meta{font-size:7.5pt;margin-bottom:3mm}
+.print-project-onepage .folio-print-summary{font-size:8.5pt;line-height:1.7;margin-bottom:3mm}
+.print-role-brief{padding:2.5mm 0;border-top:1px solid #cdd6df}
+.print-role-brief strong{font-size:8pt;color:#7d4450}.print-role-brief p{font-size:8.5pt;line-height:1.7;margin:1mm 0 0;word-break:keep-all}
+.print-project-onepage .folio-print-web-media{padding-top:3mm;gap:3mm}
+.sheet-project .print-project-onepage .folio-print-web-media .folio-print-photo img{height:auto;max-height:46mm;object-fit:contain}
+.print-project-onepage .folio-print-web-media .folio-print-photo figcaption{font-size:6.5pt;padding:1mm 1.5mm;line-height:1.5}
+.print-project-onepage .folio-print-state-images .folio-print-photo figcaption{font-size:5.5pt;padding:.8mm}
+.print-implementation-section{margin:0 0 5mm;padding-top:3mm;border-top:1pt solid #1c2b3f}
+.print-implementation-section>h3,.print-problem-section>h3{font-size:11pt;margin:0 0 3mm}
+.print-implementation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3mm}
+.print-implementation-grid[data-count="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+.print-implementation-card{min-width:0;padding:2.5mm;border:1px solid #cdd6df;background:#fafbfc;break-inside:avoid}
+.print-implementation-card h4{font-size:8.5pt;margin:0 0 2mm;color:#365d77;line-height:1.5}
+.print-implementation-flow{list-style:none;margin:0;padding:0;display:grid;gap:2.5mm}
+.print-implementation-flow li{position:relative;font-size:7.5pt;line-height:1.4;background:white;border:1px solid #d5dde6;padding:1mm 2mm;text-align:center}
+.print-implementation-flow li+li:before{content:'↓';position:absolute;top:-3mm;left:calc(50% - 2mm);width:4mm;line-height:2.5mm;color:#365d77}
+.print-implementation-note{font-size:7pt;line-height:1.6;margin:2mm 0 0;color:#526177}
+.print-packet-mini{display:grid;grid-template-columns:1fr 1fr 1.5fr 1fr 1fr;border:1px solid #cdd6df;margin:4mm 0}
+.print-packet-mini>div{display:grid;gap:2mm;text-align:center;padding:3mm .5mm;background:#eef2f6;min-width:0}
+.print-packet-mini>div+div{border-left:1px solid #cdd6df}.print-packet-mini strong{font-size:6pt}.print-packet-mini span{font-size:6pt}
+.print-packet-mini .is-data{background:#1c2b3f;color:white}
+.print-servo-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1mm;margin:2mm 0}
+.print-servo-mini figure{margin:0;min-width:0}.print-servo-mini img{width:100%;height:12mm;object-fit:contain}.print-servo-mini figcaption{text-align:center;font-size:5.5pt}
+.print-mini-interface{font-size:7pt;text-align:center;color:#365d77;margin:1mm 0}
+.print-problem-section{padding-top:3mm;border-top:1pt solid #1c2b3f;break-inside:avoid}
+.print-problem-section h4{font-size:10pt;margin:0 0 2.5mm;line-height:1.5;color:#365d77}
+.print-problem-section dl{display:grid;gap:2mm;margin:0}
+.print-problem-section .folio-print-row{display:grid;grid-template-columns:17mm minmax(0,1fr);gap:3mm}
+.print-problem-section .folio-print-row dt{font-size:8pt;color:#7d4450}
+.print-problem-section .folio-print-row dd{font-size:8.5pt;line-height:1.7;margin:0;word-break:keep-all}
+
+.print-role-table{margin-top:3mm}
+.print-role-table h3{margin:0 0 2mm;font-size:10pt;color:#1c2b3f}
+.print-role-table dl{margin:0}
+.print-role-table .folio-print-row{display:grid;grid-template-columns:22mm minmax(0,1fr);gap:2mm;padding:2mm 0;border-top:1px solid #cdd6df;align-items:baseline}
+.print-role-table .folio-print-row dt{font-size:8pt;line-height:1.6;color:#365d77;word-break:keep-all}
+.print-role-table .folio-print-row dd{margin:0;font-size:8pt;line-height:1.6;word-break:keep-all}
+
+.print-implementation-frame{display:block;width:100%;height:29mm;object-fit:contain;background:#fff;border:1px solid #d5dde6}
+
+.print-problem-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:4mm}
+.print-problem-grid[data-count="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+.print-problem-grid[data-count="2"]>.print-problem-card{padding:2.5mm;border:1px solid #cdd6df;min-width:0}
+.print-problem-grid[data-count="2"] h4{font-size:9pt;line-height:1.5}
+.print-problem-grid[data-count="2"] .folio-print-row{grid-template-columns:13mm minmax(0,1fr);gap:2mm}
+.print-problem-grid[data-count="2"] .folio-print-row dt{font-size:7.5pt;line-height:1.6}
+.print-problem-grid[data-count="2"] .folio-print-row dd{font-size:8pt;line-height:1.65}
+
+.print-quant-comparison{width:100%;border-collapse:collapse;table-layout:fixed;font-size:8pt;margin:2mm 0 3mm}
+.print-quant-comparison th,.print-quant-comparison td{padding:2.5mm 1mm;border-bottom:1px solid #d5dde6;text-align:center;line-height:1.5}
+.print-quant-comparison thead th{font-size:7pt;color:#526177;font-weight:600}
+.print-quant-comparison thead th:first-child{width:24%}
+.print-quant-comparison tbody th{font-size:7pt;text-align:left;font-weight:600;color:#526177}
+.print-quant-comparison .is-optimized{font-size:11pt;font-weight:800;color:#365d77;background:#edf3f7}
+.print-quant-results{display:flex;flex-wrap:wrap;gap:1mm 2mm}
+.print-quant-results span{font-size:7.5pt;color:#7d4450;font-weight:700;line-height:1.6}
