@@ -58,8 +58,8 @@ window.renderPortfolioProjects = ({sheet, heading, make, add}) => {
       intro:'유도형 근접센서로 금속·비금속을 구분하고, 재료 투입·가공·창고 적재·배출을 제어하는 MPS 자동화 시스템입니다.',
       role:'공정 시퀀스·비상정지·인터록, HMI 작화와 PLC 연동을 담당했습니다.',
       implementations:[
-        {title:'재료 분류·적재·배출',steps:['투입·가공','금속 여부 판별','창고 적재·배출'],note:'금속·비금속 재료 모두 창고 적재'},
-        {title:'HMI 공정 조작',image:'assets/plc-hmi-equipment.png',note:'공정 조작·적재 현황·작업 수량 표시 및 PLC 연동'}
+        {title:'재료 분류·적재·배출',steps:['재료 투입','가공','금속·비금속 판별','창고 적재·배출'],note:'유도형 근접센서 기반 재질 판별'},
+        {title:'HMI 공정 조작',screens:[{src:'assets/plc-hmi-equipment.png',title:'공정 조작·현황'},{src:'assets/plc-hmi-manual.png',title:'수동 조작'}],note:'공정 조작·적재 현황·작업 수량 표시 및 PLC 연동'}
       ],
       problem:{title:'안전 조건을 포함한 공정 순서 구성',rows:[['요구사항','센서 입력과 공정 단계에 따라 동작을 연결하고 비상정지 조건을 반영해야 했습니다.'],['판단·구현','래더에 단계별 동작 조건, 비상정지·인터록·자가유지 로직을 구성하고 HMI를 연동했습니다.'],['구현 결과','재료 분류·창고 적재·배출 공정과 비상정지 동작을 구현했습니다.']]}
     }
@@ -99,6 +99,10 @@ window.renderPortfolioProjects = ({sheet, heading, make, add}) => {
       const results=make('div','print-quant-results');
       add(results,make('span','','용량 약 74% 감소'),make('span','','FPS 약 46% 증가'));
       add(card,comparison,results);
+    } else if(item.screens) {
+      const gallery=make('div','print-implementation-screens');
+      item.screens.forEach(screen=>add(gallery,photo(screen.src,screen.title,screen.title)));
+      add(card,gallery);
     } else if(item.image) {
       const frame=make('img','print-implementation-frame');frame.src=item.image;frame.alt=item.title+' 시연 캡처';add(card,frame);
     } else if(item.kind==='packet') {
@@ -163,7 +167,8 @@ window.renderPortfolioProjects = ({sheet, heading, make, add}) => {
       const card=make('article','print-problem-card');add(card,make('h4','',item.title));
       const story=make('dl');item.rows.forEach(([label,text])=>paragraph(story,label,text));add(card,story);add(problems,card);
     });
-    add(problem,problems);add(body,implementation,problem);
+    add(problem,problems);add(body,implementation);
+    if(p.id !== 'plc-automation') add(body,problem);
 
   });
 };
