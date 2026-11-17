@@ -1,73 +1,76 @@
 # 안재권 · 로봇 SW 개발자
 
-**바다에서는 선박의 항로를, 지금은 로봇의 경로를 다룹니다.**
+ROS2 기반 AMR 자율주행과 관제 연동, STM32 기반 로봇 제어를 개발했습니다.
+실제 로봇의 동작을 확인하며 주행·통신·인식을 연결하는 소프트웨어를 구현해왔습니다.
 
-ROS2 기반 AMR 주행·관제 연동과 STM32 제어, 모바일 앱, 비전 모델을 다뤄왔습니다.
-로봇의 주행과 제어를 시스템에 연결하는 개발을 지향합니다.
+![C/C++](https://img.shields.io/badge/C%2FC%2B%2B-1C2D40?style=flat-square) ![Python](https://img.shields.io/badge/Python-1C2D40?style=flat-square) ![ROS2](https://img.shields.io/badge/ROS2-1C2D40?style=flat-square) ![STM32](https://img.shields.io/badge/STM32-1C2D40?style=flat-square)
 
-**관심 분야** · Robot Software / System Integration / AMR 자율주행
+[포트폴리오](https://woozoo-studio.github.io/) · [PDF 보기·저장](https://woozoo-studio.github.io/print.html) · [이메일](mailto:woozoo.dev@gmail.com)
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-프로젝트_보기-1C2D40?style=for-the-badge)](https://woozoo-studio.github.io/) [![Print](https://img.shields.io/badge/Print-PDF_저장-7D4450?style=for-the-badge)](https://woozoo-studio.github.io/print.html) [![Email](https://img.shields.io/badge/Email-문의하기-365D77?style=for-the-badge)](mailto:woozoo.dev@gmail.com)
-
-## 기술 역량과 개발 경험
-
-| 분야 | 주요 기술 | 개발 경험 |
-| --- | --- | --- |
-| **로봇 소프트웨어** | ROS2 · Nav2 · Gazebo · TF · EKF | 노드·토픽·TF를 활용한 로봇·관제 연동, 주행·위치추정 설정 조정과 실기체 시험 |
-| **임베디드·통합 제어** | STM32 · C/C++ · HAL · Flutter | 모터·센서·서보 제어와 앱 연동, Bluetooth 통신과 Flash 데이터 저장 |
-| **비전 모델·엣지 추론** | Python · YOLO Pose · Raspberry Pi · FP16 · INT8 | 학습 라벨 형식 통합, Pose 모델 학습·추론, 모델 변환·양자화 |
-| **산업 자동화** | PLC · HMI · GX Works2 | 공정 순서·비상정지·복귀 로직 구현, HMI 공정 조작·상태 표시 |
-
-**협업 도구** · Git / GitHub / Jira / Confluence
-
-## 진행 중인 프로젝트
+## 프로젝트
 
 ### AI 융합 다중 로봇 물류
 
-**2026.09–진행 중 · 팀 7명**
+여러 AMR과 로봇팔을 연동해 주문·피킹·이송·패킹 공정을 수행하는 물류 자동화 시스템입니다.
 
-주문에 따라 여러 대의 AMR이 물품을 이송하고, OMX 로봇팔이 적재·하역하는 물류 자동화 시스템입니다.
-FMS의 주문·배차·경로 관제와 로봇의 이동·작업을 연결합니다.
+- **자율주행:** Nav2 주행·위치추정 설정 조정, 정차 위치 반복 측정과 분석 도구 구현
+- **교통조정:** PBS의 우선순위 개념을 참고한 KEV 기반 교통조정 로직 구현, 실기체에서 대기·우선 통과 확인
+- **관제 연동:** TF 기반 위치 토픽 발행, Zenoh 브리지·FMS 연동과 MQTT 도킹 접촉 상태 수신 처리
 
-#### 1차 · AMR 주행·관제 연동
-
-- **Route Graph 제작** — 그리드 이송 경로의 이동 지점과 연결 관계를 노드·엣지로 구성해 FMS 팀에 전달했습니다.
-- **관제용 위치 토픽 발행** — TF의 `map → base_footprint` 변환으로 map 기준의 로봇 위치를 구하고, FMS 관제용 토픽으로 발행했습니다.
-- **정차 위치 측정·분석 도구 제작** — 위치·방향을 반복 측정해 평균·표준편차를 계산하고, CSV 저장과 RViz 시각화를 구현했습니다.
-
-현재는 주행 성능 개선을 위한 **Nav2 튜닝**과 위치추정 안정화를 위한 **EKF 설정 조정**을 진행하고 있습니다.
-
-#### 2차 · AI 기반 MAPF 구현·비교 검토
-
-의사결정 모델 **Kev-0.8B 적용을 준비 중**입니다.
-다중 로봇 경로 계획(MAPF)을 구현하고, 기존 MAPF 방식과 같은 조건에서 비교해 물류 시스템에 대체·적용할 수 있는지 검토할 계획입니다.
-
-[AMR 저장소](https://github.com/E1I6-Logistics/Logistics_AMR) · [시스템 구성과 담당 업무](https://woozoo-studio.github.io/#project-featured)
-
-## 이전 프로젝트
+[AMR 코드](https://github.com/E1I6-Logistics/Logistics_AMR) · [교통조정 코드](https://github.com/E1I6-Logistics/Logistics_AI/tree/mapf) · [시연 영상](https://youtu.be/zMlgDwmd75g)
 
 ### 앱 제어 이동형 로봇팔
 
-**RC카 주행부터 로봇팔 티칭까지, 하나로 연결한 모바일 앱 기반 제어 시스템.**
+Flutter 앱으로 4륜 이동체와 5자유도 로봇팔을 조작하고, 동작을 티칭·저장·재생하는 시스템입니다.
 
-Flutter 제어 앱, Bluetooth 통신 패킷, STM32 서보 제어와 PID 직진 보정을 구현했습니다.
-티칭 데이터는 펌웨어와 분리한 내부 Flash에 저장하며, **12개 시퀀스 · 시퀀스당 최대 30 Waypoint**를 지원합니다.
+- **앱·통신:** Flutter 제어 앱과 주행·로봇팔·티칭 명령을 전달하는 16바이트 Bluetooth 패킷 설계
+- **로봇 제어:** PCA9685 기반 6채널 서보 제어와 IMU Yaw 기반 PID 방향 보정
+- **데이터 저장:** 내부 Flash에 티칭 시퀀스·설정값을 저장하고 전원 재시작 후 복원
 
-[저장소](https://github.com/sditr0414/mobile-retrieval-robot) · [시연 영상](https://woozoo-studio.github.io/#project-embedded-demo)
+[코드](https://github.com/sditr0414/mobile-retrieval-robot) · [시연 영상](https://youtu.be/isyhQvfVqWs)
 
 ### 비전 AI 트래킹 로봇
 
-**STM32 제어와 Raspberry Pi 비전 AI를 연결해 주행과 인식을 함께 구현한 로봇.**
+Raspberry Pi에서 YOLO Pose로 자세를 분석하고, 위험 행동·낙상 의심 상황의 대상을 추적하는 온디바이스 AI 순찰 로봇입니다.
 
-STM32 HAL 기반 모터·IMU 연동과 PID 직진 보정을 담당했습니다.
-이후 인체 Pose와 화재·무기 검출 라벨을 11포인트 학습 형식으로 통합하고, YOLO Pose 학습·추론 및 FP16 변환·INT8 양자화에 참여했습니다.
+- **주행 제어:** STM32 모터·IMU 연동, 전진·후진에 따른 PID 보정 방향 분리
+- **학습 데이터:** 인체 Pose와 화재·무기 검출 데이터를 공통 학습 라벨 형식으로 통합
+- **모델 학습·양자화:** YOLO Pose 모델 학습·추론과 INT8 양자화
 
-[저장소](https://github.com/Ugie01/Tracking_Patrol_Robot) · [시연 영상](https://www.youtube.com/watch?v=0Xhue5Aivyg)
+[코드](https://github.com/Ugie01/Tracking_Patrol_Robot) · [시연 영상](https://youtu.be/0Xhue5Aivyg)
 
-### PLC 기반 MPS 자동화
+### PLC 기반 MPS 공정 제어
 
-**가공·배출·적재 공정과 비상정지·복귀 시퀀스를 구현한 자동화 프로젝트.**
+유도형 근접센서로 금속·비금속을 구분하고, 재료 투입부터 창고 적재·배출까지 제어하는 자동화 시스템입니다.
 
-GX Works2로 공정 순서와 비상정지·복귀 로직을 구성하고, HMI로 공정을 조작하고 상태를 확인하도록 구현했습니다.
+- **공정 제어:** 재료 투입·가공·분류·적재·배출 시퀀스 구현
+- **안전 제어:** 비상정지·인터록·자가유지 로직 구현
+- **HMI:** 공정 조작·적재 현황·작업 수량 화면 작화 및 PLC 연동
 
-[공정 소개·시연 영상](https://woozoo-studio.github.io/#project-plc)
+[프로젝트 보기](https://woozoo-studio.github.io/#project-plc)
+
+## 기술 스택
+
+**프로그래밍 언어**
+
+![C](https://img.shields.io/badge/C-365D77?style=flat-square) ![C++](https://img.shields.io/badge/C%2B%2B-365D77?style=flat-square) ![Python](https://img.shields.io/badge/Python-365D77?style=flat-square)
+
+**로봇 SW·자율주행**
+
+![ROS2](https://img.shields.io/badge/ROS2-1C2D40?style=flat-square) ![Nav2](https://img.shields.io/badge/Nav2-1C2D40?style=flat-square) ![TF](https://img.shields.io/badge/TF-1C2D40?style=flat-square) ![EKF](https://img.shields.io/badge/EKF-1C2D40?style=flat-square) ![Gazebo](https://img.shields.io/badge/Gazebo-1C2D40?style=flat-square) ![Isaac Sim](https://img.shields.io/badge/Isaac%20Sim-1C2D40?style=flat-square)
+
+**임베디드·로봇 제어**
+
+![STM32](https://img.shields.io/badge/STM32-365D77?style=flat-square) ![ESP32](https://img.shields.io/badge/ESP32-365D77?style=flat-square) ![Raspberry Pi](https://img.shields.io/badge/Raspberry%20Pi-365D77?style=flat-square) ![HAL](https://img.shields.io/badge/HAL-365D77?style=flat-square)
+
+**비전 AI**
+
+![YOLO](https://img.shields.io/badge/YOLO-7D4450?style=flat-square) ![OpenCV](https://img.shields.io/badge/OpenCV-7D4450?style=flat-square) ![Quantization](https://img.shields.io/badge/Quantization-7D4450?style=flat-square)
+
+**PLC·자동화 제어**
+
+![PLC](https://img.shields.io/badge/PLC-365D77?style=flat-square) ![HMI](https://img.shields.io/badge/HMI-365D77?style=flat-square) ![GX Works2](https://img.shields.io/badge/GX%20Works2-365D77?style=flat-square)
+
+**버전 관리·협업 도구**
+
+![Git](https://img.shields.io/badge/Git-64748B?style=flat-square) ![GitHub](https://img.shields.io/badge/GitHub-64748B?style=flat-square) ![Jira](https://img.shields.io/badge/Jira-64748B?style=flat-square) ![Confluence](https://img.shields.io/badge/Confluence-64748B?style=flat-square)

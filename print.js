@@ -4,14 +4,7 @@
   const status = document.querySelector('#print-status');
   const button = document.querySelector('#save-pdf');
   button.addEventListener('click', () => {
-    const download = document.createElement('a');
-    const pdf = new URL('assets/portfolio-ahnjaegwon.pdf', document.baseURI);
-    pdf.searchParams.set('v', button.dataset.pdfVersion);
-    download.href = pdf.href;
-    download.download = '[포트폴리오] 로봇SW개발자_안재권.pdf';
-    document.body.append(download);
-    download.click();
-    download.remove();
+    window.print();
   });
   if (window.location.protocol === 'file:') {
     const previewLink = document.createElement('a');
@@ -117,41 +110,34 @@
     add(profileContact, make('h3', '', '연락처'), contactList);
     add(profileSidebar, profileContact);
     const profileBackground = copy(source, '#about .hero-background');
+    // The full team award is shown with Logiflow and in the credentials page.
+    profileBackground.querySelectorAll('.hero-background-group')[2]?.remove();
     profileBackground.querySelectorAll('h2').forEach((title, index) => {
-      title.textContent = ['학력', '주요 경력'][index];
+      title.textContent = ['학력', '교육·경력', '수상'][index];
     });
     const schoolName = pick(profileBackground, '.school-identity strong');
     schoolName.textContent = '한국해양대학교';
     const graduation = pick(profileBackground, '.degree-entry > span:not(.gpa-mark):not(.gpa-meter)');
+    graduation.textContent = graduation.textContent.split('/').pop().trim();
     const degreeMeta = make('span', 'print-degree-meta');
     graduation.replaceWith(degreeMeta);
-    add(degreeMeta, make('span', '', '해상보험전공'), make('span', '', '·'), graduation);
+    add(degreeMeta, make('span', '', '해상보험전공'), make('span', '', '/'), graduation);
     const gpa = pick(profileBackground, '.gpa-mark');
     const gpaScore = make('span', 'print-gpa-score');
     add(gpaScore, copy(gpa, 'b'), copy(gpa, 'small'));
     gpa.replaceChildren(make('span', 'print-gpa-label', '학점'), gpaScore);
     add(profileSidebar, profileBackground);
     const skillsSection = make('section', 'print-skills-section');
-    add(skillsSection, heading('01 / SKILLS & EXPERIENCE', value(source, '#skills h2')),
-      make('p', 'print-experience-overview', value(source, '#skills .skills-intro')));
+    add(skillsSection, heading('01 / SKILLS & EXPERIENCE', '기술역량'));
     const skills = make('div', 'print-experience-summary');
-    const experienceRecords = [...source.querySelectorAll('#skills .capability')].map(entry => ({
-      title: value(entry, 'h3'),
-      tech: [...entry.querySelectorAll('.capability-tech span')].map(node => node.textContent.trim()).join(' · '),
-      points: [...entry.querySelectorAll('.capability-points li')].map(node => node.textContent.trim())
-    }));
-    experienceRecords.forEach((record, index) => {
-      const entry = make('article', 'print-experience-record');
-      const recordHeading = make('div', 'print-experience-record-heading');
-      const identity = make('div');
-      add(identity, make('h3', '', record.title), make('p', 'print-experience-tech', record.tech));
-      add(recordHeading, make('span', 'print-experience-number', String(index+1).padStart(2,'0')), identity);
-      const points = make('ul', 'print-experience-points');
-      record.points.forEach(point => add(points, make('li', point.endsWith('조정 중') ? 'is-progress' : '', point)));
-      add(entry, recordHeading, points);
+    [...source.querySelectorAll('#skills .capability')].forEach(sourceEntry => {
+      const entry = make('article', 'print-experience-record print-technology-row');
+      const tech = make('div', 'print-technology-tags');
+      sourceEntry.querySelectorAll('.capability-tech span').forEach(tag => add(tech, make('span', '', tag.textContent.trim())));
+      add(entry, make('h3', '', value(sourceEntry, 'h3')), tech);
       add(skills, entry);
     });
-    add(skillsSection, skills, copy(source, '#skills .collaboration-strip'));
+    add(skillsSection, skills);
     add(profileColumns, profileSidebar, skillsSection);
     add(profileCard, profileOverview, profileColumns);
     add(profile, profileCard);
@@ -178,103 +164,17 @@
     add(sidebarCredentials, credentialSummary);
     add(profileSidebar, sidebarCredentials);
 
-    // 2. Featured project overview and evidence.
-    const featured = sheet('featured', 'PROJECTS / FEATURED');
-    const projectHeading = make('div', 'project-heading-row');
-    const repositoryQr = copy(source, '.featured .print-media-link');
-    repositoryQr.classList.add('project-heading-qr');
-    const projectTitle = heading('02 / PROJECTS', 'AI 융합 다중 로봇 물류');
-    const projectDetails = make('div', 'project-heading-details');
-    const projectMeta = copy(source, '.featured .feature-copy .meta');
-    add(projectDetails, make('p', 'heading-note', value(source, '.featured .project-sub')), projectMeta);
-    add(projectTitle, projectDetails);
-    add(projectHeading, projectTitle, repositoryQr);
-    add(featured, projectHeading);
-    const overview = make('section', 'featured-overview');
-    overview.setAttribute('aria-label', '프로젝트 개요와 시스템 흐름');
-    const facts = make('div', 'featured-facts');
-    add(facts,
-      make('p', 'print-overview-label', '프로젝트 목표'),
-      make('p', 'feature-lead', value(source, '.featured .feature-lead')));
-    const system = copy(source, '.featured .system');
-    const roles = make('div', 'print-project-roles');
-    add(roles, make('h4', '', '담당 역할'));
-    const baseRole = make('div', 'print-role-phase print-role-base');
-    add(baseRole, make('p', 'print-role-label', '1차 · 기반 개발'),
-      make('h5', '', value(source, '.feature-role-stages > div:first-child .role-phase-title')));
-    const aiRole = make('div', 'print-role-phase print-role-ai');
-    const aiLabel = make('div', 'print-role-phase-label');
-    add(aiLabel, make('p', 'print-role-label', '2차 · 확장 검증'), make('span', '', 'Kev 적용 예정'));
-    add(aiRole, aiLabel, make('h5', '', 'AI 기반 MAPF 구현·비교 검토'),
-      make('p', 'print-role-description', 'Kev-0.8B를 활용해 MAPF를 구현하고, 기존 방식의 대체·적용 가능성을 비교 검토할 계획입니다.'));
-    add(roles, baseRole, aiRole);
-    add(overview, facts, system, roles);
-    const evidence = copy(source, '.project-evidence');
-    evidence.querySelectorAll('.scenario-video, .scenario-watch-link').forEach(node => node.remove());
-    const scenarioLink = pick(evidence, '.scenario-print-link');
-    const scenarioCard = scenarioLink.closest('.project-evidence-card');
-    const scenarioUrl = value(scenarioLink, 'small');
-    scenarioLink.querySelector('strong').textContent = '시연 영상';
-    scenarioLink.querySelector('small').remove();
-    const scenarioMedia = make('div', 'scenario-print-media');
-    const scenarioPhoto = copy(source, '.featured .feature-photo img');
-    scenarioPhoto.className = 'scenario-print-photo';
-    scenarioLink.replaceWith(scenarioMedia);
-    add(scenarioMedia, scenarioPhoto, scenarioLink);
-    scenarioCard.querySelector('figcaption p').textContent = `전체 공정 시연 · ${scenarioUrl}`;
-    add(featured, overview, evidence);
-    const work = make('div', 'print-contribution');
-    add(work, make('h3', 'kicker', '담당 업무'));
-    add(work, make('p', 'print-complete-label', `✓ 구현 완료 · ${value(source, '.work-status-done .work-status-title span')}`));
-    const workGrid = make('div', 'print-contribution-grid print-complete-grid');
-    source.querySelectorAll('.work-details .work-status-group:first-child .work-item').forEach(item => {
-      const entry = make('div', 'print-work-item');
-      if (item.classList.contains('work-item-empty')) {
-        entry.classList.add('print-work-item-empty');
-        entry.setAttribute('aria-hidden', 'true');
-      } else {
-        add(entry, copy(item, 'h5'), copy(item, 'p'));
-      }
-      add(workGrid, entry);
-    });
-    add(work, workGrid);
-    add(work, make('p', 'print-progress-label', '○ 진행 중 · 주행·위치추정 / AI 경로 계획 검증'));
-    const progressGrid = make('div', 'print-contribution-grid print-progress-grid');
-    source.querySelectorAll('.work-details .work-status-group:nth-child(2) .work-item').forEach(item => {
-      const entry = make('div', 'print-work-item');
-      add(entry, copy(item, 'h5'), copy(item, 'p'));
-      add(progressGrid, entry);
-    });
-    add(work, progressGrid);
-    add(featured, work);
-    // 3. The three earlier projects sit on one sheet as individual records.
-    const projects = sheet('previous', 'PROJECTS / PREVIOUS');
-    add(projects, heading('02 / PROJECTS', value(source, '.previous-projects-heading h3'), value(source, '.previous-projects-heading > p:last-child')));
-    const archive = make('div', 'project-archive');
-    source.querySelectorAll('.project-grid > .card').forEach(card => {
-      const item = card.cloneNode(true);
-      item.querySelectorAll('video').forEach(imageFromVideo);
-      item.querySelectorAll('details').forEach(detail => detail.remove());
-      add(archive, item);
-    });
-    add(projects, archive);
-
-    // 4. Evidence-backed implementation challenges from multiple projects.
-    const cases = sheet('cases', 'PROJECTS / PROBLEM SOLVING');
-    add(cases, heading('02 / PROJECTS', value(source, '#problem-solving-title'), value(source, '.problem-solving-heading > span')));
-    const caseList = make('div', 'problem-solving-list');
-    source.querySelectorAll('.problem-solving-case').forEach(item => {
-      const entry = item.cloneNode(true);
-      add(caseList, entry);
-    });
-    add(cases, caseList);
+    // Projects have independent pages; Logiflow has one additional case-study page.
+    window.renderPortfolioProjects({sheet, heading, make, add});
 
     // 5. Work history and credentials already present in the current site.
     const experience = sheet('experience', 'EXPERIENCE / EDUCATION');
     add(experience, heading('03 / EXPERIENCE & EDUCATION', value(source, '#experience h2')));
     const timeline = copy(source, '#experience .timeline');
     pick(timeline, '.training-projects').classList.add('print-training-summary');
-    add(experience, timeline, copy(source, '#experience .credentials'));
+    const printedCredentials = copy(source, '#experience .credentials');
+    printedCredentials.querySelectorAll('.award-mobile-entry').forEach(entry => entry.remove());
+    add(experience, timeline, printedCredentials);
     add(experience, make('p', 'print-closing', '끝까지 읽어주셔서 감사합니다.'));
 
     pages.querySelectorAll('code').forEach(code => {
@@ -292,7 +192,7 @@
     pages.querySelectorAll('.page-number').forEach((node, index) => node.textContent = `${String(index + 1).padStart(2, '0')} / ${String(count).padStart(2, '0')}`);
     pages.querySelectorAll('img').forEach(image => { image.loading = 'eager'; image.decoding = 'sync'; });
     await Promise.allSettled([...pages.querySelectorAll('img')].map(image => image.decode()));
-    status.textContent = `A4 세로 · 총 ${count}페이지 · 웹 포트폴리오 내용 반영`;
+    status.textContent = `A4 세로 · 총 ${count}페이지 · 프로젝트별 인쇄 구성`;
     button.disabled = false;
   }
 

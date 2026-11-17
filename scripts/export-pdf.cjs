@@ -9,13 +9,14 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE_PATH || 'playwright')
 
 const root = resolve(__dirname, '..');
 const assets = resolve(root, 'assets');
-const publicFiles = new Set(['index.html', 'app.js', 'print.html', 'print.js', 'print.css', 'style.css', 'themes.css', 'web-refinement.css']);
+const publicFiles = new Set(['index.html', 'app.js', 'print.html', 'print.js', 'print.css', 'print-projects.js', 'print-projects.css', 'project-content.js', 'project-layout.css', 'project-detail.js', 'style.css', 'themes.css', 'web-refinement.css']);
+const expectedPages = require('../project-content.js').length + 2;
 const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.mp4': 'video/mp4', '.pdf': 'application/pdf' };
 const server = createServer(async (request, response) => {
   try {
     const path = decodeURIComponent(new URL(request.url, 'http://localhost').pathname).slice(1) || 'index.html';
     const file = resolve(root, path);
-    if (!publicFiles.has(path) && !file.startsWith(assets + sep)) {
+    if (!publicFiles.has(path) && !file.startsWith(assets + sep) && !file.startsWith(resolve(root, 'projects') + sep)) {
       response.writeHead(404).end();
       return;
     }
@@ -45,10 +46,10 @@ const server = createServer(async (request, response) => {
     const layout = await page.evaluate(() => [...document.querySelectorAll('.sheet')].map(sheet => ({
       gap: sheet.querySelector('.running-foot').getBoundingClientRect().top - sheet.querySelector('.sheet-body').lastElementChild.getBoundingClientRect().bottom
     })));
-    if (layout.length !== 5 || layout.some(sheet => sheet.gap < 0)) throw new Error('Expected five sheets with no footer overlap.');
+    if (layout.length !== expectedPages || layout.some(sheet => sheet.gap < 0)) throw new Error('Expected project sheets with no footer overlap.');
     const pdf = await page.pdf({ preferCSSPageSize: true, printBackground: true, displayHeaderFooter: false });
     const count = [...pdf.toString('latin1').matchAll(/\/Type\s*\/Page\b/g)].length;
-    if (count !== 5) throw new Error(`Expected five PDF pages, got ${count}.`);
+    if (count !== expectedPages) throw new Error(`Expected ${expectedPages} PDF pages, got ${count}.`);
     const target = resolve(assets, 'portfolio-ahnjaegwon.pdf');
     await writeFile(target + '.tmp', pdf);
     await rename(target + '.tmp', target);

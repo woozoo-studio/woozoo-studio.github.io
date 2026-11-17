@@ -9,13 +9,16 @@ ROOT = Path(__file__).resolve().parent
 class Handler(SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
+    def end_headers(self):
+        # Always show edited local pages, including project and print documents.
+        self.send_header('Cache-Control', 'no-store')
+        super().end_headers()
     def do_GET(self):
         if self.path == '/__version':
             files = sorted(p for p in ROOT.rglob('*') if p.suffix in ('.html', '.css', '.js') and '.git' not in p.parts)
             version = hashlib.sha256(json.dumps([(str(p), p.stat().st_mtime_ns) for p in files]).encode()).hexdigest().encode()
             self.send_response(200)
             self.send_header('Content-Type', 'text/plain')
-            self.send_header('Cache-Control', 'no-store')
             self.end_headers()
             self.wfile.write(version)
         else:

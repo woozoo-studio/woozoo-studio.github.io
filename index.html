@@ -10,18 +10,18 @@
   <link rel="stylesheet" href="style.css?v=4">
 </head>
 
-<body>
+<body data-project-first>
   <a class="skip" href="#about">본문으로 이동</a>
 
   <header>
     <nav class="site-nav" aria-label="주요 메뉴">
       <a href="#about" class="active">소개</a>
-      <a href="#skills">기술 역량</a>
+      <a href="#skills">기술역량</a>
       <a href="#projects">프로젝트</a>
-      <a href="#experience">이력</a>
+      <a href="#experience">주요 이력</a>
     </nav>
 
-    <a class="print" href="print.html">PDF 저장</a>
+    <a class="print" href="print.html?v=20261114">PDF 저장</a>
   </header>
 
   <main>
@@ -50,23 +50,29 @@
           <strong>바다에서는 선박의 항로를, 지금은 로봇의 경로를 다룹니다.</strong>
         </p>
 
+        <p class="hero-expertise">ROS2 기반 AMR 주행과 다중 로봇 교통조정, 관제 연동을 구현했습니다.</p>
+
         <div class="hero-background" aria-label="학력과 경력 요약">
           <div class="hero-background-group">
             <h2>학력</h2>
             <p class="degree-entry">
               <a class="school-identity" href="https://www.kmou.ac.kr/kmou/main.do" target="_blank" rel="noreferrer" aria-label="국립한국해양대학교 공식 홈페이지">
                 <img src="assets/kmou-symbol.png" alt="" width="1195" height="1195">
-                <strong>한국해양대학교 · 해상보험전공</strong>
+                <strong>한국해양대학교</strong>
               </a>
-              <span>2021.01 졸업</span>
+              <span>해상보험전공 / 2021.01 졸업</span>
               <span class="gpa-mark">학점 <b>4.08</b><small>/ 4.5</small></span>
               <span class="gpa-meter" aria-hidden="true"><i></i></span>
             </p>
           </div>
           <div class="hero-background-group">
             <h2>주요 경력</h2>
-            <p><strong>AI융합 로봇SW 개발자 과정</strong><span>대한상공회의소 서울기술교육센터</span><span>2026.04—2026.11 · 수강 중</span></p>
+            <p><strong>AI융합 로봇SW 개발자 과정</strong><span>대한상공회의소 서울기술교육센터</span><span>2026.04—2026.11 · 수료</span></p>
             <p><strong>에이치라인해운</strong><span>2등 항해사 · 2021.06—2024.02</span></p>
+          </div>
+          <div class="hero-background-group">
+            <h2>수상</h2>
+            <p><strong>프로젝트 경진대회 대상 · 2026.11.05</strong><span>대한상공회의소 서울기술교육센터</span></p>
           </div>
         </div>
 
@@ -107,61 +113,19 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">01 / SKILLS &amp; EXPERIENCE</p>
-          <h2>기술 역량과 개발 경험</h2>
+          <h2>기술역량</h2>
         </div>
       </div>
 
 
-      <p class="skills-intro">주행·제어·인식·공정 자동화를 연결해 온 경험</p>
 
-      <div class="capability-grid">
-        <article class="capability">
-          <div class="capability-heading">
-            <span class="capability-number">01</span>
-            <h3>ROS2 기반 로봇 소프트웨어</h3>
-          </div>
-          <p class="capability-tech"><span>ROS2</span><span>Nav2</span><span>Gazebo</span><span>TF</span><span>EKF</span></p>
-          <ul class="capability-points">
-            <li>노드·토픽·TF를 활용한 로봇·관제 연동</li>
-            <li>주행·위치추정 설정 조정과 실기체 시험</li>
-          </ul>
-        </article>
-
-        <article class="capability">
-          <div class="capability-heading">
-            <span class="capability-number">02</span>
-            <h3>임베디드·로봇 통합 제어</h3>
-          </div>
-          <p class="capability-tech"><span>STM32</span><span>C/C++</span><span>HAL</span><span>Flutter</span></p>
-          <ul class="capability-points">
-            <li>모터·센서·서보 제어와 모바일 앱 연동</li>
-            <li>통신·메모리·전원 재시작을 고려한 기능 구현</li>
-          </ul>
-        </article>
-
-        <article class="capability">
-          <div class="capability-heading">
-            <span class="capability-number">03</span>
-            <h3>비전 모델·엣지 추론</h3>
-          </div>
-          <p class="capability-tech"><span>Python</span><span>YOLO Pose</span><span>FP16</span><span>INT8</span></p>
-          <ul class="capability-points">
-            <li>학습 데이터 형식 변환과 Pose 모델 학습·추론</li>
-            <li>엣지 디바이스를 위한 모델 변환·양자화</li>
-          </ul>
-        </article>
-
-        <article class="capability">
-          <div class="capability-heading">
-            <span class="capability-number">04</span>
-            <h3>산업 자동화·공정 제어</h3>
-          </div>
-          <p class="capability-tech"><span>PLC</span><span>HMI</span><span>GX Works2</span></p>
-          <ul class="capability-points">
-            <li>공정 순서·비상정지·복귀 로직 구현</li>
-            <li>래더와 HMI를 활용한 공정 조작·상태 표시</li>
-          </ul>
-        </article>
+      <div class="capability-grid skill-category-list">
+        <article class="capability"><h3>프로그래밍 언어</h3><p class="capability-tech"><span>C</span><span>C++</span><span>Python</span></p></article>
+        <article class="capability"><h3>로봇 SW·자율주행</h3><p class="capability-tech"><span>ROS2</span><span>Nav2</span><span>TF</span><span>EKF</span><span>Gazebo</span><span>Isaac Sim</span></p></article>
+        <article class="capability"><h3>임베디드·로봇 제어</h3><p class="capability-tech"><span>STM32</span><span>ESP32</span><span>Raspberry Pi</span><span>HAL</span></p></article>
+        <article class="capability"><h3>비전 AI</h3><p class="capability-tech"><span>YOLO</span><span>OpenCV</span><span>Quantization</span></p></article>
+        <article class="capability"><h3>PLC·자동화 제어</h3><p class="capability-tech"><span>PLC</span><span>HMI</span><span>GX Works2</span></p></article>
+        <article class="capability"><h3>버전 관리·협업 도구</h3><p class="capability-tech"><span>Git</span><span>GitHub</span><span>Jira</span><span>Confluence</span></p></article>
       </div>
 
 
@@ -182,504 +146,35 @@
     </section>
 
 
-    <section id="projects">
+    <section id="projects" class="folio-projects"><div class="section-head"><div><p class="eyebrow">02 / PROJECTS</p><h2>프로젝트</h2></div><details class="folio-project-jump"><summary>프로젝트 바로가기 <span aria-hidden="true">⌄</span></summary><nav aria-label="프로젝트 바로가기"><a href="#project-featured"><span>01</span>AI 융합 다중 로봇 물류</a><a href="#project-embedded"><span>02</span>앱 제어 이동형 로봇팔</a><a href="#project-vision"><span>03</span>비전 AI 트래킹 로봇</a><a href="#project-plc"><span>04</span>PLC 기반 MPS 공정 제어</a></nav></details></div><article id="project-featured" class="folio-project folio-featured">
+    <div class="folio-project-top"><span class="folio-index">01 / 대표 프로젝트</span><a class="folio-detail" href="projects/logiflow.html?v=20261114-projects">프로젝트 상세 <span aria-hidden="true">↗</span></a></div>
+    <div class="folio-project-layout folio-with-work"><div class="folio-project-copy"><h3>AI 융합 다중 로봇 물류</h3><p class="folio-subtitle">AMR 자율주행부터 교통조정·관제 연동까지</p><ul class="folio-tags"><li>ROS2</li><li>Nav2</li><li>C/C++</li><li>Python</li><li>KEV</li><li>MQTT</li></ul><p class="folio-meta">2026.10.03 — 11.05 · Logiflow · 팀 7명</p><p class="folio-summary">여러 대의 AMR과 로봇팔을 연동해 주문·피킹·이송·패킹 공정을 수행하는 물류 자동화 시스템입니다.</p></div><div class="folio-stacked-screens"><figure><img src="assets/logiflow-system-route-layout.png" alt="전체 시스템 구성 · 충전·피킹·패킹·재고 보충" loading="lazy"><figcaption>전체 시스템 구성 · 충전·피킹·패킹·재고 보충</figcaption></figure><figure><img src="assets/fms-dashboard-final.png" alt="FMS 관제 화면 · 주문 생성·로봇 위치·상태 연동" loading="lazy"><figcaption>FMS 관제 화면 · 주문 생성·로봇 위치·상태 연동</figcaption></figure></div><div class="folio-main-work"><h4 class="folio-main-work-title">담당 역할</h4><dl class="folio-contributions folio-work-rows"><div><dt>AMR 구현·검증</dt><dd>Nav2 주행, TF·EKF·Behavior Tree 설정과 정차 위치 반복 측정</dd></div><div><dt>다중 로봇 교통조정</dt><dd>PBS의 우선순위 개념을 참고한 KEV-MAPF 응용 로직 구현</dd></div><div><dt>주행·관제 연동</dt><dd>주행 경로·로봇 위치 연동과 MQTT 도킹 접촉 신호 수신·상태 처리</dd></div></dl></div></div>
 
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">02 / PROJECTS</p>
-          <h2>대표 프로젝트</h2>
-        </div>
 
-        <p>무엇을 만들었는지, 그 안에서 무엇을 맡았는지.</p>
-      </div>
+    <div class="folio-evidence-strip"><figure><div class="folio-player"><iframe src="https://www.youtube-nocookie.com/embed/zMlgDwmd75g" title="Logiflow 전체 공정 최종 시연" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><figcaption>주문 → 이송 → 적재·하역 → 복귀</figcaption></figure><figure><a href="assets/traffic-coordination.gif" target="_blank" rel="noreferrer"><img src="assets/traffic-coordination.gif" alt="마주 오는 로봇의 대기·우선 통과 교통조정 시연" loading="lazy"></a><figcaption>교통조정 · 실기체에서 대기·우선 통과 확인</figcaption></figure></div>
+    <div class="folio-project-bottom"><div class="folio-project-actions"><a class="folio-button" href="projects/logiflow.html?v=20261114-projects#demo">시연 영상 보기 <span aria-hidden="true">▷</span></a><a class="folio-button folio-button-primary" href="projects/logiflow.html?v=20261114-projects">프로젝트 상세 <span aria-hidden="true">→</span></a></div></div>
+  </article><article id="project-embedded" class="folio-project">
+    <div class="folio-project-top"><span class="folio-index">02 / 임베디드·제어 · 앱 연동</span><a class="folio-detail" href="projects/mobile-manipulator.html?v=20261114-projects">프로젝트 상세 <span aria-hidden="true">↗</span></a></div>
+    <div class="folio-project-layout folio-with-work"><div class="folio-project-copy"><h3>앱 제어 이동형 로봇팔</h3><p class="folio-subtitle">모바일 명령에서 주행·티칭·데이터 보존까지</p><ul class="folio-tags"><li>STM32</li><li>C/C++</li><li>HAL</li><li>Flutter</li><li>Bluetooth</li></ul><p class="folio-meta">2026.07.31 — 08.07 · 팀 5명 · 부팀장</p><p class="folio-summary">4륜 이동 플랫폼에 5자유도 로봇팔을 탑재하고, Flutter 앱에서 주행·관절 조작·티칭을 통합 제어하는 모바일 매니퓰레이터입니다. 기록한 동작과 설정을 STM32 내부 Flash에 저장해 전원을 다시 켠 뒤에도 불러와 재생할 수 있도록 구현했습니다.</p></div><div class="folio-stacked-screens"><figure><img src="assets/robot.jpeg" alt="4륜 이동 플랫폼과 5자유도 로봇팔" loading="lazy"><figcaption>4륜 이동 플랫폼과 5자유도 로봇팔</figcaption></figure><figure><div class="folio-player"><iframe src="https://www.youtube-nocookie.com/embed/isyhQvfVqWs" title="Flutter 앱 기반 로봇팔 제어 시연" loading="lazy" allowfullscreen></iframe></div><figcaption>Flutter 앱 기반 로봇팔 제어 시연</figcaption></figure></div><div class="folio-main-work"><h4 class="folio-main-work-title">담당 역할</h4><dl class="folio-contributions folio-work-rows"><div><dt>앱·통신</dt><dd>Flutter 조작 화면과 16바이트 Bluetooth 명령 패킷</dd></div><div><dt>로봇팔 제어</dt><dd>PCA9685 기반 6채널 서보 제어</dd></div><div><dt>주행 보정</dt><dd>IMU Yaw 기반 PID 방향 보정</dd></div><div><dt>데이터 저장</dt><dd>내부 Flash에 티칭 시퀀스·설정값 저장 및 복원</dd></div></dl></div></div>
 
 
-      <article id="project-featured" class="featured">
 
-        <div class="feature-copy">
+    <div class="folio-project-bottom"><div class="folio-project-actions"><a class="folio-button" href="projects/mobile-manipulator.html?v=20261114-projects#demo">시연 영상 보기 <span aria-hidden="true">▷</span></a><a class="folio-button folio-button-primary" href="projects/mobile-manipulator.html?v=20261114-projects">프로젝트 상세 <span aria-hidden="true">→</span></a></div></div>
+  </article><article id="project-vision" class="folio-project">
+    <div class="folio-project-top"><span class="folio-index">03 / 비전 AI · 임베디드·제어</span><a class="folio-detail" href="projects/vision-tracking.html?v=20261114-projects">프로젝트 상세 <span aria-hidden="true">↗</span></a></div>
+    <div class="folio-project-layout folio-with-work"><div class="folio-project-copy"><h3>비전 AI 트래킹 로봇</h3><p class="folio-subtitle">온디바이스 AI 기반 자세 인식과 대상 추적</p><ul class="folio-tags"><li>Python</li><li>YOLO</li><li>Quantization</li><li>STM32</li><li>Raspberry Pi</li><li>PID</li></ul><p class="folio-meta">2026.04.29 — 05.07 · 팀 4명</p><p class="folio-summary">라즈베리파이에서 영상 인식과 상황 판단을 수행하는 온디바이스 AI 순찰 로봇입니다. YOLO Pose로 사람의 자세를 분석해 위험 행동·낙상 의심 상황의 대상을 선정하고, STM32 보드의 주행 제어와 연동해 추적하도록 구현했습니다.</p></div><div class="folio-stacked-screens"><figure><img src="assets/tracking-pose-demo-mosaic.png" alt="YOLO Pose 기반 자세 인식 화면" loading="lazy"><figcaption>YOLO Pose 기반 자세 인식 화면</figcaption></figure><figure><div class="folio-player"><iframe src="https://www.youtube-nocookie.com/embed/0Xhue5Aivyg" title="온디바이스 AI 순찰·대상 추적 시연" loading="lazy" allowfullscreen></iframe></div><figcaption>온디바이스 AI 순찰·대상 추적 시연</figcaption></figure></div><div class="folio-main-work"><h4 class="folio-main-work-title">담당 역할</h4><dl class="folio-contributions folio-work-rows"><div><dt>주행 제어</dt><dd>HAL 모터·IMU 연동과 방향별 PID 보정</dd></div><div><dt>학습 라벨 통합</dt><dd>11포인트 인체 Pose와 화재·무기 검출 데이터 형식 통합</dd></div><div><dt>모델 학습·추론</dt><dd>YOLO Pose 모델 학습·추론 및 변환·양자화 참여</dd></div></dl></div></div>
 
-          <div class="feature-heading">
 
-          <div class="tags">
-            <span class="status"><i></i>진행 중</span>
-            <span>ROS2</span>
-            <span>Nav2</span>
-            <span>C++</span>
-            <span>Python</span>
-          </div>
 
-          <h3>AI 융합 다중 로봇 물류</h3>
+    <div class="folio-project-bottom"><div class="folio-project-actions"><a class="folio-button" href="projects/vision-tracking.html?v=20261114-projects#demo">시연 영상 보기 <span aria-hidden="true">▷</span></a><a class="folio-button folio-button-primary" href="projects/vision-tracking.html?v=20261114-projects">프로젝트 상세 <span aria-hidden="true">→</span></a></div></div>
+  </article><article id="project-plc" class="folio-project">
+    <div class="folio-project-top"><span class="folio-index">04 / 산업 자동화 · 공정 제어</span><a class="folio-detail" href="projects/plc-automation.html?v=20261114-projects">프로젝트 상세 <span aria-hidden="true">↗</span></a></div>
+    <div class="folio-project-layout folio-with-work"><div class="folio-project-copy"><h3>PLC 기반 MPS 공정 제어</h3><p class="folio-subtitle">공정 순서와 비상정지·복귀 동작 구성</p><ul class="folio-tags"><li>PLC Ladder</li><li>GX Works2</li><li>HMI</li></ul><p class="folio-meta">2026.05.31 — 06.05 · 팀 2명</p><p class="folio-summary">유도형 근접센서로 금속·비금속을 구분해 창고에 적재 및 배출하는 PLC 자동화 시스템입니다. 재료 투입·가공·분류·적재·배출 시퀀스와 비상정지 기능을 구현했습니다.</p></div><div class="folio-stacked-screens"><figure><img src="assets/plc.png" alt="MPS 공정 장치 · 재료 투입·가공·적재·배출" loading="lazy"><figcaption>MPS 공정 장치 · 재료 투입·가공·적재·배출</figcaption></figure><figure><img src="assets/plc-hmi-equipment.png" alt="HMI · 공정 조작·적재 현황·작업 수량" loading="lazy"><figcaption>HMI · 공정 조작·적재 현황·작업 수량</figcaption></figure></div><div class="folio-main-work"><h4 class="folio-main-work-title">담당 역할</h4><dl class="folio-contributions folio-work-rows"><div><dt>공정 시퀀스 구현</dt><dd>재료 투입·가공, 금속·비금속 분류 및 적재·배출</dd></div><div><dt>안전 제어 구현</dt><dd>비상정지·인터록·자가유지 로직 구현</dd></div><div><dt>HMI 작화·연동</dt><dd>공정 조작, 적재 현황·작업 수량을 표시하는 HMI 화면 구성 및 PLC 연동</dd></div></dl></div></div>
 
-          <p class="project-sub">AX Multi-Robot Logistics</p>
-          </div>
 
-          <div class="feature-intro">
-            <div class="feature-story">
-              <h4>프로젝트 목표</h4>
-              <p class="feature-lead">주문에 따라 여러 대의 자율주행 로봇이 물품을 이송하고, 로봇팔이 적재·하역하는 물류 자동화 시스템을 개발합니다.</p>
-            </div>
-            <div class="feature-story feature-role">
-              <h4>담당 역할</h4>
-              <dl class="feature-role-stages">
-                <div class="role-phase role-phase-base">
-                  <dt><span>1차</span> AMR 기반 개발</dt>
-                  <dd><strong class="role-phase-title">AMR 주행·관제 연동</strong><p>Route Graph · 관제 위치 토픽 · 좌표 측정 도구</p></dd>
-                </div>
-                <div class="role-phase role-phase-ai">
-                  <dt><span>2차</span> AI 경로 계획 검증 <small>Kev 적용 예정</small></dt>
-                  <dd><strong class="role-phase-title">AI 기반 MAPF 구현·비교 검토</strong><p>Kev-0.8B로 MAPF를 구현하고, 기존 방식과 같은 조건에서 대체·적용 가능성을 검토할 계획입니다.</p></dd>
-                </div>
-              </dl>
-            </div>
-          </div>
 
-          <figure class="feature-photo">
-            <img src="assets/fms-operation-wide.jpg?v=2" alt="다중 로봇 물류 자동화 팀 프로젝트의 AMR 세 대와 로봇팔이 놓인 실제 공정" width="2104" height="1316" loading="lazy">
-            <figcaption>TEAM SYSTEM / 다중 로봇 물류 시스템</figcaption>
-          </figure>
-
-          <div class="feature-facts">
-
-          <p class="meta">2026.09.10 — 진행 중 · 팀 7명</p>
-
-          <div class="links">
-            <a href="https://github.com/E1I6-Logistics/Logistics_AMR" target="_blank" rel="noreferrer">
-              AMR 저장소 ↗
-            </a>
-
-            <a href="https://github.com/E1I6-Logistics/Logistics_FMS" target="_blank" rel="noreferrer">
-              FMS 저장소 ↗
-            </a>
-
-            <a href="https://github.com/E1I6-Logistics/Logistics_OMX" target="_blank" rel="noreferrer">
-              OMX 저장소 ↗
-            </a>
-          </div>
-
-          <a class="print-media-link" href="https://github.com/E1I6-Logistics/Logistics_AMR" target="_blank"
-            rel="noreferrer">
-            <img src="assets/qr-amr-github.svg" alt="Multi-Robot Logistics System GitHub QR 코드" width="72" height="72">
-
-            <span>
-              <strong>GitHub 저장소</strong>
-              <small>E1I6-Logistics / Logistics_AMR</small>
-            </span>
-          </a>
-
-          </div>
-
-        </div>
-
-
-        <div class="system">
-
-          <div class="system-heading">
-            <h4>주문부터 이송·하역까지</h4>
-          </div>
-
-          <div class="system-axes" aria-label="FMS, AMR, OMX로 구성된 팀 시스템">
-
-            <div class="system-axis">
-              <strong>FMS</strong>
-              <small>주문·배차·경로 관제</small>
-            </div>
-
-            <div class="system-axis system-axis-owned">
-              <span class="ownership-badge">담당</span>
-              <strong>AMR</strong>
-              <small>자율주행·물품 이송·위치 공유</small>
-            </div>
-
-            <div class="system-axis">
-              <strong>OMX</strong>
-              <small>로봇팔 적재·하역</small>
-            </div>
-
-          </div>
-          <p class="system-process">주문·배차 <span>→</span> 피킹 위치 주행 <span>→</span> 적재 <span>→</span> 패킹 위치 이송 <span>→</span> 하역</p>
-
-        </div>
-
-
-        <section class="work-details" aria-label="담당 업무">
-
-          <div class="work-details-heading">
-            <h4>
-              담당 업무
-            </h4>
-          </div>
-
-          <div class="work-details-body">
-
-            <div class="work-status-group work-status-done">
-
-              <div class="work-status-title">
-                <strong>구현 완료</strong>
-                <span>관제 연동 / 좌표 측정·분석</span>
-              </div>
-
-              <div class="work-item-grid">
-
-                <article class="work-item">
-                  <h5><span class="work-number">01</span> FMS 경로 관리용 Route Graph</h5>
-                  <p>
-                    그리드 이송 경로의 이동 지점·연결 관계를
-                    노드·엣지로 구성해 FMS 팀에 전달했습니다.
-                  </p>
-                </article>
-
-                <article class="work-item">
-                  <h5><span class="work-number">02</span> 실시간 관제용 위치 토픽 발행</h5>
-
-                  <p>
-                    TF의 <code>map → base_footprint</code> 변환으로
-                    map 기준의 로봇 위치를 구하고, FMS 관제용 토픽으로 발행했습니다.
-                  </p>
-
-                </article>
-
-                <article class="work-item">
-                  <h5><span class="work-number">03</span> 정차 위치 측정·분석 도구</h5>
-                  <p>
-                    TF 위치·방향을 반복 측정해 평균·표준편차를 계산하고,
-                    CSV 저장·RViz 시각화를 구현했습니다.
-                  </p>
-                </article>
-
-              </div>
-
-            </div>
-
-
-            <div class="work-status-group work-status-progress">
-
-              <div class="work-status-title work-status-title-progress">
-                <strong>진행 중</strong>
-                <span>주행·위치추정 / AI 경로 계획 검증</span>
-              </div>
-
-              <div class="work-item-grid">
-
-                <article class="work-item">
-                  <h5><span class="work-number">01</span> 주행 성능 개선을 위한 Nav2 튜닝</h5>
-                  <p>
-                    주행 파라미터를 바꾸며 정차 위치를 반복 측정하고,
-                    위치추정·기체·환경 조건을 함께 점검하고 있습니다.
-                  </p>
-                </article>
-
-                <article class="work-item">
-                  <h5><span class="work-number">02</span> 위치추정 안정화를 위한 EKF 조정</h5>
-                  <p>
-                    EKF 설정을 조정하며 위치추정 안정화를 검토 중입니다.
-                    적용 전후 궤적·정지 상태를 비교할 계획입니다.
-                  </p>
-                </article>
-
-                <article class="work-item work-item-ai">
-                  <h5><span class="work-number">03</span> Kev-0.8B 기반 MAPF 구현·비교 검토</h5>
-                  <p>의사결정 모델 Kev-0.8B로 MAPF를 구현하고,
-                    기존 방식과 비교해 대체·적용 가능성을 검토할 계획입니다.</p>
-                </article>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-      </article>
-
-      <div class="project-evidence" aria-label="대표 프로젝트 시연과 관제 화면">
-
-        <div class="project-evidence-heading">
-          <h3>시연 · 관제 화면</h3>
-          <p>
-            전체 공정 시연 영상과 FMS 웹 관제 화면입니다.
-          </p>
-        </div>
-
-
-        <div class="project-evidence-grid">
-
-          <figure class="project-evidence-card">
-
-            <div class="scenario-video">
-              <iframe src="https://www.youtube-nocookie.com/embed/onECw1r9kyc" title="E1I6 다중 로봇 물류 자동화 전체 공정 시연" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-            <a class="print-media-link scenario-print-link" href="https://youtu.be/onECw1r9kyc" target="_blank" rel="noreferrer">
-              <img src="assets/qr-amr-scenario.svg" alt="전체 공정 시연 영상 YouTube QR 코드" width="96" height="96">
-              <span><strong>전체 공정 시연 영상</strong><small>youtu.be/onECw1r9kyc</small></span>
-            </a>
-
-            <figcaption>
-              <strong>다중 로봇 물류 공정</strong>
-              <p>FMS 작업 지시부터 AMR 이송과 OMX 적재까지의 흐름</p>
-              <a class="scenario-watch-link" href="https://youtu.be/onECw1r9kyc" target="_blank" rel="noreferrer">YouTube에서 보기 ↗</a>
-            </figcaption>
-
-          </figure>
-
-
-          <figure class="project-evidence-card">
-
-            <a href="assets/fms-cover.png" target="_blank" rel="noreferrer" aria-label="FMS 관제 대시보드 원본 이미지 크게 보기">
-              <img src="assets/fms-cover.png" alt="FMS 웹 관제 화면. 지도 위 세 로봇의 위치와 경로, 오른쪽의 로봇 주행 상태가 보인다" width="2488"
-                height="1334" loading="lazy">
-            </a>
-
-            <figcaption>
-              <strong>FMS 웹 관제 대시보드</strong>
-              <p>팀 관제 화면 · 경로 그래프와 로봇별 위치·상태 표시</p>
-              <small>이미지를 누르면 크게 볼 수 있습니다.</small>
-            </figcaption>
-
-          </figure>
-
-
-        </div>
-
-      </div>
-
-
-      <div class="previous-projects-heading">
-        <h3>이전 프로젝트</h3>
-        <p>
-          임베디드 제어, 비전 인식, PLC 자동화 프로젝트입니다.
-        </p>
-      </div>
-
-
-      <div class="project-grid">
-
-        <article id="project-embedded" class="card">
-
-          <img src="assets/robot.jpeg" alt="로봇팔을 탑재한 RC카 실제 제작 모습" loading="lazy" width="1280" height="720">
-
-          <div class="card-body">
-
-            <p class="project-number">02 / EMBEDDED & APP</p>
-            <h3>앱 제어 이동형 로봇팔</h3>
-
-            <p>
-              RC카 주행부터 로봇팔 티칭까지,<br>
-              하나로 연결한 모바일 앱 기반 제어 시스템.
-            </p>
-
-            <div class="tags">
-              <span>Flutter</span>
-              <span>STM32</span>
-              <span>Bluetooth</span>
-            </div>
-
-            <ul>
-              <li>Flutter 기반 RC카·로봇팔 통합 제어 앱 개발</li>
-              <li>Bluetooth 통신 패킷 설계 · PCA9685 서보 제어 · PID 직진 보정</li>
-              <li>STM32 내부 Flash에 12개 시퀀스 · 시퀀스당 최대 30 Waypoint 티칭 데이터 저장</li>
-            </ul>
-
-            <p class="meta">2026.07.31 — 08.07 · 팀 5명 · 부팀장</p>
-
-            <a class="card-link" href="https://github.com/sditr0414/mobile-retrieval-robot" target="_blank" rel="noreferrer">GitHub 저장소 ↗</a>
-
-            <details>
-              <summary>시연 영상 보기 <span>+</span></summary>
-
-              <div class="project-demo-player">
-                <video id="project-embedded-demo" controls preload="none" playsinline poster="assets/robot.jpeg" aria-label="앱 제어 이동형 로봇팔의 주행·물체 운반 시연">
-                  <source src="assets/mobile-manipulator-demo.mp4" type="video/mp4">
-                  동영상을 재생할 수 없는 경우 <a href="assets/mobile-manipulator-demo.mp4">시연 영상 열기</a>를 이용해 주세요.
-                </video>
-              </div>
-              <p class="project-demo-caption">모바일 앱으로 주행하고 로봇팔로 물체를 옮기는 시연입니다.</p>
-
-            </details>
-
-            <div class="project-print-links">
-            <a class="print-media-link" href="https://github.com/sditr0414/mobile-retrieval-robot" target="_blank"
-              rel="noreferrer">
-              <img src="assets/qr-mobile-github.svg" alt="앱 제어 이동형 로봇팔 GitHub QR 코드" width="72" height="72">
-
-              <span>
-                <strong>GitHub 저장소</strong>
-                <small>sditr0414 / mobile-retrieval-robot</small>
-              </span>
-            </a>
-            <a class="print-media-link" href="https://woozoo-studio.github.io/#project-embedded-demo" target="_blank" rel="noreferrer">
-              <img src="assets/qr-mobile-demo.svg" alt="앱 제어 이동형 로봇팔 시연 영상 QR 코드" width="72" height="72">
-              <span><strong>시연 영상</strong><small>웹 포트폴리오에서 재생</small></span>
-            </a>
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <article id="project-vision" class="card">
-
-          <img src="assets/tracking-pose-demo-mosaic.png" alt="얼굴을 모자이크 처리한 비전 AI 트래킹 로봇의 YOLO Pose 인식 시연 화면" loading="lazy" width="1451" height="1084">
-
-          <div class="card-body">
-
-            <p class="project-number">03 / VISION & CONTROL</p>
-            <h3>비전 AI 트래킹 로봇</h3>
-
-            <p>
-              STM32 제어와 Raspberry Pi 비전 AI를 연결해,<br>
-              주행과 인식을 함께 구현.
-            </p>
-
-            <div class="tags">
-              <span>STM32</span>
-              <span>Raspberry Pi</span>
-              <span>YOLO Pose</span>
-              <span>HAL</span>
-              <span>PID</span>
-            </div>
-
-            <ul>
-              <li>STM32 HAL 기반 모터·IMU 연동 · PID 직진 보정</li>
-              <li>11포인트 인체 Pose·화재/무기 검출 라벨 통합 · YOLO Pose 학습·추론</li>
-              <li>엣지 디바이스 추론 최적화를 위한 FP16 변환 · INT8 양자화</li>
-            </ul>
-
-            <p class="meta">2026.04.29 — 05.07 · 팀 4명</p>
-
-            <a class="card-link" href="https://github.com/Ugie01/Tracking_Patrol_Robot" target="_blank" rel="noreferrer">GitHub 저장소 ↗</a>
-
-            <details>
-              <summary>시연 영상 보기 <span>+</span></summary>
-
-              <div class="project-demo-player">
-                <iframe src="https://www.youtube-nocookie.com/embed/0Xhue5Aivyg" title="비전 AI 트래킹 로봇 시연 영상" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-              </div>
-              <p class="project-demo-caption">로봇 주행과 YOLO Pose 기반 인식 동작을 보여주는 시연입니다.</p>
-
-            </details>
-
-            <div class="project-print-links">
-            <a class="print-media-link" href="https://github.com/Ugie01/Tracking_Patrol_Robot" target="_blank"
-              rel="noreferrer">
-              <img src="assets/qr-vision-github.svg" alt="비전 AI 트래킹 로봇 GitHub QR 코드" width="72" height="72">
-
-              <span>
-                <strong>GitHub 저장소</strong>
-                <small>Ugie01 / Tracking_Patrol_Robot</small>
-              </span>
-            </a>
-            <a class="print-media-link" href="https://www.youtube.com/watch?v=0Xhue5Aivyg" target="_blank" rel="noreferrer">
-              <img src="assets/qr-vision-demo.svg" alt="비전 AI 트래킹 로봇 시연 영상 QR 코드" width="72" height="72">
-              <span><strong>시연 영상</strong><small>youtu.be/0Xhue5Aivyg</small></span>
-            </a>
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <article id="project-plc" class="card">
-
-          <img src="assets/plc.png" alt="MPS 자동화 실습 장비 및 HMI 제어 화면" loading="lazy" width="1920" height="1080">
-
-          <div class="card-body">
-
-            <p class="project-number">04 / FACTORY AUTOMATION</p>
-            <h3>PLC 기반 MPS 자동화</h3>
-
-            <p>
-              가공·배출·적재 공정과<br>
-              비상정지 시퀀스를 구현.
-            </p>
-
-            <div class="tags">
-              <span>PLC Ladder</span>
-              <span>GX Works2</span>
-              <span>HMI</span>
-            </div>
-
-            <ul>
-              <li>재료 가공 · 배출 · 적재 시퀀스</li>
-              <li>비상정지 및 복귀 동작</li>
-              <li>래더 · HMI 원본 및 시연 자료</li>
-            </ul>
-
-            <p class="meta">2026.05.31 — 06.05 · 팀 2명</p>
-
-            <details>
-              <summary>시연 영상 보기 <span>+</span></summary>
-
-              <div class="project-demo-player">
-                <video controls preload="none" playsinline poster="assets/plc.png" aria-label="PLC 비상정지 시연">
-                  <source src="assets/plc-demo.mp4" type="video/mp4">
-                </video>
-              </div>
-              <p class="project-demo-caption">PLC 공정의 비상정지 동작을 보여주는 시연입니다.</p>
-            </details>
-
-            <a class="print-media-link" href="https://woozoo-studio.github.io/#project-plc" target="_blank"
-              rel="noreferrer">
-              <img src="assets/qr-plc.svg" alt="PLC 시연 영상 웹페이지 QR 코드" width="72" height="72">
-
-              <span>
-                <strong>시연 영상 보기</strong>
-                <small>웹 포트폴리오에서 재생</small>
-              </span>
-            </a>
-
-          </div>
-
-        </article>
-
-      </div>
-
-      <section class="problem-solving" aria-labelledby="problem-solving-title">
-        <div class="problem-solving-heading">
-          <p>PROBLEM SOLVING</p>
-          <h3 id="problem-solving-title">문제 해결</h3>
-          <span>프로젝트별 문제와 대응 과정을 정리했습니다.</span>
-        </div>
-        <div class="problem-solving-list">
-          <article class="problem-solving-case">
-            <div class="case-title"><span>01 / AMR · 관제 연동</span><h4>관제 위치 발행 분리</h4></div>
-            <dl>
-              <div><dt>문제</dt><dd>관제 화면의 위치 갱신을 <code>amcl_pose</code> 메시지 수신에 의존해야 하는지 검토했습니다. 기존 구조에서는 AMCL 메시지를 받을 때 위치를 갱신했습니다.</dd></div>
-              <div><dt>해결</dt><dd>TF의 <code>map → base_footprint</code> 변환에서 로봇 위치를 읽어 관제용 토픽으로 발행하는 별도 ROS2 노드를 작성했습니다.</dd></div>
-              <div><dt>결과</dt><dd>AMCL·오도메트리 기반 TF를 활용해 관제용 위치 발행을 AMCL 메시지 수신과 분리하고, FMS의 지도 표시에 연동했습니다.</dd></div>
-            </dl>
-          </article>
-          <article class="problem-solving-case">
-            <div class="case-title"><span>02 / 앱 제어 이동형 로봇팔</span><h4>내부 Flash에 티칭 저장</h4></div>
-            <dl>
-              <div><dt>문제</dt><dd>전원이 꺼져도 티칭 데이터를 유지해야 했습니다. 별도 EEPROM을 추가하는 방법 외에 보드 내부 Flash를 활용할 수 있는지 검토했습니다.</dd></div>
-              <div><dt>해결</dt><dd>마지막 128KiB(Sector 7)를 데이터용으로 확보하고 프로그램 저장 영역을 384KiB로 제한했습니다. 프로그램과 티칭 데이터가 서로의 영역을 덮어쓰지 않도록 구성했습니다.</dd></div>
-              <div><dt>결과</dt><dd>RAM에 모은 데이터를 Flash에 기록·검증하고 부팅 시 불러오도록 구현했습니다. 별도 EEPROM 없이 12개 시퀀스와 시퀀스당 최대 30 Waypoint를 저장합니다.</dd></div>
-            </dl>
-          </article>
-          <article class="problem-solving-case">
-            <div class="case-title"><span>03 / 비전 · 학습 데이터</span><h4>검출·포즈 라벨 형식 통합</h4></div>
-            <dl>
-              <div><dt>문제</dt><dd>사람은 11개 키포인트로 자세를 학습하지만, 화재·무기 검출 데이터에는 바운딩 박스만 있어 동일한 Pose 학습 형식으로 사용할 수 없었습니다.</dd></div>
-              <div><dt>해결</dt><dd>화재·무기의 바운딩 박스 중심점을 키포인트 1개로 넣고 나머지 10개를 더미 처리해, 모델이 요구하는 11포인트 라벨 구조에 맞췄습니다.</dd></div>
-              <div><dt>결과</dt><dd>인체 Pose 라벨과 비인체 객체의 검출 라벨을 동일한 학습 형식으로 통합했습니다. 비인체 객체의 중심점은 라벨 호환을 위한 표현으로 사용했습니다.</dd></div>
-            </dl>
-          </article>
-          <article class="problem-solving-case">
-            <div class="case-title"><span>03 / 비전 · 주행 제어</span><h4>전진·후진 PID 보정</h4></div>
-            <dl>
-              <div><dt>문제</dt><dd>전진·후진에서 동일한 모터 보정 부호를 사용하면 방향 보정이 반대로 작용할 수 있어, 주행 방향별 처리가 필요했습니다.</dd></div>
-              <div><dt>해결</dt><dd>IMU의 Yaw를 이용해 PID 보정값을 계산하고, 후진 시에는 전진과 반대로 좌우 모터의 PWM 보정 부호를 적용했습니다.</dd></div>
-              <div><dt>구현</dt><dd>주행 방향에 맞게 보정 로직을 분리하고, 적분 누적과 모터 출력에 상하한을 적용해 제어값이 범위를 벗어나지 않도록 구성했습니다.</dd></div>
-            </dl>
-          </article>
-        </div>
-      </section>
-
-    </section>
-
+    <div class="folio-project-bottom"><div class="folio-project-actions"><a class="folio-button" href="projects/plc-automation.html?v=20261114-projects#demo">시연 영상 보기 <span aria-hidden="true">▷</span></a><a class="folio-button folio-button-primary" href="projects/plc-automation.html?v=20261114-projects">프로젝트 상세 <span aria-hidden="true">→</span></a></div></div>
+  </article></section>
 
     <section id="experience">
 
@@ -697,7 +192,7 @@
 
           <div class="time">
             2026.04.14 — 2026.11.09
-            <span>수강 중</span>
+            <span>수료</span>
           </div>
 
           <div>
@@ -786,7 +281,7 @@
         <a class="contact-card contact-email" href="mailto:woozoo.dev@gmail.com">
           <strong>이메일 보내기</strong>
           <small>
-            woozoo.dev@gmail.com · 클릭하면 메일 작성
+            woozoo.dev@gmail.com
           </small>
         </a>
 
@@ -802,8 +297,9 @@
 
   </footer>
 
-  <script src="app.js?v=36"></script>
-  <link rel="stylesheet" href="web-refinement.css?v=48">
+  <script src="app.js?v=39"></script>
+  <link rel="stylesheet" href="web-refinement.css?v=53">
+  <link rel="stylesheet" href="project-layout.css?v=10">
 
 </body>
 
